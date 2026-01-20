@@ -1,0 +1,554 @@
+/* Add CSS for the confirmation modal */
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+body {
+  	margin: 0;
+  	line-height: normal;
+}
+
+:root {
+  	/* Fonts */
+  	--font-merriweather: Merriweather;
+  	--font-cinzel: Cinzel;
+  	--font-playfair-display: 'Playfair Display';
+  	--font-cinzel-decorative: 'Cinzel Decorative';
+
+  	/* Font sizes */
+  	--font-size-xs: 12px;
+  	--font-size-11xl: 30px;
+
+  	/* Colors */
+  	--color-darkred: #870000;
+  	--color-goldenrod: #ebaa00;
+  	--color-orange: #ffb722;
+  	--color-white: #fff;
+
+  	/* Border radiuses */
+  	--br-3xs: 10px;
+}
+
+/* Navbar */
+.navbar {
+	width: 100%;
+	background-color: #fcb734;
+	padding: 1vh 3vw;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.3);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+  }
+  
+  .navbar-inner {
+	display: flex;
+	align-items: center;
+	width: 100%;
+  }
+  
+  .navbar-links {
+	display: flex;
+	gap: 20px;
+	margin-left: auto;
+	position: relative; 
+  }
+  
+  .navbar-image {
+	position: absolute;
+	top: -1.5vh;        
+	left: -50vw;        
+	width: 12vw;        
+	height: 20vh;       
+  }
+  
+  
+  .nav-link {
+	font-family: 'Merriweather', serif;
+	color: #870000;
+	text-decoration: none;
+	font-size: 1.2vw;
+	transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .navbar-icon {
+	margin-left: 5px;
+  }
+  
+  .navbar-icon img {
+	width: 30px;
+	height: 30px;
+  }
+  
+  .shopping-cart-icon {
+	width: 2.5vw;
+	height: 2.5vw;
+	cursor: pointer;
+  }
+  
+  .nav-link:hover {
+	color: #ffffff;
+	transform: scale(1.1);
+  }
+
+.proper-scaling-of-contact-and {
+  	width: 100%;
+  	position: relative;
+  	background-color: #fff1ce;
+  	height: 1581px;
+  	overflow: hidden;
+  	text-align: center;
+  	font-size: var(--font-size-xs);
+  	color: var(--color-darkred);
+  	font-family: var(--font-cinzel);
+}
+
+.proper-scaling-of-contact-and-child {
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	background-color: var(--color-darkred);
+  	width: 1920px;
+  	height: 771px;
+}
+
+.maysan-road {
+  	margin: 0;
+}
+
+.maysan-road-valenzuela-container {
+  	position: absolute;
+  	top: 467px;
+  	left: 120px;
+  	font-size: var(--font-size-11xl);
+  	font-family: var(--font-cinzel-decorative);
+  	color: var(--color-goldenrod);
+  	display: inline-block;
+  	width: 306px;
+  	height: 48px;
+}
+
+.proper-scaling-of-contact-and-item,
+.proper-scaling-of-contact-and-inner,
+.line-div {
+  	border-top: 3px solid var(--color-orange);
+  	box-sizing: border-box;
+  	height: 3px;
+  	position: absolute;
+}
+
+.proper-scaling-of-contact-and-item {
+  	top: 235.5px;
+  	left: 50.5px;
+  	width: 685px;
+}
+
+.proper-scaling-of-contact-and-inner {
+  	top: 235.5px;
+  	left: 1168.5px;
+  	width: 714px;
+}
+
+.line-div {
+  	top: 734.5px;
+  	left: 50.5px;
+  	width: 1832px;
+}
+
+.visit-us, .call-us, .write-us, .div {
+  	font-size: var(--font-size-11xl);
+  	display: inline-block;
+  	font-family: var(--font-merriweather);
+  	color: var(--color-white);
+}
+
+.visit-us {
+  	position: absolute;
+  	top: 426px;
+  	left: 120px;
+  	width: 306px;
+}
+
+.call-us {
+  	position: absolute;
+  	top: 433px;
+  	left: 799px;
+  	width: 306px;
+}
+
+.write-us {
+  	position: absolute;
+  	top: 444px;
+  	left: 1477px;
+  	width: 306px;
+}
+
+.div {
+  	position: absolute;
+  	top: 474px;
+  	left: 799px;
+  	font-family: var(--font-cinzel-decorative);
+  	color: var(--color-goldenrod);
+  	width: 306px;
+}
+
+.contact-us {
+  	position: absolute;
+  	top: 197px;
+  	left: 754px;
+  	font-size: 55px;
+  	display: inline-block;
+  	color: var(--color-white);
+  	width: 411px;
+  	height: 95px;
+}
+
+.image-47-icon {
+  	position: absolute;
+  	top: 552px;
+  	left: 155px;
+  	width: 234.4px;
+  	height: 167px;
+  	object-fit: cover;
+  	border-radius: 10px;
+}
+
+.fjfjgj-icon, .bfdxb-icon, .affff-icon {
+  	position: absolute;
+  	object-fit: cover;
+}
+
+.fjfjgj-icon {
+  	top: 279px;
+  	left: 202px;
+  	width: 140.3px;
+  	height: 135px;
+}
+
+.bfdxb-icon {
+  	top: 279px;
+  	left: 877px;
+  	width: 147px;
+  	height: 136px;
+}
+
+.affff-icon {
+  	top: 283px;
+  	left: 1557px;
+  	width: 140.3px;
+  	height: 135px;
+}
+
+.zhiweizaigmailcom {
+  	color: var(--color-goldenrod);
+}
+
+.if-you-have-container {
+  	position: absolute;
+  	top: 486px;
+  	left: 1449px;
+  	font-size: var(--font-size-11xl);
+  	display: inline-block;
+  	width: 362px;
+  	color: var(--color-white);
+}
+
+.table-reservation-and {
+  	position: absolute;
+  	top: 794px;
+  	left: 589px;
+  	font-size: 34px;
+  	display: inline-block;
+  	font-family: var(--font-merriweather);
+  	width: 806px;
+  	height: 48px;
+}
+
+.date, .email-address, .in-time, .description, .your-name, .guests, .phone-number {
+  	display: inline-block;
+  	text-align: left;
+  	width: 176px;
+  	height: 18px;
+  	position: absolute;
+}
+
+.date { top: 952px; left: 572px; }
+.email-address { top: 1059px; left: 572px; }
+.in-time { top: 1185px; left: 572px; }
+.description { top: 1292px; left: 572px; }
+.your-name { top: 952px; left: 1009px; }
+.guests { top: 1059px; left: 1009px; }
+.phone-number { top: 1185px; left: 1005px; }
+
+.reservation-info-message {
+  	position: absolute;
+  	top: 868px;
+  	left: 372px;
+  	font-size: 15px;
+  	font-family: var(--font-playfair-display);
+  	width: 1258px;
+  	height: 44px;
+  	display: inline-block;
+}
+
+/* Shared style for input and textarea fields */
+.rectangle-div,
+.proper-scaling-of-contact-and-child1,
+.proper-scaling-of-contact-and-child2,
+.proper-scaling-of-contact-and-child3,
+.proper-scaling-of-contact-and-child4,
+.proper-scaling-of-contact-and-child5,
+.proper-scaling-of-contact-and-child6 {
+  	position: absolute;
+  	box-shadow: 4px 7px 15.8px rgba(0, 0, 0, 0.25);
+  	border-radius: var(--br-3xs);
+  	background-color: var(--color-white);
+  	border: none;
+  	padding: 15px;
+  	font-size: 16px;
+  	font-family: var(--font-merriweather);
+  	color: #000;
+  	box-sizing: border-box;
+}
+
+.rectangle-div { 
+  top: 974px; 
+  left: 572px; 
+  width: 358px; 
+  height: 51px; 
+  padding-right: 45px; /* Add space for the icon on the right */
+  background-image: url('calendar_today.svg'); /* Use your calendar icon file */ 
+  background-repeat: no-repeat; 
+  background-size: 24px 24px; 
+  background-position: right 12px center; /* Position icon on the right */
+  padding-left: 15px; /* Restore normal left padding */
+}
+.proper-scaling-of-contact-and-child1 { top: 1211px; left: 572px; width: 358px; height: 51px; }
+.proper-scaling-of-contact-and-child2 { top: 1085px; left: 572px; width: 358px; height: 51px; }
+.proper-scaling-of-contact-and-child3 { top: 974px; left: 1005px; width: 358px; height: 51px; }
+.proper-scaling-of-contact-and-child4 { top: 1211px; left: 1005px; width: 358px; height: 51px; }
+.proper-scaling-of-contact-and-child5 { top: 1085px; left: 1005px; width: 358px; height: 51px; }
+.proper-scaling-of-contact-and-child6 { top: 1320px; left: 572px; width: 791px; height: 137px; resize: none; }
+
+/* Remove default input/textarea outlines on focus */
+input:focus, textarea:focus {
+  	outline: none;
+}
+
+.email-icon, .note-icon, .phone-in-talk-icon, .calendar-today-icon, .timer-icon, .people-outline-icon {
+  	position: absolute;
+  	width: 22px;
+  	height: 19px;
+  	overflow: hidden;
+}
+
+.calendar-today-icon { top: 990px; left: 898px; }
+.email-icon { top: 1103px; left: 893px; }
+.note-icon { top: 986px; left: 1322px; width: 30px; height: 27px; }
+.phone-in-talk-icon { top: 1228px; left: 1326px; }
+.timer-icon { top: 1227px; left: 898px; }
+.people-outline-icon { top: 1100px; left: 1326px; width: 22px; height: 20px; }
+
+/* Button styles */
+.component-1-wrapper {
+  position: absolute;
+  top: 1494px;
+  left: 846px;
+  width: 258px;
+  height: 50px;
+}
+
+/* Styled button */
+.component-1 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-size: 25px;
+  font-family: var(--font-merriweather);
+  color: var(--color-white);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.component-1:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Red background box */
+.component-1-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 25px;
+  background-color: var(--color-darkred);
+  z-index: 0;
+}
+
+/* Button label */
+.learn-more {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap; /* Prevents line break */
+  width: 100%;
+  text-align: center;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow: auto;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fff1ce;
+  margin: 15% auto;
+  padding: 30px;
+  border: 2px solid var(--color-darkred);
+  border-radius: 15px;
+  width: 60%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: modalOpen 0.4s;
+}
+
+@keyframes modalOpen {
+  from {opacity: 0; transform: scale(0.8);}
+  to {opacity: 1; transform: scale(1);}
+}
+
+.modal-content h2 {
+  color: var(--color-darkred);
+  font-family: var(--font-merriweather);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.modal-content p {
+  color: #333;
+  font-family: var(--font-merriweather);
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.close-button {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  color: var(--color-darkred);
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: var(--color-goldenrod);
+}
+
+/* Confirmation Modal styles */
+.confirmation-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1200;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmation-modal.active {
+  display: flex;
+  animation: modalOpen 0.4s;
+}
+
+.confirmation-modal-content {
+  background: #fff1ce;
+  border: 2px solid var(--color-darkred);
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  padding: 40px 30px 30px 30px;
+  max-width: 400px;
+  width: 90vw;
+  text-align: center;
+  position: relative;
+}
+
+.confirmation-modal-content h2 {
+  color: var(--color-darkred);
+  font-family: var(--font-merriweather);
+  margin-bottom: 18px;
+  font-size: 28px;
+}
+
+.confirmation-modal-content p {
+  color: #333;
+  font-family: var(--font-merriweather);
+  font-size: 17px;
+  margin-bottom: 25px;
+}
+
+.confirmation-close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 28px;
+  color: var(--color-darkred);
+  cursor: pointer;
+  font-weight: bold;
+  background: none;
+  border: none;
+  transition: color 0.2s;
+}
+
+.confirmation-close:hover {
+  color: var(--color-goldenrod);
+}
+
+@media (max-width: 600px) {
+  .confirmation-modal-content {
+    padding: 25px 10px 20px 10px;
+    font-size: 15px;
+  }
+}
+
+/* Form validation styles */
+input:invalid, textarea:invalid {
+  border: 1px solid #ff0000;
+}
+
+/* Form field focus effect */
+input:focus, textarea:focus {
+  border: 1px solid var(--color-goldenrod);
+  box-shadow: 0 0 5px rgba(235, 170, 0, 0.5);
+}

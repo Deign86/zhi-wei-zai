@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <title>Catering and Gallery - Zhi Wei Zai</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- External CSS -->
+  <link rel="stylesheet" href="catering and gallery.css" />
+  
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../ASSETS/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../ASSETS/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../ASSETS/favicon-16x16.png">
+  <link rel="manifest" href="../ASSETS/site.webmanifest">
+  
+  <!-- Auth System -->
+  <script src="../js/auth.js"></script>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="fixed top-0 left-0 w-full bg-[#fcb734] shadow-md z-50 px-3 py-2 md:px-[3vw] md:py-[1vh]">
+    <div class="container mx-auto flex items-center justify-between">
+      <!-- Logo for mobile (centered) and desktop (left aligned) -->
+      <div class="md:hidden w-full flex justify-center relative">
+        <img src="../ASSETS/logo.jpg" class="absolute top-[-1.5vh] left-1/2 transform -translate-x-1/2 w-[15vw] h-[15vh]" alt="Logo">
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center w-full">
+        <div class="flex gap-5 ml-auto relative">
+          <img src="../ASSETS/logo.jpg" class="absolute top-[-1.5vh] left-[-50vw] w-[12vw] h-[20vh]">
+          <a href="../index.html" class="font-merriweather text-[#870000] no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110">Home</a>
+          <a href="../index.html#about" class="font-merriweather text-[#870000] no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="aboutText">About</a>
+          <a href="../Menu/menu.html" class="font-merriweather text-[#870000] no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="menuText">Menu</a>
+          <a href="catering.html" class="font-merriweather text-[#870000] no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="cateringText">Catering</a>
+          <a href="../Contact and Reservations/contact.html" class="font-merriweather text-[#870000] no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="contactText">Contact</a>
+          <a href="../Login and Signup/login.html" class="ml-[5px]" id="accountText"><img src="../ASSETS/account_circle.svg" alt="account-circle-icon" class="w-[30px] h-[30px]"/></a>
+          <a href="../Menu/cart.html" class="ml-[5px]" id="cartText"><img src="../ASSETS/shopping_cart.svg" alt="cart-icon" class="w-[30px] h-[30px]"/></a>
+        </div>
+      </div>
+      
+      <!-- Mobile Navigation (hamburger menu) -->
+      <div class="md:hidden flex items-center justify-end w-full">
+        <div class="flex items-center">
+          <a href="../Login and Signup/login.html" class="ml-2" id="mobileAccountText"><img src="../ASSETS/account_circle.svg" alt="account-circle-icon" class="w-[30px] h-[30px]"/></a>
+          <a href="../Menu/cart.html" class="ml-2" id="mobileCartText"><img src="../ASSETS/shopping_cart.svg" alt="cart-icon" class="w-[30px] h-[30px]"/></a>
+          <button id="menu-toggle" class="text-[#870000] focus:outline-none ml-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#fcb734] w-full">
+      <div class="flex flex-col items-center py-4">
+        <a href="../index.html" class="font-merriweather text-[#870000] no-underline text-xl py-2 transition-all hover:text-white">Home</a>
+        <a href="../index.html#about" class="font-merriweather text-[#870000] no-underline text-xl py-2 transition-all hover:text-white" id="mobileAboutText">About</a>
+        <a href="../Menu/menu.html" class="font-merriweather text-[#870000] no-underline text-xl py-2 transition-all hover:text-white" id="mobileMenuText">Menu</a>
+        <a href="catering.html" class="font-merriweather text-[#870000] no-underline text-xl py-2 transition-all hover:text-white" id="mobileCateringText">Catering</a>
+        <a href="../Contact and Reservations/contact.html" class="font-merriweather text-[#870000] no-underline text-xl py-2 transition-all hover:text-white" id="mobileContactText">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content with proper spacing for fixed header -->
+  <div class="flex flex-col">
+    <div class="flex flex-col bg-[url('IMG3.jpg')] h-screen w-full bg-cover bg-center bg-fixed items-center justify-center text-white relative">
+      <!-- Overlay for better text readability -->
+      <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+      
+      <div class="relative z-10 px-4 text-center max-w-4xl mx-auto">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 font-merriweather tracking-wider">CATERING</h1>
+        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-6 md:mb-8 font-merriweather italic">Let's plan your next event together</h2> 
+        <button onclick="window.location.href='../Contact and Reservations/contact.html'" class="bg-[#870000] text-white px-6 py-3 sm:px-7 sm:py-3.5 md:px-8 md:py-4 lg:px-10 lg:py-5 rounded-full font-merriweather hover:bg-red-900 transition-all duration-300 transform hover:scale-105 shadow-lg text-base sm:text-lg md:text-xl">
+          Learn More
+        </button>
+      </div>
+    </div>
+
+    <div class="bg-[#870000] h-auto py-16 md:h-[600px] relative">
+      <div name="child" class="relative md:absolute md:top-1/2 md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 w-[95%] mx-auto md:w-[90%] max-w-5xl flex flex-col md:flex-row ">
+        <img class="w-full md:w-1/2 h-auto object-cover rounded-t-lg md:rounded-l-lg md:rounded-tr-none shadow-lg hover:scale-105 transition-transform duration-300 hover-swap" src="IMG4.jpg" data-hover="IMG6.jpg" alt="Hover to swap 9">
+        <div class="w-full md:w-1/2 bg-[#fff1ce] p-4 md:p-8 rounded-b-lg md:rounded-r-lg md:rounded-bl-none shadow-lg flex flex-col justify-center">
+          <h2 class="text-[#870000] font-merriweather text-lg md:text-2xl lg:text-3xl mb-3 md:mb-6 text-center">Celebrate your milestones with us. Our team is dedicated to making your event seamless and unforgettable.</h2>
+          <div class="h-2 md:h-4"></div>
+          <h2 class="text-[#870000] font-merriweather text-lg md:text-2xl lg:text-3xl text-center">Contact us today to customize your menu and experience the best of Chinese catering in Valenzuela.</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Our Beliefs Section -->
+    <div class="bg-[#fff1ce] py-16 md:py-24">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#870000] mb-12 text-center font-merriweather">OUR BELIEFS</h2>
+        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+          <div class="w-full md:w-1/2">
+            <h2 class="text-[#870000] text-lg md:text-xl leading-relaxed italic font-playfair">
+              Experience authentic Chinese cuisine crafted with passion and tradition. Our catering service brings the flavors of Zhi Wei Zhai to your special events, ensuring every guest enjoys a memorable meal. From intimate gatherings to grand celebrations, let us make your occasion truly special with our signature dishes and exceptional service.
+            </h2>
+          </div>
+          <div class="w-full md:w-1/2 mt-8 md:mt-0">
+            <img src="image 36.png" alt="Our Beliefs" class="w-full h-auto rounded-xl shadow-xl transform transition duration-500 hover:scale-[1.02] hover-swap" data-hover="IMG1.jpg">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Section with Enhanced Aesthetics -->
+    <div class="bg-gradient-to-b from-[#fff1ce] to-[#fff8e6] py-20">
+      <div class="container mx-auto px-6">
+        <div class="mb-12 text-center">
+          <h2 class="text-3xl md:text-4xl font-merriweather text-[#870000] mb-4 relative inline-block">
+            Our Delicious Moments
+            <span class="block h-1 w-24 bg-[#fcb734] mx-auto mt-2 rounded-full"></span>
+          </h2>
+          <p class="text-[#870000]/80 max-w-2xl mx-auto font-merriweather italic text-base md:text-lg lg:text-xl">Hover over our gallery images to discover the stories behind our catering experiences</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Gallery Item 1 -->
+          <div class="group relative overflow-hidden rounded-xl shadow-xl transform transition duration-500 hover:scale-[1.02] hover:shadow-2xl gallery-item">
+            <img src="IMG8.jpg" alt="Gallery Image" class="w-full h-80 object-cover transition-all duration-700 ease-in-out hover-swap" data-hover="IMG9.jpg">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#870000]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+              <div class="p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 class="font-merriweather text-xl font-bold">Elegant Banquets</h3>
+                <p class="text-white/90 text-sm mt-1">Perfect for corporate events and celebrations</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Gallery Item 2 -->
+          <div class="group relative overflow-hidden rounded-xl shadow-xl transform transition duration-500 hover:scale-[1.02] hover:shadow-2xl gallery-item">
+            <img src="IMG7.jpg" alt="Gallery Image" class="w-full h-80 object-cover transition-all duration-700 ease-in-out hover-swap" data-hover="image 40.png">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#870000]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+              <div class="p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 class="font-merriweather text-xl font-bold">Family Gatherings</h3>
+                <p class="text-white/90 text-sm mt-1">Creating memories with authentic Chinese cuisine</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Gallery Item 3 -->
+          <div class="group relative overflow-hidden rounded-xl shadow-xl transform transition duration-500 hover:scale-[1.02] hover:shadow-2xl gallery-item">
+            <img src="IMG10.jpg" alt="Gallery Image" class="w-full h-80 object-cover transition-all duration-700 ease-in-out hover-swap" data-hover="image 43.png">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#870000]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+              <div class="p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 class="font-merriweather text-xl font-bold">Special Occasions</h3>
+                <p class="text-white/90 text-sm mt-1">Celebrate life's milestones with exquisite dishes</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Gallery Item 4 -->
+          <div class="group relative overflow-hidden rounded-xl shadow-xl transform transition duration-500 hover:scale-[1.02] hover:shadow-2xl gallery-item">
+            <img src="IMG13.jpg" alt="Gallery Image" class="w-full h-80 object-cover transition-all duration-700 ease-in-out hover-swap" data-hover="image 45.png">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#870000]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+              <div class="p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 class="font-merriweather text-xl font-bold">Wedding Receptions</h3>
+                <p class="text-white/90 text-sm mt-1">Make your special day even more memorable</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Gallery Item 5 -->
+          <div class="group relative overflow-hidden rounded-xl shadow-xl transform transition duration-500 hover:scale-[1.02] hover:shadow-2xl gallery-item">
+            <img src="IMG11.jpg" alt="Gallery Image" class="w-full h-80 object-cover transition-all duration-700 ease-in-out hover-swap" data-hover="image 44.png">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#870000]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+              <div class="p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 class="font-merriweather text-xl font-bold">Business Meetings</h3>
+                <p class="text-white/90 text-sm mt-1">Impress clients with our professional catering</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Gallery Item 6 -->
+          <div class="group relative overflow-hidden rounded-xl shadow-xl transform transition duration-500 hover:scale-[1.02] hover:shadow-2xl gallery-item">
+            <img src="IMG12.jpg" alt="Gallery Image" class="w-full h-80 object-cover transition-all duration-700 ease-in-out hover-swap" data-hover="image 37.png">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#870000]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+              <div class="p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 class="font-merriweather text-xl font-bold">Birthday Celebrations</h3>
+                <p class="text-white/90 text-sm mt-1">Make your birthday unforgettable with our catering</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#fcb734] py-10 px-6 md:px-16">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+      <!-- Logo -->
+      <div class="flex flex-col items-center md:items-start">
+        <img src="../ASSETS/logo.jpg" class="w-36 h-36 md:w-40 md:h-40 object-cover">
+      </div>
+
+      <div class="w-[50px] h-1 md:w-1 md:h-[50px] bg-[#870000] mt-4 rounded-full"></div>
+
+      <!-- Footer Content -->
+      <div class="flex flex-col md:flex-row gap-8 md:gap-16 lg:gap-24 mt-6 md:mt-0">
+        <!-- Address -->
+        <div class="text-center md:text-left">
+          <h3 class="text-[#870000] font-bold text-xl mb-4 font-merriweather">ADDRESS</h3>
+          <p class="text-[#870000]">239 Maysan Road</p>
+          <p class="text-[#870000]">Valenzuela City</p>
+        </div>
+
+        <!-- Opening Hours -->
+        <div class="text-center md:text-left">
+          <h3 class="text-[#870000] font-bold text-xl mb-4 font-merriweather">OPENING HOURS</h3>
+          <p class="text-[#870000]">Mon - Fri: 10:00 AM - 11:30 PM</p>
+          <p class="text-[#870000]">Sat - Sun: 11:00 AM - 10:30 PM</p>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="text-center md:text-left">
+          <h3 class="text-[#870000] font-bold text-xl mb-4 font-merriweather">CONTACT</h3>
+          <div class="text-[#870000] flex items-center justify-center md:justify-start">
+            <img class="w-6 h-6 mr-2" alt="" src="../ASSETS/contact icon 1.png">
+            <span class="font-medium">09174761831</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Copyright -->
+    <div class="w-full text-center mt-8 border-t border-[#870000]/30 pt-4">
+      <p class="text-[#870000] text-sm font-medium">© 2025 ZHIWEIZAI ALL RIGHTS RESERVED</p>
+    </div>
+  </footer>
+
+  <!-- Only Hover Swap Script remains -->
+  <script>
+    // Hover Swap
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.hover-swap').forEach(img => {
+        const original = img.src;
+        const hover = img.getAttribute('data-hover');
+        img.addEventListener('mouseenter', () => { if(hover) img.src = hover; });
+        img.addEventListener('mouseleave', () => { img.src = original; });
+      });
+      
+      // Mobile menu toggle
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

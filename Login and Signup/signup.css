@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display';
+    color: #870000;
+    background-color: #fff;
+}
+
+.proper-scaling-of-signup {
+    width: 100%;
+    max-width: 1920px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding-bottom: 60px;
+    position: relative;
+    text-align: center;
+    font-size: 30px;
+    overflow-x: hidden;
+}
+
+/* Header */
+.proper-scaling-of-signup-child {
+    position: fixed; /* This keeps it fixed at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 95px;
+    background-color: #870000;
+    z-index: 10;
+}
+
+/* Update these elements to also be fixed instead of absolute */
+.exit-to-app-icon {
+    position: fixed; /* Changed from absolute to fixed */
+    top: 18px;
+    left: 16px;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    object-fit: contain;
+    cursor: pointer;
+    z-index: 11;
+}
+
+.welcome-to-zhi {
+    position: fixed; /* Changed from absolute to fixed */
+    top: 26px;
+    left: 104px;
+    font-size: 35px;
+    font-family: Merriweather;
+    color: #fff;
+    z-index: 11;
+}
+
+/* Title */
+.sign-up {
+    margin-top: 130px;
+    display: block;
+    font-size: 48px;
+    font-family: Cinzel;
+    margin-bottom: 30px;
+    color: #870000;
+    letter-spacing: 1px;
+}
+
+/* Form Styling */
+form {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto; /* Changed from "margin: 0 auto 0 15%" to center the form */
+    padding: 20px;
+}
+
+.form-field {
+    margin-bottom: 40px; /* Increased from 30px to 40px */
+    display: flex;
+    flex-direction: column; /* Always keep labels above inputs */
+    text-align: left;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.field-label {
+    font-family: Cinzel, serif;
+    color: #870000;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px; /* Increased from 10px to 15px */
+    width: 100%;
+    text-align: left;
+    letter-spacing: 0.5px;
+}
+
+.input-container {
+    width: 100%;
+    height: 65px; /* Increased slightly from 60px to 65px */
+}
+
+input {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #870000;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Playfair Display';
+    padding: 0 20px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+input:focus {
+    outline: none;
+    border-color: #870000;
+    box-shadow: 0 0 8px rgba(135, 0, 0, 0.5);
+}
+
+/* Error message styling */
+.message {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto 20px auto;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+}
+
+.error {
+    background-color: #fff0f0;
+    border: 2px solid #ff0000;
+    color: #cc0000;
+}
+
+/* SIGN UP Button */
+.signup-button {
+    width: 60%;
+    max-width: 600px;
+    height: 70px;
+    margin: 40px auto;
+    display: block;
+    background-color: #870000;
+    color: #fff;
+    font-family: Cinzel;
+    font-size: 32px;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.signup-button:hover {
+    background-color: #6b0000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.signup-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Sign In Area */
+.already-have-an-container {
+    width: 100%;
+    margin: 30px auto;
+    text-align: center;
+    font-size: 24px;
+}
+
+.already-have {
+    margin-right: 10px;
+    font-family: 'Playfair Display';
+    color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sign-up {
+        margin-top: 120px;
+        font-size: 38px;
+    }
+    
+    .signup-button {
+        width: 80%;
+        font-size: 28px;
+    }
+    
+    form {
+        margin: 0 auto; /* Center the form on all screen sizes */
+    }
+    
+    .form-field {
+        width: 100%;
+        margin-bottom: 35px; /* Still more space than original, but slightly less than desktop */
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-to-zhi {
+        font-size: 24px;
+    }
+    
+    .sign-up {
+        font-size: 32px;
+    }
+    
+    form {
+        width: 90%;
+        margin: 0 auto;
+        padding: 10px;
+    }
+    
+    .field-label {
+        font-size: 20px;
+    }
+    
+    .signup-button {
+        width: 90%;
+        height: 60px;
+        font-size: 24px;
+    }
+    
+    .form-field {
+        width: 100%;
+        margin-bottom: 30px; /* Maintain original spacing on very small screens */
+    }
+}

@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <title>Shopping Cart - Zhi Wei Zai</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'zwz-red': '#870000',
+            'zwz-orange': '#fcb734',
+            'zwz-cream': '#fff1ce',
+          },
+          fontFamily: {
+            'merriweather': ['Merriweather', 'serif'],
+            'cinzel': ['Cinzel', 'serif'],
+            'playfair': ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="cart.css" />
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../ASSETS/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../ASSETS/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../ASSETS/favicon-16x16.png">
+  <link rel="manifest" href="../ASSETS/site.webmanifest">
+  
+  <!-- Auth System -->
+  <script src="../js/auth.js"></script>
+</head>
+<body class="bg-zwz-cream min-h-screen">
+
+  <!-- Top Navigation -->
+  <nav class="fixed top-0 left-0 w-full bg-zwz-orange shadow-md z-50 px-3 py-2 md:px-[3vw] md:py-[1vh]">
+    <div class="container mx-auto flex items-center justify-between">
+      <!-- Logo for mobile (centered) and desktop (left aligned) -->
+      <div class="md:hidden w-full flex justify-center relative">
+        <img src="../ASSETS/logo.jpg" class="absolute top-[-1.5vh] left-1/2 transform -translate-x-1/2 w-[15vw] h-[15vh]" alt="Logo">
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center w-full">
+        <div class="flex gap-5 ml-auto relative">
+          <img src="../ASSETS/logo.jpg" class="absolute top-[-1.5vh] left-[-50vw] w-[12vw] h-[20vh]">
+          <a href="../index.html" class="font-merriweather text-zwz-red no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="homeText">Home</a>
+          <a href="../index.html#about" class="font-merriweather text-zwz-red no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="aboutText">About</a>
+          <a href="menu.html" class="font-merriweather text-zwz-red no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="menuText">Menu</a>
+          <a href="../Catering and Gallery/catering.html" class="font-merriweather text-zwz-red no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="cateringText">Catering</a>
+          <a href="../Contact and Reservations/contact.html" class="font-merriweather text-zwz-red no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="contactText">Contact</a>
+          <a href="../Login and Signup/login.html" class="ml-[5px]" id="accountText"><img src="../ASSETS/account_circle.svg" alt="account-circle-icon" class="w-[30px] h-[30px]"/></a>
+          <a href="cart.html" class="ml-[5px] cart-link" id="cartText" style="position: relative;">
+            <img src="../ASSETS/shopping_cart.svg" alt="cart-icon" class="w-[30px] h-[30px]"/>
+            <span id="cart-count" class="cart-count hidden absolute -top-2 -right-2 bg-zwz-red text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation (hamburger menu) -->
+      <div class="md:hidden flex items-center justify-end w-full">
+        <div class="flex items-center">
+          <a href="../Login and Signup/login.html" class="ml-2" id="mobileAccountText"><img src="../ASSETS/account_circle.svg" alt="account-circle-icon" class="w-[30px] h-[30px]"/></a>
+          
+            <a href="../Login and Signup/login.html" class="ml-2" id="mobileAccountText"><img src="../ASSETS/account_circle.svg" alt="account-circle-icon" class="w-[30px] h-[30px]"/></a>
+          
+          <a href="cart.html" class="ml-2 cart-link" id="mobileCartText" style="position: relative;">
+            <img src="../ASSETS/shopping_cart.svg" alt="cart-icon" class="w-[30px] h-[30px]"/>
+            <span id="mobile-cart-count" class="cart-count hidden absolute -top-2 -right-2 bg-zwz-red text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"></span>
+          </a>
+          <button id="menu-toggle" class="text-zwz-red focus:outline-none ml-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden bg-zwz-orange w-full">
+      <div class="flex flex-col items-center py-4">
+        <a href="../index.html" class="font-merriweather text-zwz-red no-underline text-xl py-2 transition-all hover:text-white">Home</a>
+        <a href="../index.html#about" class="font-merriweather text-zwz-red no-underline text-xl py-2 transition-all hover:text-white" id="mobileAboutText">About</a>
+        <a href="menu.html" class="font-merriweather text-zwz-red no-underline text-xl py-2 transition-all hover:text-white" id="mobileMenuText">Menu</a>
+        <a href="../Catering and Gallery/catering.html" class="font-merriweather text-zwz-red no-underline text-xl py-2 transition-all hover:text-white" id="mobileCateringText">Catering</a>
+        <a href="../Contact and Reservations/contact.html" class="font-merriweather text-zwz-red no-underline text-xl py-2 transition-all hover:text-white" id="mobileContactText">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="pt-24 md:pt-32 px-4 md:px-8 max-w-7xl mx-auto">
+    <h1 class="text-3xl md:text-4xl font-bold text-zwz-red text-center mb-8 font-cinzel">Your Cart</h1>
+
+    <!-- Empty Cart Message (shown when cart is empty) -->
+    <div id="empty-cart-message" class="hidden text-center py-12">
+      <img src="ASSETS/empty-cart.svg" alt="Empty Cart" class="w-24 h-24 mx-auto mb-4 opacity-50">
+      <h2 class="text-xl font-bold text-zwz-red mb-2 font-merriweather">Your cart is empty</h2>
+      <p class="text-gray-600 mb-6">Looks like you haven't added any items to your cart yet.</p>
+      <a href="menu.html" class="inline-block bg-zwz-orange text-zwz-red px-6 py-3 rounded-full font-bold hover:bg-opacity-90 transition-colors">
+        Browse Menu
+      </a>
+    </div>
+
+    <!-- Cart Items Container -->
+    <div id="cart-container" class="mb-8">
+      <!-- Cart items will be dynamically inserted here -->
+    </div>
+
+    <!-- Order Summary -->
+    <div id="order-summary" class="bg-white rounded-xl shadow-md p-6 mb-8 max-w-md mx-auto">
+      <h2 class="text-xl font-bold text-zwz-red mb-4 font-merriweather">Order Summary</h2>
+
+      <div class="space-y-3 mb-4">
+        <div class="flex justify-between">
+          <span class="text-gray-600">Subtotal</span>
+          <span id="subtotal" class="font-medium">₱ 0</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-600">Delivery Fee</span>
+          <span id="delivery-fee" class="font-medium">₱ 50</span>
+        </div>
+        <div class="border-t border-gray-200 pt-3 flex justify-between">
+          <span class="font-bold text-zwz-red">Total</span>
+          <span id="total" class="font-bold text-zwz-red">₱ 50</span>
+        </div>
+      </div>
+
+      <!-- Checkout Button -->
+      <button id="checkout-btn" class="w-full bg-zwz-red text-white font-bold py-3 rounded-lg hover:bg-opacity-90 transition-colors">
+        Proceed to Checkout
+      </button>
+    </div>
+
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-zwz-orange py-10 px-6 md:px-16 mt-16">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+      <!-- Logo -->
+      <div class="flex flex-col items-center md:items-start">
+        <img src="../ASSETS/logo.jpg" class="w-36 h-36 md:w-40 md:h-40 object-cover">
+      </div>
+
+      <div class="w-[50px] h-1 md:w-1 md:h-[50px] bg-zwz-red mt-4 rounded-full"></div>
+
+      <!-- Footer Content -->
+      <div class="flex flex-col md:flex-row gap-8 md:gap-16 lg:gap-24 mt-6 md:mt-0">
+        <!-- Address -->
+        <div class="text-center md:text-left">
+          <h3 class="text-zwz-red font-bold text-xl mb-4 font-merriweather">ADDRESS</h3>
+          <p class="text-zwz-red">239 Maysan Road</p>
+          <p class="text-zwz-red">Valenzuela City</p>
+        </div>
+
+        <!-- Opening Hours -->
+        <div class="text-center md:text-left">
+          <h3 class="text-zwz-red font-bold text-xl mb-4 font-merriweather">OPENING HOURS</h3>
+          <p class="text-zwz-red">Mon - Fri: 10:00 AM - 11:30 PM</p>
+          <p class="text-zwz-red">Sat - Sun: 11:00 AM - 10:30 PM</p>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="text-center md:text-left">
+          <h3 class="text-zwz-red font-bold text-xl mb-4 font-merriweather">CONTACT</h3>
+          <div class="text-zwz-red flex items-center justify-center md:justify-start">
+            <img class="w-6 h-6 mr-2" alt="" src="../ASSETS/contact icon 1.png">
+            <span class="font-medium">09174761831</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="w-full text-center mt-8 border-t border-zwz-red/30 pt-4">
+      <p class="text-zwz-red text-sm font-medium">© 2025 ZHIWEIZAI ALL RIGHTS RESERVED</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu toggle
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+
+
+
+      // Load cart items
+      loadCartItems();
+
+      // Checkout button
+      document.getElementById('checkout-btn').addEventListener('click', function() {
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        if (cart.length === 0) {
+          alert('Your cart is empty. Please add items before checking out.');
+          return;
+        }
+
+        // Redirect to checkout page
+        window.location.href = "checkout.html";
+      });
+    });
+
+    function loadCartItems() {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const cartContainer = document.getElementById('cart-container');
+      const emptyCartMessage = document.getElementById('empty-cart-message');
+      const orderSummary = document.getElementById('order-summary');
+
+      // Update cart count
+      updateCartCount();
+
+      if (cart.length === 0) {
+        // Show empty cart message
+        emptyCartMessage.classList.remove('hidden');
+        cartContainer.innerHTML = '';
+        orderSummary.classList.add('hidden');
+        return;
+      }
+
+      // Hide empty cart message and show order summary
+      emptyCartMessage.classList.add('hidden');
+      orderSummary.classList.remove('hidden');
+
+      // Generate cart items HTML
+      let cartHTML = '';
+      let subtotal = 0;
+
+      cart.forEach((item, index) => {
+        // Extract numeric price value
+        const priceValue = parseFloat(item.price.replace('₱', '').trim());
+        const itemTotal = priceValue * item.quantity;
+        subtotal += itemTotal;
+
+        cartHTML += `
+          <div class="bg-white rounded-xl shadow-md p-4 mb-4 flex flex-col sm:flex-row items-center">
+            <div class="w-24 h-24 rounded-lg overflow-hidden mb-4 sm:mb-0 sm:mr-4">
+              <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+            </div>
+            <div class="flex-grow">
+              <h3 class="font-bold text-zwz-red">${item.name}</h3>
+              <p class="text-gray-600">${item.price}</p>
+            </div>
+            <div class="flex items-center mt-4 sm:mt-0">
+              <button class="quantity-btn decrease-btn bg-gray-200 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center" data-index="${index}">-</button>
+              <span class="quantity mx-3">${item.quantity}</span>
+              <button class="quantity-btn increase-btn bg-gray-200 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center" data-index="${index}">+</button>
+              <button class="remove-btn ml-4 text-red-500 hover:text-red-700" data-index="${index}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        `;
+      });
+
+      cartContainer.innerHTML = cartHTML;
+
+      // Update subtotal and total
+      document.getElementById('subtotal').textContent = `₱ ${subtotal.toFixed(0)}`;
+      updateTotal();
+
+      // Add event listeners to quantity buttons and remove buttons
+      document.querySelectorAll('.quantity-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.getAttribute('data-index'));
+          const isDecrease = this.classList.contains('decrease-btn');
+
+          updateItemQuantity(index, isDecrease);
+        });
+      });
+
+      document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.getAttribute('data-index'));
+          removeItem(index);
+        });
+      });
+    }
+
+    function updateItemQuantity(index, isDecrease) {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+      if (isDecrease) {
+        if (cart[index].quantity > 1) {
+          cart[index].quantity--;
+        } else {
+          // If quantity would be 0, remove the item
+          cart.splice(index, 1);
+        }
+      } else {
+        cart[index].quantity++;
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCartItems();
+    }
+
+    function removeItem(index) {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCartItems();
+    }
+
+    function updateTotal() {
+      const subtotalText = document.getElementById('subtotal').textContent;
+      const subtotal = parseFloat(subtotalText.replace('₱', '').trim());
+
+      // Fixed delivery fee of ₱50
+      const deliveryFee = 50;
+
+      const total = subtotal + deliveryFee;
+      document.getElementById('total').textContent = `₱ ${total.toFixed(0)}`;
+    }
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const count = cart.length;
+
+      const cartCount = document.getElementById('cart-count');
+      const mobileCartCount = document.getElementById('mobile-cart-count');
+
+      if (count > 0) {
+        cartCount.textContent = count;
+        cartCount.classList.remove('hidden');
+
+        mobileCartCount.textContent = count;
+        mobileCartCount.classList.remove('hidden');
+      } else {
+        cartCount.classList.add('hidden');
+        mobileCartCount.classList.add('hidden');
+      }
+    }
+  </script>
+</body>
+</html>

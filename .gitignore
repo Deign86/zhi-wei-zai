@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# PHP files (no longer needed)
+*.php
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local

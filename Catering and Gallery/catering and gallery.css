@@ -1,0 +1,593 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  line-height: normal;
+}
+
+:root {
+  /* Fonts */
+  --font-playfair-display: 'Playfair Display';
+  --font-cinzel: Cinzel;
+  --font-merriweather: Merriweather;
+
+  /* font sizes */
+  --font-size-11xl: 30px;
+  --font-size-36xl: 55px;
+
+  /* Colors */
+  --color-blanchedalmond: #fff1ce;
+  --color-darkred: #870000;
+  --color-orange: #ffb722;
+  --color-white: #fff;
+}
+
+.image-36-icon {
+  position: absolute;
+  top: 1424px;
+  left: 0px;
+  width: 1915.4px;
+  height: 415px;
+  object-fit: cover;
+}
+.image-36-icon1 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 1920px;
+  height: 1080px;
+  object-fit: cover;
+}
+.catering2 {
+  position: absolute;
+  top: 445px;
+  left: 672px;
+  font-size: 70px;
+  display: inline-block;
+  font-family: var(--font-merriweather);
+  width: 573px;
+  height: 95px;
+}
+.lets-plan-your {
+  position: absolute;
+  top: 515px;
+  left: 651px;
+  font-size: 39px;
+  font-family: var(--font-playfair-display);
+  display: inline-block;
+  width: 617px;
+  height: 64px;
+}
+.component-2-child {
+  display: none;
+}
+.learn-more {
+  position: absolute;
+  top: 15.56%;
+  left: 11.2%;
+  cursor: pointer;
+}
+.component-2 {
+  position: absolute;
+  top: 593px;
+  left: 830px;
+  width: 260px;
+  height: 67px;
+  font-size: 35px;
+  font-family: var(--font-merriweather);
+}
+.gallery {
+  position: absolute;
+  top: 1864px;
+  left: 788px;
+  display: inline-block;
+  width: 344px;
+  height: 95px;
+}
+
+/* --- Line Divs replacing SVGs --- */
+.proper-scaling-of-catering-and-child {
+  position: absolute;
+  top: 1903px;
+  left: 44px;
+  width: 710px;
+  height: 3px;
+  background: var(--color-orange);
+}
+.proper-scaling-of-catering-and-item {
+  position: absolute;
+  top: 1904.5px;
+  left: 1150.5px;
+  border-top: 3px solid var(--color-orange);
+  box-sizing: border-box;
+  width: 726px;
+  height: 3px;
+}
+.proper-scaling-of-catering-and-inner {
+  position: absolute;
+  top: 3896px;
+  left: 42px;
+  width: 710px;
+  height: 3px;
+  background: var(--color-orange);
+}
+.line-div {
+  position: absolute;
+  top: 3897.5px;
+  left: 1148.5px;
+  border-top: 3px solid var(--color-orange);
+  box-sizing: border-box;
+  width: 726px;
+  height: 3px;
+}
+/* --- End Line Divs --- */
+
+.image-37-icon {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 977px;
+  height: 1014px;
+  object-fit: cover;
+}
+.image-36-icon2 {
+  position: absolute;
+  top: 0px;
+  left: 977px;
+  width: 964px;
+  height: 1014px;
+  object-fit: cover;
+}
+.image-37-parent {
+  position: absolute;
+  top: 1959px;
+  left: -13px;
+  width: 1941px;
+  height: 1014px;
+}
+.frame-child {
+  position: absolute;
+  top: 0px;
+  right: 881px;
+  background-color: var(--color-blanchedalmond);
+  width: 1060px;
+  height: 882px;
+}
+.image-36-icon3 {
+  position: absolute;
+  top: 0px;
+  right: -1px;
+  width: 890px;
+  height: 890px;
+  object-fit: cover;
+}
+.lorem-ipsum-dolor {
+  margin: 0;
+}
+.lorem-ipsum-dolor-container {
+  position: absolute;
+  top: 329px;
+  right: 955px;
+  display: inline-block;
+  width: 913px;
+  height: 364px;
+}
+.our-beliefs {
+  position: absolute;
+  top: 197px;
+  right: 1069px;
+  display: inline-block;
+  font-family: var(--font-cinzel);
+  width: 684px;
+  height: 61px;
+}
+.frame {
+  position: absolute;
+  top: 2960px;
+  left: 0px;
+  width: 1941px;
+  height: 911px;
+  overflow: hidden;
+  font-size: var(--font-size-11xl);
+  color: var(--color-darkred);
+  font-family: var(--font-playfair-display);
+}
+.events {
+  position: absolute;
+  top: 3867px;
+  left: 758px;
+  display: inline-block;
+  width: 411px;
+  height: 95px;
+}
+.image-icon {
+  align-self: stretch;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  height: 415px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.image-icon1 {
+  flex: 1;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  height: 415px;
+  object-fit: cover;
+}
+.image-icon2 {
+  width: 478px;
+  position: relative;
+  height: 415px;
+  object-fit: cover;
+}
+.frame2 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.image-parent {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 960px;
+  height: 830px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.image-icon3 {
+  align-self: stretch;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  height: 296px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.image-icon4 {
+  align-self: stretch;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  height: 534px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.image-group {
+  position: absolute;
+  top: 0px;
+  left: 960px;
+  width: 960px;
+  height: 830px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.frame1 {
+  position: absolute;
+  top: 3962px;
+  left: 0px;
+  width: 1920px;
+  height: 830px;
+}
+.group-child {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: var(--color-blanchedalmond);
+  width: 1198px;
+  height: 754px;
+}
+.lorem-ipsum-dolor2 {
+  position: absolute;
+  top: 84px;
+  left: 480px;
+  display: inline-block;
+  width: 650px;
+  height: 59px;
+}
+.lorem-ipsum-dolor-container1 {
+  position: absolute;
+  top: 305px;
+  left: 486px;
+  display: inline-block;
+  font-family: var(--font-playfair-display);
+  width: 644px;
+  height: 222px;
+}
+.image-36-icon4 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 436px;
+  height: 754px;
+  object-fit: cover;
+}
+.rectangle-parent {
+  position: absolute;
+  top: 825px;
+  left: 361px;
+  width: 1198px;
+  height: 754px;
+  text-align: justify;
+  font-size: var(--font-size-11xl);
+  color: var(--color-darkred);
+  font-family: var(--font-cinzel);
+}
+.proper-scaling-of-catering-and {
+  width: 100%;
+  position: relative;
+  background-color: var(--color-darkred);
+  height: 4792px;
+  overflow: hidden;
+  text-align: center;
+  font-size: var(--font-size-36xl);
+  color: var(--color-white);
+  font-family: var(--font-cinzel);
+}
+
+/* --- Navbar Styles (from index.css) --- */
+.navbar {
+  width: 100%;
+  background-color: #fcb734;
+  padding: 1vh 3vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+  
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+  
+.navbar-links {
+  display: flex;
+  gap: 20px;
+  margin-left: auto;
+  position: relative; 
+}
+  
+.navbar-image {
+  position: absolute;
+  top: -1.5vh;        
+  left: -50vw;        
+  width: 12vw;        
+  height: 20vh;       
+}
+  
+.nav-link {
+  font-family: 'Merriweather', serif;
+  color: #870000;
+  text-decoration: none;
+  font-size: 1.2vw;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+  
+.navbar-icon {
+  margin-left: 5px;
+}
+  
+.navbar-icon img {
+  width: 30px;
+  height: 30px;
+}
+  
+.shopping-cart-icon {
+  width: 2.5vw;
+  height: 2.5vw;
+  cursor: pointer;
+}
+  
+.nav-link:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.menu, .about, .contact, .home, .catering {
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.menu:hover, .about:hover, .contact:hover, .home:hover, .catering:hover {
+  color: #ffffff;
+  transform: scale(1.1); 
+}
+/* --- End Navbar Styles --- */
+
+/* --- Footer Styles --- */
+.footer-rectangle {
+    width: 100%;
+    min-height: 137px;
+    background-color: #fcb734;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+    padding: 20px 0 10px 0;
+    box-sizing: border-box;
+    color: #870000; /* Set all text in footer to red */
+}
+
+.footer-rectangle-child {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #fcb734;
+    width: 100%; 
+    height: 137px;
+}
+
+.footer-rectangle-item {
+    position: absolute;
+    top: 11px;
+    left: 15vw;
+    border-right: 2px solid #870000;
+    box-sizing: border-box;
+    width: 2px;
+    height: 110px;
+}
+
+.div1 {
+    position: absolute;
+    top: 7px;
+    left: 5vw; 
+}
+
+.div1 img {
+    height: 120px;
+    width: 105px;
+    object-fit: contain; 
+}
+
+.footer-section {
+    position: absolute;
+    top: 15px;
+    font-size: 1.5vw; 
+    color: #870000;
+    font-weight: bold;
+}
+
+.address { left: 22vw; }
+.opening-hours { left: 45vw; }
+.contact1 { left: 68vw; }
+
+.footer-content {
+    position: absolute;
+    font-size: 1vw; 
+    color: #870000;
+    margin-top: 40px;
+}
+
+.maysan-road-valenzuela-container { left: 22vw; }
+.mon-fri, .sat-sun { left: 45vw; }
+.wrapper { left: 68vw; }
+
+.footer-branding {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1vw;
+    color: #870000;
+    font-weight: bold;
+}
+
+.contact-icon-1 {
+    position: absolute;
+    top: 68px;
+    left: 1380px;
+    width: 16.7px;
+    height: 19px;
+    object-fit: cover;
+}
+
+.address {
+    position: absolute;
+    top: 26px;
+    left: calc(50% - 315px);
+}
+
+.opening-hours {
+    position: absolute;
+    top: 26px;
+    left: calc(50% + 54px);
+}
+
+.contact1 {
+    position: absolute;
+    top: 26px;
+    left: calc(50% + 454px);
+}
+
+.maysan-road-valenzuela-container {
+    position: absolute;
+    top: 50px;
+    left: calc(50% - 340px);
+}
+
+.mon-fri {
+    position: absolute;
+    top: 53px;
+    left: calc(50% + 2px);
+}
+
+.sat-sun {
+    position: absolute;
+    top: 77px;
+    left: calc(50% + 4px);
+}
+
+.zhiweizai-restaurant1 {
+    position: absolute;
+    top: 89px;
+    left: calc(50% - 543px);
+    font-size: 13px;
+    font-family: Cinzel;
+}
+
+.zhiweizai-all-rights {
+    position: absolute;
+    top: 116px;
+    left: calc(50% - 5px);
+    font-size: 13px;
+    font-family: Cinzel;
+}
+
+.wrapper {
+    position: absolute;
+    top: 64px;
+    left: calc(50% + 452px);
+    width: 95px;
+    height: 24px;
+    font-family: Cinzel;
+}
+/* --- End Footer Styles --- */
+
+/* --- Hover Swap Animation --- */
+.hover-swap {
+  transition: filter 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+.hover-swap:hover {
+  filter: brightness(0.8) blur(1px);
+  transform: scale(1.05);
+}
+/* --- End Hover Swap Animation --- */
+
+/* Add to catering and gallery.css */
+.learn-more-btn {
+    color: #fff;
+    background: #8c2a13;
+    border: none;
+    border-radius: 33px;
+    padding: 10px 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    position: relative;
+    z-index: 2;
+    font-size: 35px;
+    font-family: var(--font-merriweather);
+    top: 10px;
+}
+.learn-more-btn:hover {
+    background: #b22222;
+    box-shadow: 0 4px 16px rgba(140, 42, 19, 0.25); /* subtle dark red shadow */
+    transform: translateY(-2px) scale(1.04);         /* slight lift and scale */
+}
+

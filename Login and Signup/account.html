@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <title>Account - Zhi Wei Zai</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" />
+    
+    <!-- Auth System -->
+    <script src="../js/auth.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            color: #870000;
+            background-color: #fff;
+        }
+        
+        .header {
+            background-color: #870000;
+            color: #fff;
+            padding: 20px;
+            position: relative;
+            height: 95px;
+            display: flex;
+            align-items: center;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 18px;
+            left: 16px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .back-btn img {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .welcome-text {
+            margin-left: 104px;
+            font-family: 'Merriweather', serif;
+            font-size: 35px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .page-title {
+            font-family: 'Cinzel', serif;
+            font-size: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            background-color: #f1f1f1;
+            border: none;
+            padding: 15px 30px;
+            margin: 5px 10px;
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            color: #870000;
+            cursor: pointer;
+            border-radius: 10px 10px 0 0;
+            transition: background-color 0.3s;
+        }
+        
+        .tab-btn.active {
+            background-color: #870000;
+            color: #fff;
+        }
+        
+        .tab-content {
+            display: none;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 0 10px 10px 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #870000;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        button[type="submit"] {
+            background-color: #870000;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 20px;
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto 0;
+            transition: background-color 0.3s;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #6d0000;
+        }
+        
+        .message {
+            margin: 20px auto;
+            padding: 15px;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+        .error {
+            background-color: #ffcccc;
+            color: #cc0000;
+        }
+        
+        .success {
+            background-color: #ccffcc;
+            color: #006600;
+        }
+        
+        .info {
+            background-color: #e6f2ff;
+            color: #0066cc;
+        }
+        
+        .user-info {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .user-info p {
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .user-info p span:first-child {
+            font-weight: bold;
+            color: #870000;
+            min-width: 150px;
+        }
+        
+        .nav-links {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .nav-links a, .nav-links button {
+            display: inline-block;
+            background-color: #870000;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 20px;
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            margin: 5px 10px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .nav-links a:hover, .nav-links button:hover {
+            background-color: #6d0000;
+        }
+
+        .field-error {
+            color: #cc0000;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+        
+        small {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        #messageArea {
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="../index.html" class="back-btn" id="backBtn">
+            <img src="exit_to_app.png" alt="Back">
+        </a>
+        <div class="welcome-text">Welcome to Zhi Wei Zai!</div>
+    </div>
+    
+    <div class="container">
+        <h1 class="page-title">Account Management</h1>
+        
+        <!-- Message display area -->
+        <div id="messageArea"></div>
+        
+        <!-- Tab Navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'profile')">Profile Information</button>
+            <button class="tab-btn" onclick="openTab(event, 'password')">Change Password</button>
+        </div>
+        
+        <!-- Profile Tab -->
+        <div id="profile" class="tab-content active">
+            <div class="user-info">
+                <p><span>Name:</span> <span id="displayName">-</span></p>
+                <p><span>Email:</span> <span id="displayEmail">-</span></p>
+                <p><span>Phone:</span> <span id="displayPhone">-</span></p>
+                <p><span>Delivery Address:</span> <span id="displayAddress">-</span></p>
+                <p><span>Member Since:</span> <span id="displayMemberSince">-</span></p>
+            </div>
+            
+            <form id="profileForm">
+                <div class="form-group">
+                    <label for="name">Update Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Update Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Update Phone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Update Delivery Address</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                
+                <button type="submit">Update Profile</button>
+            </form>
+        </div>
+        
+        <!-- Password Tab -->
+        <div id="password" class="tab-content">
+            <form id="passwordForm">
+                <div class="form-group">
+                    <label for="current_password">Current Password</label>
+                    <input type="password" id="current_password" name="current_password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="new_password">New Password</label>
+                    <input type="password" id="new_password" name="new_password" required>
+                    <small>Password must be at least 8 characters long</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm_password">Confirm New Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required>
+                </div>
+                
+                <button type="submit">Change Password</button>
+            </form>
+        </div>
+        
+        <div class="nav-links">
+            <a href="welcome.html">Back to Dashboard</a>
+            <button id="logoutBtn">Logout</button>
+        </div>
+    </div>
+    
+    <script>
+        function openTab(evt, tabName) {
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            
+            var tablinks = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        function showMessage(message, type) {
+            const messageArea = document.getElementById('messageArea');
+            messageArea.innerHTML = `<div class="message ${type}">${message}</div>`;
+            messageArea.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function loadUserData() {
+            const user = ZWZAuth.getCurrentUser();
+            if (!user) return;
+            
+            // Display info
+            document.getElementById('displayName').textContent = user.name;
+            document.getElementById('displayEmail').textContent = user.email;
+            document.getElementById('displayPhone').textContent = user.phone || 'Not provided';
+            document.getElementById('displayAddress').textContent = user.address || 'Not provided';
+            
+            if (user.createdAt) {
+                const date = new Date(user.createdAt);
+                document.getElementById('displayMemberSince').textContent = date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            }
+            
+            // Form fields
+            document.getElementById('name').value = user.name || '';
+            document.getElementById('email').value = user.email || '';
+            document.getElementById('phone').value = user.phone || '';
+            document.getElementById('address').value = user.address || '';
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Check if logged in
+            if (!ZWZAuth.isLoggedIn()) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            loadUserData();
+            
+            // Profile form
+            document.getElementById('profileForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const result = ZWZAuth.updateProfile({
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    address: document.getElementById('address').value
+                });
+                
+                if (result.success) {
+                    showMessage(result.message, 'success');
+                    loadUserData();
+                } else {
+                    showMessage(result.error, 'error');
+                }
+            });
+            
+            // Password form
+            document.getElementById('passwordForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const newPassword = document.getElementById('new_password').value;
+                const confirmPassword = document.getElementById('confirm_password').value;
+                
+                if (newPassword !== confirmPassword) {
+                    showMessage('Passwords do not match', 'error');
+                    return;
+                }
+                
+                const result = ZWZAuth.updatePassword(
+                    document.getElementById('current_password').value,
+                    newPassword
+                );
+                
+                if (result.success) {
+                    showMessage(result.message, 'success');
+                    document.getElementById('passwordForm').reset();
+                } else {
+                    showMessage(result.error, 'error');
+                }
+            });
+            
+            // Logout
+            document.getElementById('logoutBtn').addEventListener('click', function() {
+                ZWZAuth.logout();
+                window.location.href = 'login.html';
+            });
+        });
+    </script>
+</body>
+</html>

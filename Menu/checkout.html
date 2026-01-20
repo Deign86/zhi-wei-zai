@@ -1,0 +1,513 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <title>Checkout - Zhi Wei Zai</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'zwz-red': '#870000',
+            'zwz-orange': '#fcb734',
+            'zwz-cream': '#fff1ce',
+          },
+          fontFamily: {
+            'merriweather': ['Merriweather', 'serif'],
+            'cinzel': ['Cinzel', 'serif'],
+            'playfair': ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../ASSETS/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../ASSETS/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../ASSETS/favicon-16x16.png">
+  <link rel="manifest" href="../ASSETS/site.webmanifest">
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("2x79e3EhUaKlA7cd9");
+      console.log("EmailJS initialized with public key: 2x79e3EhUaKlA7cd9");
+    })();
+  </script>
+  
+  <!-- Auth System -->
+  <script src="../js/auth.js"></script>
+</head>
+<body class="bg-zwz-cream min-h-screen">
+
+  <!-- Top Navigation -->
+  <nav class="fixed top-0 left-0 w-full bg-zwz-orange shadow-md z-50 px-3 py-2 md:px-[3vw] md:py-[1vh]">
+    <div class="container mx-auto flex items-center justify-between">
+      <!-- Logo for mobile (centered) and desktop (left aligned) -->
+      <div class="md:hidden w-full flex justify-center relative">
+        <img src="../ASSETS/logo.jpg" class="absolute top-[-1.5vh] left-1/2 transform -translate-x-1/2 w-[15vw] h-[15vh]" alt="Logo">
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center w-full">
+        <div class="flex gap-5 ml-auto relative">
+          <img src="../ASSETS/logo.jpg" class="absolute top-[-1.5vh] left-[-50vw] w-[12vw] h-[20vh]">
+          <a href="../index.html" class="font-merriweather text-zwz-red no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="homeText">Home</a>
+          <a href="../index.html#about" class="font-merriweather text-zwz-red no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="aboutText">About</a>
+          <a href="menu.html" class="font-merriweather text-zwz-red no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="menuText">Menu</a>
+          <a href="../Catering and Gallery/catering.html" class="font-merriweather text-zwz-red no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="cateringText">Catering</a>
+          <a href="../Contact and Reservations/contact.html" class="font-merriweather text-zwz-red no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="contactText">Contact</a>
+          <a href="../Login and Signup/login.html" class="ml-[5px]" id="accountText"><img src="../ASSETS/account_circle.svg" alt="account-circle-icon" class="w-[30px] h-[30px]"/></a>
+          <a href="cart.html" class="ml-[5px] cart-link" id="cartText" style="position: relative;">
+            <img src="../ASSETS/shopping_cart.svg" alt="cart-icon" class="w-[30px] h-[30px]"/>
+            <span id="cart-count" class="cart-count hidden absolute -top-2 -right-2 bg-zwz-red text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation (hamburger menu) -->
+      <div class="md:hidden flex items-center justify-end w-full">
+        <div class="flex items-center">
+          <a href="../Login and Signup/login.html" class="ml-2" id="mobileAccountText"><img src="../ASSETS/account_circle.svg" alt="account-circle-icon" class="w-[30px] h-[30px]"/></a>
+          <a href="cart.html" class="ml-2 cart-link" id="mobileCartText" style="position: relative;">
+            <img src="../ASSETS/shopping_cart.svg" alt="cart-icon" class="w-[30px] h-[30px]"/>
+            <span id="mobile-cart-count" class="cart-count hidden absolute -top-2 -right-2 bg-zwz-red text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"></span>
+          </a>
+          <button id="menu-toggle" class="text-zwz-red focus:outline-none ml-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden bg-zwz-orange w-full">
+      <div class="flex flex-col items-center py-4">
+        <a href="../index.html" class="font-merriweather text-zwz-red no-underline text-xl py-2 transition-all hover:text-white">Home</a>
+        <a href="../index.html#about" class="font-merriweather text-zwz-red no-underline text-xl py-2 transition-all hover:text-white" id="mobileAboutText">About</a>
+        <a href="menu.html" class="font-merriweather text-zwz-red no-underline text-xl py-2 transition-all hover:text-white" id="mobileMenuText">Menu</a>
+        <a href="../Catering and Gallery/catering.html" class="font-merriweather text-zwz-red no-underline text-xl py-2 transition-all hover:text-white" id="mobileCateringText">Catering</a>
+        <a href="../Contact and Reservations/contact.html" class="font-merriweather text-zwz-red no-underline text-xl py-2 transition-all hover:text-white" id="mobileContactText">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="pt-24 md:pt-32 px-4 md:px-8 max-w-7xl mx-auto">
+    <h1 class="text-3xl md:text-4xl font-bold text-zwz-red text-center mb-8 font-cinzel">Checkout</h1>
+
+    
+    <div class="text-center mb-6">
+      <p class="text-gray-600 italic">For a faster checkout experience, <a href="../Login and Signup/login.html" class="text-zwz-red font-bold hover:underline">log in</a> to your account.</p>
+    </div>
+    
+
+    <!-- Checkout Form -->
+    <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-md p-6 mb-8">
+      <form id="checkoutForm" class="space-y-4" method="post" onsubmit="return false;">
+        <div>
+          <label for="name" class="block text-zwz-red font-bold mb-1">Name:</label>
+          <input type="text" id="name" name="user_name" required value=""
+                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zwz-orange">
+        </div>
+
+        <div>
+          <label for="email" class="block text-zwz-red font-bold mb-1">Email:</label>
+          <input type="email" id="email" name="user_email" required value=""
+                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zwz-orange">
+        </div>
+
+        <div>
+          <label for="phone" class="block text-zwz-red font-bold mb-1">Phone:</label>
+          <input type="text" id="phone" name="user_phone" required value=""
+                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zwz-orange">
+        </div>
+
+        <div>
+          <label for="address" class="block text-zwz-red font-bold mb-1">Delivery Address:</label>
+          <input type="text" id="address" name="user_address" required value=""
+                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-zwz-orange">
+        </div>
+
+        <!-- Order Summary -->
+        <div class="mt-6 pt-4 border-t border-gray-200">
+          <h2 class="text-xl font-bold text-zwz-red mb-4 font-merriweather">Order Summary</h2>
+
+          <div id="order-items" class="mb-4">
+            <!-- Order items will be dynamically inserted here -->
+          </div>
+
+          <div class="flex justify-between font-bold text-lg">
+            <span>Total:</span>
+            <span id="totalCost" class="text-zwz-red"></span>
+          </div>
+        </div>
+
+        <input type="hidden" name="order_list" id="orderList">
+        <button type="button" id="placeOrderBtn" class="w-full bg-zwz-red text-white font-bold py-3 rounded-lg hover:bg-opacity-90 transition-colors mt-6">
+          Place Order
+        </button>
+      </form>
+    </div>
+
+    <!-- Order status element -->
+    <div id="orderStatus" class="max-w-2xl mx-auto p-4 rounded-lg text-center mb-8 hidden"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if EmailJS is properly initialized
+      if (typeof emailjs === 'undefined') {
+        console.error("EmailJS is not loaded! Please check your internet connection.");
+        alert("Email service is not available. Please check your internet connection and try again.");
+      } else {
+        console.log("EmailJS is available and ready to use");
+      }
+
+      // Mobile menu toggle
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+
+      // Update cart count
+      updateCartCount();
+
+      // Display order items and total
+      displayOrderItems();
+
+      // Handle form submission
+      setupCheckoutForm();
+
+      // Load saved user data
+      loadUserData();
+
+      // Add a direct test button for debugging (hidden in production)
+      const orderStatus = document.getElementById('orderStatus');
+      orderStatus.insertAdjacentHTML('afterend', `
+        <div class="max-w-2xl mx-auto mb-8 text-center">
+          <button id="testEmailBtn" class="bg-gray-200 text-gray-700 px-4 py-2 rounded text-sm">
+            Test Email Service
+          </button>
+        </div>
+      `);
+
+      document.getElementById('testEmailBtn').addEventListener('click', function() {
+        emailjs.send("service_e70zv2u", "template_drzf7ua", {
+          user_name: "Test User",
+          user_email: "test@example.com",
+          user_phone: "123456789",
+          delivery_address: "Test Address",
+          order_list: "Test Order"
+        })
+        .then(function(response) {
+          console.log("TEST EMAIL SUCCESS:", response);
+          alert("Test email sent successfully! Check console for details.");
+        })
+        .catch(function(error) {
+          console.error("TEST EMAIL ERROR:", error);
+          alert("Test email failed: " + (error.message || "unknown error"));
+        });
+      });
+    });
+
+    // Update cart count in the navigation
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const count = cart.length;
+
+      const cartCount = document.getElementById('cart-count');
+      const mobileCartCount = document.getElementById('mobile-cart-count');
+
+      if (count > 0) {
+        cartCount.textContent = count;
+        cartCount.classList.remove('hidden');
+
+        mobileCartCount.textContent = count;
+        mobileCartCount.classList.remove('hidden');
+      } else {
+        cartCount.classList.add('hidden');
+        mobileCartCount.classList.add('hidden');
+      }
+    }
+
+    // Display order items and calculate total
+    function displayOrderItems() {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const orderItemsContainer = document.getElementById("order-items");
+
+      if (cart.length === 0) {
+        // Redirect to cart page if cart is empty
+        window.location.href = "cart.html";
+        return;
+      }
+
+      // Generate order items HTML
+      let orderItemsHTML = '';
+      let subtotal = 0;
+
+      cart.forEach((item, index) => {
+        // Extract numeric price value
+        const priceValue = parseFloat(item.price.replace('₱', '').trim());
+        const itemTotal = priceValue * (item.quantity || 1);
+        subtotal += itemTotal;
+
+        orderItemsHTML += `
+          <div class="flex justify-between items-center py-2 border-b border-gray-100">
+            <div class="flex items-center">
+              <span class="font-medium">${item.name}</span>
+              ${item.quantity > 1 ? `<span class="text-gray-500 ml-2">x${item.quantity}</span>` : ''}
+            </div>
+            <span>₱ ${itemTotal.toFixed(0)}</span>
+          </div>
+        `;
+      });
+
+      orderItemsContainer.innerHTML = orderItemsHTML;
+
+      // Add delivery fee
+      const deliveryFee = 50;
+      const total = subtotal + deliveryFee;
+
+      // Add delivery fee to order items
+      orderItemsContainer.innerHTML += `
+        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+          <span class="text-gray-600">Subtotal</span>
+          <span>₱ ${subtotal.toFixed(0)}</span>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+          <span class="text-gray-600">Delivery Fee</span>
+          <span>₱ ${deliveryFee.toFixed(0)}</span>
+        </div>
+      `;
+
+      // Update total cost
+      document.getElementById("totalCost").innerText = `₱ ${total.toFixed(0)}`;
+    }
+
+    // Setup checkout form submission
+    function setupCheckoutForm() {
+      const placeOrderBtn = document.getElementById("placeOrderBtn");
+      console.log("Setting up checkout button click handler:", placeOrderBtn);
+
+      if (!placeOrderBtn) {
+        console.error("Place order button not found!");
+        return;
+      }
+
+      placeOrderBtn.addEventListener("click", function() {
+        console.log("Place order button clicked");
+
+        // Show status
+        const statusElem = document.getElementById("orderStatus");
+        statusElem.classList.remove('hidden');
+        statusElem.innerHTML = `
+          <div class="bg-blue-50 text-blue-700 p-4 rounded-lg">
+            <p class="font-bold">Sending your order...</p>
+            <p class="text-sm mt-2">Please wait while we process your order.</p>
+          </div>
+        `;
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const address = document.getElementById("address").value;
+
+        // Store this information in localStorage for future checkouts
+        localStorage.setItem('checkout_name', name);
+        localStorage.setItem('checkout_email', email);
+        localStorage.setItem('checkout_phone', phone);
+        localStorage.setItem('checkout_address', address);
+
+        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+        if (cart.length === 0) {
+          statusElem.innerHTML = `
+            <div class="bg-red-50 text-red-700 p-4 rounded-lg">
+              <p class="font-bold">Your cart is empty</p>
+              <p class="text-sm mt-2">Please add items to your cart before checking out.</p>
+            </div>
+          `;
+          return;
+        }
+
+        // Format order items for email
+        const formatted = cart.map(i => {
+          const quantity = i.quantity || 1;
+          return `• ${i.name} (x${quantity}) - ${i.price}`;
+        }).join("\n");
+
+        // Calculate total cost
+        let subtotal = 0;
+        cart.forEach(item => {
+          const priceValue = parseFloat(item.price.replace('₱', '').trim());
+          const quantity = item.quantity || 1;
+          subtotal += priceValue * quantity;
+        });
+
+        // Add delivery fee
+        const deliveryFee = 50;
+        const total = subtotal + deliveryFee;
+
+        const orderSummary = `${formatted}\n\nSubtotal: ₱${subtotal.toFixed(0)}\nDelivery Fee: ₱${deliveryFee.toFixed(0)}\nTotal: ₱${total.toFixed(0)}`;
+        document.getElementById("orderList").value = orderSummary;
+
+        // Create parameters object for EmailJS
+        const params = {
+          user_name: name,
+          user_email: email,
+          user_phone: phone,
+          delivery_address: address,
+          order_list: orderSummary
+        };
+
+        // Log the parameters for debugging
+        console.log("EmailJS parameters:", params);
+        console.log("EmailJS service ID:", "service_e70zv2u");
+        console.log("EmailJS template ID:", "template_drzf7ua");
+
+        // Show a more detailed status message
+        statusElem.innerHTML = `
+          <div class="bg-blue-50 text-blue-700 p-4 rounded-lg">
+            <p class="font-bold">Sending your order...</p>
+            <p class="text-sm mt-2">Please wait while we process your order.</p>
+            <p class="text-xs mt-1">Order details: ${params.order_list.split('\n')[0]}...</p>
+          </div>
+        `;
+
+        // Send email with EmailJS
+        emailjs.send("service_e70zv2u", "template_drzf7ua", params)
+          .then(function(response) {
+            console.log("EmailJS SUCCESS:", response);
+            statusElem.innerHTML = `
+              <div class="bg-green-50 text-green-700 p-4 rounded-lg">
+                <p class="font-bold">Order sent successfully!</p>
+                <p class="text-sm mt-2">Check your email for confirmation. You will be redirected to the menu page shortly.</p>
+              </div>
+            `;
+
+            localStorage.removeItem("cart");
+
+            // Clear the cart from the database too (for logged-in users)
+            if () {
+              fetch('cart.html', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'sync_action=save_cart&cart_data=[]'
+              })
+              .then(response => response.json())
+              .catch(error => console.error('Error clearing server cart:', error));
+            }
+
+            setTimeout(function() {
+              window.location.href = "menu.html";
+            }, 3000);
+          })
+          .catch(function(error) {
+            console.error("EmailJS ERROR:", error);
+            statusElem.innerHTML = `
+              <div class="bg-red-50 text-red-700 p-4 rounded-lg">
+                <p class="font-bold">Error sending order</p>
+                <p class="text-sm mt-2">Please try again.</p>
+                <p class="text-xs mt-1">Error details: ${error.message || "unknown error"}</p>
+              </div>
+            `;
+          });
+      });
+    }
+
+    // Load saved user data from localStorage
+    function loadUserData() {
+      const nameField = document.getElementById('name');
+      const emailField = document.getElementById('email');
+      const phoneField = document.getElementById('phone');
+      const addressField = document.getElementById('address');
+
+      // Try to load data from localStorage if fields are empty
+      if (!nameField.value) {
+        nameField.value = localStorage.getItem('checkout_name') || '';
+      }
+      if (!emailField.value) {
+        emailField.value = localStorage.getItem('checkout_email') || '';
+      }
+      if (!phoneField.value) {
+        phoneField.value = localStorage.getItem('checkout_phone') || '';
+      }
+      if (!addressField.value) {
+        addressField.value = localStorage.getItem('checkout_address') || '';
+      }
+
+      // Save form data in localStorage when user enters information
+      const form = document.getElementById('checkoutForm');
+      form.addEventListener('input', function() {
+        if (nameField.value) localStorage.setItem('checkout_name', nameField.value);
+        if (emailField.value) localStorage.setItem('checkout_email', emailField.value);
+        if (phoneField.value) localStorage.setItem('checkout_phone', phoneField.value);
+        if (addressField.value) localStorage.setItem('checkout_address', addressField.value);
+      });
+    }
+  </script>
+
+  <!-- Footer -->
+  <footer class="bg-zwz-orange py-10 px-6 md:px-16 mt-16">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+      <!-- Logo -->
+      <div class="flex flex-col items-center md:items-start">
+        <img src="../ASSETS/logo.jpg" class="w-36 h-36 md:w-40 md:h-40 object-cover">
+      </div>
+
+      <div class="w-[50px] h-1 md:w-1 md:h-[50px] bg-zwz-red mt-4 rounded-full"></div>
+
+      <!-- Footer Content -->
+      <div class="flex flex-col md:flex-row gap-8 md:gap-16 lg:gap-24 mt-6 md:mt-0">
+        <!-- Address -->
+        <div class="text-center md:text-left">
+          <h3 class="text-zwz-red font-bold text-xl mb-4 font-merriweather">ADDRESS</h3>
+          <p class="text-zwz-red">239 Maysan Road</p>
+          <p class="text-zwz-red">Valenzuela City</p>
+        </div>
+
+        <!-- Opening Hours -->
+        <div class="text-center md:text-left">
+          <h3 class="text-zwz-red font-bold text-xl mb-4 font-merriweather">OPENING HOURS</h3>
+          <p class="text-zwz-red">Mon - Fri: 10:00 AM - 11:30 PM</p>
+          <p class="text-zwz-red">Sat - Sun: 11:00 AM - 10:30 PM</p>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="text-center md:text-left">
+          <h3 class="text-zwz-red font-bold text-xl mb-4 font-merriweather">CONTACT</h3>
+          <div class="text-zwz-red flex items-center justify-center md:justify-start">
+            <img class="w-6 h-6 mr-2" alt="" src="../ASSETS/contact icon 1.png">
+            <span class="font-medium">09174761831</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="w-full text-center mt-8 border-t border-zwz-red/30 pt-4">
+      <p class="text-zwz-red text-sm font-medium">© 2025 ZHIWEIZAI ALL RIGHTS RESERVED</p>
+    </div>
+  </footer>
+</body>
+</html>

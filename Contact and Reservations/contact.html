@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <title>Contact and Reservations - Zhi Wei Zai</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'darkred': '#870000',
+            'gold': '#fcb734',
+            'cream': '#fff1ce',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- External CSS -->
+  <link rel="stylesheet" href="contact and reservations.css" />
+  
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../ASSETS/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../ASSETS/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../ASSETS/favicon-16x16.png">
+  <link rel="manifest" href="../ASSETS/site.webmanifest">
+  
+  <!-- Flatpickr for date picker -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <!-- EmailJS Integration -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+      (function() {
+          emailjs.init("OSA2djZJO1XG3Kphg");
+      })();
+  </script>
+  
+  <!-- Auth System -->
+  <script src="../js/auth.js"></script>
+</head>
+<body class="bg-darkred">
+
+  <!-- Top Navigation -->
+  <nav class="fixed top-0 left-0 w-full bg-gold shadow-md z-50 px-3 py-2 md:px-[3vw] md:py-[1vh]">
+    <div class="container mx-auto flex items-center justify-between">
+      <!-- Logo for mobile (centered) and desktop (left aligned) -->
+      <div class="md:hidden w-full flex justify-center relative">
+        <img src="../ASSETS/logo.jpg" class="absolute top-[-1.5vh] left-1/2 transform -translate-x-1/2 w-[15vw] h-[15vh]" alt="Logo">
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center w-full">
+        <div class="flex gap-5 ml-auto relative">
+          <img src="../ASSETS/logo.jpg" class="absolute top-[-1.5vh] left-[-50vw] w-[12vw] h-[20vh]">
+          <a href="../index.html" class="font-merriweather text-darkred no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110">Home</a>
+          <a href="../index.html#about" class="font-merriweather text-darkred no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="aboutText">About</a>
+          <a href="../Menu/menu.html" class="font-merriweather text-darkred no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="menuText">Menu</a>
+          <a href="../Catering and Gallery/catering.html" class="font-merriweather text-darkred no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="cateringText">Catering</a>
+          <a href="contact.html" class="font-merriweather text-darkred no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="contactText">Contact</a>
+          <a href="../Login and Signup/login.html" class="ml-[5px]" id="accountText"><img src="../ASSETS/account_circle.svg" alt="account-circle-icon" class="w-[30px] h-[30px]"/></a>
+          <a href="../Menu/cart.html" class="ml-[5px]" id="cartText"><img src="../ASSETS/shopping_cart.svg" alt="cart-icon" class="w-[30px] h-[30px]"/></a>
+        </div>
+      </div>
+      
+      <!-- Mobile Navigation (hamburger menu) -->
+      <div class="md:hidden flex items-center justify-end w-full">
+        <div class="flex items-center">
+          <a href="../Login and Signup/login.html" class="ml-2" id="mobileAccountText"><img src="../ASSETS/account_circle.svg" alt="account-circle-icon" class="w-[30px] h-[30px]"/></a>
+          <a href="../Menu/cart.html" class="ml-2" id="mobileCartText"><img src="../ASSETS/shopping_cart.svg" alt="cart-icon" class="w-[30px] h-[30px]"/></a>
+          <button id="menu-toggle" class="text-darkred focus:outline-none ml-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gold w-full">
+      <div class="flex flex-col items-center py-4">
+        <a href="../index.html" class="font-merriweather text-darkred no-underline text-xl py-2 transition-all hover:text-white">Home</a>
+        <a href="../index.html#about" class="font-merriweather text-darkred no-underline text-xl py-2 transition-all hover:text-white" id="mobileAboutText">About</a>
+        <a href="../Menu/menu.html" class="font-merriweather text-darkred no-underline text-xl py-2 transition-all hover:text-white" id="mobileMenuText">Menu</a>
+        <a href="../Catering and Gallery/catering.html" class="font-merriweather text-darkred no-underline text-xl py-2 transition-all hover:text-white" id="mobileCateringText">Catering</a>
+        <a href="contact.html" class="font-merriweather text-darkred no-underline text-xl py-2 transition-all hover:text-white" id="mobileContactText">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Wrapper -->
+  <div class="flex flex-col pt-20">
+    <!-- Contact Information Section -->
+    <div class="bg-darkred py-16 text-white">
+      <div class="container mx-auto px-4">
+        <!-- Section Title -->
+        <div class="flex items-center justify-center mb-12">
+          <div class="h-0.5 bg-gold w-full max-w-xs md:max-w-sm lg:max-w-md mr-6"></div>
+          <h1 class="text-3xl md:text-4xl font-bold text-white text-center font-cinzel whitespace-nowrap">CONTACT US</h1>
+          <div class="h-0.5 bg-gold w-full max-w-xs md:max-w-sm lg:max-w-md ml-6"></div>
+        </div>
+
+        <!-- Contact Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <!-- Visit Us Card -->
+          <div class="p-6 text-center transform transition hover:scale-105 bg-darkred bg-opacity-40 rounded-lg shadow-lg border border-gold">
+            <div class="flex justify-center mb-4">
+              <img class="w-12 h-12" alt="Location Icon" src="location.png">
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4 font-cinzel">Visit Us</h3>
+            <p class="text-gold">239 Maysan Road</p>
+            <p class="text-gold">Valenzuela City</p>
+            
+            <!-- Google Maps Embed -->
+            <div class="mt-4">
+              <iframe
+                class="w-full h-48 rounded-lg border-2 border-gold"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.232573947837!2d120.9692820751052!3d14.71304478581937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b1e1e2e4e7c3%3A0x6e2e1e9e6e2e1e9e!2s239%20Maysan%20Rd%2C%20Valenzuela%2C%201440%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1716012345678!5m2!1sen!2sph"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Call Us Card -->
+          <div class="p-6 text-center transform transition hover:scale-105 bg-darkred bg-opacity-40 rounded-lg shadow-lg border border-gold">
+            <div class="flex justify-center mb-4">
+              <img class="w-12 h-12" alt="Phone Icon" src="phone.png">
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4 font-cinzel">Call Us</h3>
+            <p class="text-gold">09174761831</p>
+            
+            <!-- Added content to balance height -->
+            <div class="mt-4 text-white">
+              <p class="mb-2">Our customer service is available during:</p>
+              <p class="text-gold">Mon - Fri: 9:00 AM - 10:00 PM</p>
+              <p class="text-gold">Sat - Sun: 10:00 AM - 9:00 PM</p>
+              <p class="mt-4 text-white">We're happy to assist with your inquiries and reservations!</p>
+            </div>
+          </div>
+
+          <!-- Write Us Card -->
+          <div class="p-6 text-center transform transition hover:scale-105 bg-darkred bg-opacity-40 rounded-lg shadow-lg border border-gold">
+            <div class="flex justify-center mb-4">
+              <img class="w-12 h-12" alt="Email Icon" src="email icon.png">
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4 font-cinzel">Write Us</h3>
+            <p class="text-white">If you have any questions or comments</p>
+            <p class="text-white">
+              please contact us at
+              <span class="text-gold font-semibold">zhiweizai@gmail.com</span>
+            </p>
+            
+            <!-- Added content to balance height -->
+            <div class="mt-4 text-white">
+              <p class="mb-2">We typically respond within:</p>
+              <p class="text-gold">24-48 hours</p>
+              <p class="mt-4 text-white">For urgent matters, please call us directly.</p>
+              <p class="mt-4 text-white">We look forward to hearing from you!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reservation Section -->
+    <div class="bg-cream py-12">
+      <div class="container mx-auto px-4">
+        <!-- Reservation Section Title -->
+        <div class="text-center mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-darkred font-cinzel">TABLE RESERVATION AND CATERING</h2>
+          <p class="mt-4 text-gray-800 max-w-3xl mx-auto">
+            Reserve your table or catering with us! Please fill out the form below with your details and any special requests.
+            Our team will contact you to confirm your reservation as soon as possible.
+            We look forward to serving you at Zhi Wei Zai!
+          </p>
+        </div>
+
+        <!-- Reservation Form -->
+        <form id="reservationForm" class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <!-- Date Field -->
+            <div class="flex flex-col">
+              <label for="reservationDate" class="text-darkred font-bold mb-2 font-cinzel">DATE</label>
+              <input type="text" id="reservationDate" name="date"
+                    class="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-darkred"
+                    required placeholder="Select a date" />
+            </div>
+
+            <!-- Time Field -->
+            <div class="flex flex-col">
+              <label for="reservationTime" class="text-darkred font-bold mb-2 font-cinzel">IN TIME</label>
+              <input type="time" id="reservationTime" name="time"
+                    class="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-darkred"
+                    required />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <!-- Name Field -->
+            <div class="flex flex-col">
+              <label for="name" class="text-darkred font-bold mb-2 font-cinzel">YOUR NAME</label>
+              <div class="relative">
+                <input type="text" id="name" name="name"
+                      class="border border-gray-300 rounded-lg p-3 pl-10 w-full focus:outline-none focus:ring-2 focus:ring-darkred"
+                      required placeholder="Enter your name" />
+                <img src="note.svg" alt="Name" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5">
+              </div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="flex flex-col">
+              <label for="email" class="text-darkred font-bold mb-2 font-cinzel">EMAIL ADDRESS</label>
+              <div class="relative">
+                <input type="email" id="email" name="email"
+                      class="border border-gray-300 rounded-lg p-3 pl-10 w-full focus:outline-none focus:ring-2 focus:ring-darkred"
+                      required placeholder="Enter your email" />
+                <img src="email.svg" alt="Email" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5">
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <!-- Phone Field -->
+            <div class="flex flex-col">
+              <label for="phone" class="text-darkred font-bold mb-2 font-cinzel">PHONE NUMBER</label>
+              <div class="relative">
+                <input type="tel" id="phone" name="phone"
+                      class="border border-gray-300 rounded-lg p-3 pl-10 w-full focus:outline-none focus:ring-2 focus:ring-darkred"
+                      required placeholder="Phone number" />
+                <img src="phone_in_talk.svg" alt="Phone" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5">
+              </div>
+            </div>
+
+            <!-- Guests Field -->
+            <div class="flex flex-col">
+              <label for="guests" class="text-darkred font-bold mb-2 font-cinzel">GUESTS</label>
+              <div class="relative">
+                <input type="number" id="guests" name="guests"
+                      class="border border-gray-300 rounded-lg p-3 pl-10 w-full focus:outline-none focus:ring-2 focus:ring-darkred"
+                      required min="1" placeholder="Number of guests" />
+                <img src="people_outline.svg" alt="Guests" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5">
+              </div>
+            </div>
+          </div>
+
+          <!-- Description Field -->
+          <div class="flex flex-col mb-8">
+            <label for="description" class="text-darkred font-bold mb-2 font-cinzel">DESCRIPTION</label>
+            <textarea id="description" name="description"
+                    class="border border-gray-300 rounded-lg p-3 w-full h-32 focus:outline-none focus:ring-2 focus:ring-darkred"
+                    placeholder="Additional description or requests"></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="flex justify-center">
+            <button type="submit" id="submitBtn" class="bg-darkred text-white font-bold py-3 px-8 rounded-full hover:bg-red-900 transition-colors text-lg">
+              Reserve now
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="modal-content bg-white p-8 rounded-lg shadow-xl max-w-md w-full">
+        <span class="close-button absolute top-2 right-4 text-3xl cursor-pointer">&times;</span>
+        <h2 class="text-2xl font-bold text-darkred mb-4 font-cinzel">Reservation Confirmed!</h2>
+        <p class="text-gray-700">Thank you for your reservation at Zhi Wei Zai. We have sent a confirmation email to your provided email address.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gold py-10 px-6 md:px-16">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+      <!-- Logo -->
+      <div class="flex flex-col items-center md:items-start">
+        <img src="../ASSETS/logo.jpg" class="w-36 h-36 md:w-40 md:h-40 object-cover">
+      </div>
+
+      <div class="w-[50px] h-1 md:w-1 md:h-[50px] bg-darkred mt-4 rounded-full"></div>
+
+      <!-- Footer Content Container -->
+      <div class="flex flex-col md:flex-row justify-center gap-10 md:gap-16 lg:gap-24">
+        <!-- Address -->
+        <div class="text-center md:text-left">
+          <h3 class="text-darkred font-bold text-xl mb-4 font-merriweather">ADDRESS</h3>
+          <p class="text-darkred font-medium">239 Maysan Road</p>
+          <p class="text-darkred font-medium">Valenzuela City</p>
+        </div>
+
+        <!-- Opening Hours -->
+        <div class="text-center md:text-left">
+          <h3 class="text-darkred font-bold text-xl mb-4 font-merriweather">OPENING HOURS</h3>
+          <p class="text-darkred font-medium">Mon - Fri: 10:00 AM - 11:30 PM</p>
+          <p class="text-darkred font-medium">Sat - Sun: 11:00 AM - 10:30 PM</p>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="text-center md:text-left">
+          <h3 class="text-darkred font-bold text-xl mb-4 font-merriweather">CONTACT</h3>
+          <div class="text-darkred flex items-center justify-center md:justify-start">
+            <img class="w-6 h-6 mr-2" alt="" src="../ASSETS/contact icon 1.png">
+            <span class="font-medium">09174761831</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Copyright -->
+    <div class="w-full text-center mt-8 border-t border-darkred/30 pt-4">
+      <p class="text-darkred text-sm font-medium">© 2025 ZHIWEIZAI ALL RIGHTS RESERVED</p>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    // Reservation form submission and EmailJS integration
+    document.getElementById('reservationForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const submitBtn = document.getElementById('submitBtn');
+      const originalBtnText = submitBtn.querySelector('.learn-more').textContent;
+      submitBtn.querySelector('.learn-more').textContent = 'Processing...';
+      submitBtn.disabled = true;
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        date: document.getElementById('reservationDate').value,
+        time: document.getElementById('reservationTime').value,
+        guests: document.getElementById('guests').value,
+        description: document.getElementById('description').value
+      };
+      const templateParams = {
+        user_name: document.getElementById('name').value,
+        reservation_date: document.getElementById('reservationDate').value,
+        reservation_time: document.getElementById('reservationTime').value,
+        guest_count: document.getElementById('guests').value,
+        phone_number: document.getElementById('phone').value,
+        email_address: document.getElementById('email').value,
+        special_requests: document.getElementById('description').value
+      };
+      emailjs.send('service_kcyiejl', 'template_qt8ub9j', templateParams)
+        .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+          document.getElementById('reservationForm').reset();
+          submitBtn.querySelector('.learn-more').textContent = originalBtnText;
+          submitBtn.disabled = false;
+          document.getElementById('confirmationModal').style.display = 'flex';
+        }, function(error) {
+          console.log('FAILED...', error);
+          alert('There was an error sending your reservation. Please try again or contact us directly.');
+          submitBtn.querySelector('.learn-more').textContent = originalBtnText;
+          submitBtn.disabled = false;
+        });
+    });
+
+    // Modal close button handler
+    document.querySelector('.close-button').addEventListener('click', function() {
+      document.getElementById('confirmationModal').style.display = 'none';
+    });
+
+    // Close modal when clicking outside the modal content
+    window.addEventListener('click', function(event) {
+      const modal = document.getElementById('confirmationModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    });
+    
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  </script>
+
+  <script>
+    // Initialize Flatpickr for the date input
+    flatpickr("#reservationDate", {
+      dateFormat: "Y-m-d",
+      minDate: "today"
+    });
+  </script>
+</body>
+</html>

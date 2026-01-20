@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <title>Login - Zhi Wei Zai</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'zwz-red': '#870000',
+            'zwz-orange': '#fcb734',
+            'zwz-cream': '#fff1ce',
+          },
+          fontFamily: {
+            'merriweather': ['Merriweather', 'serif'],
+            'cinzel': ['Cinzel', 'serif'],
+            'playfair': ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" />
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./login.css" />
+  
+  <!-- Auth System -->
+  <script src="../js/auth.js"></script>
+  
+  <style>
+    .message {
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .error {
+      background-color: #ffebee;
+      color: #c62828;
+      border: 1px solid #ef9a9a;
+    }
+    .success {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #a5d6a7;
+    }
+  </style>
+</head>
+<body class="bg-zwz-red min-h-screen flex flex-col items-center justify-center p-4">
+  <!-- Background Image -->
+  <div class="fixed inset-0 bg-cover bg-center z-0" style="background-image: url('../ASSETS/background.jpg'); opacity: 0.15;"></div>
+
+  <!-- Main content -->
+  <div class="bg-white w-full md:w-full md:max-w-none md:shadow-none md:rounded-none md:p-8 relative mt-0 md:mt-24 z-10 max-w-md rounded-lg shadow-lg p-6">
+    <!-- Mobile Header - Only visible on mobile -->
+    <div class="md:hidden bg-zwz-red p-4 flex justify-between items-center mb-6 rounded-t-lg -mt-6 -mx-6">
+      <a href="../index.html" class="flex items-center">
+        <img class="w-8 h-8" alt="Exit to app" src="exit_to_app.png">
+      </a>
+      <h1 class="font-cinzel text-white text-lg sm:text-xl">Welcome to Zhi Wei Zai!</h1>
+    </div>
+
+    <!-- Sign in heading -->
+    <h2 class="text-center font-cinzel text-zwz-red text-xl md:text-2xl mb-6 md:mb-8 px-4">Sign in</h2>
+
+    <!-- Message display area -->
+    <div id="messageArea" class="hidden px-4 md:px-0 md:max-w-lg md:mx-auto"></div>
+
+    <!-- Login form -->
+    <form id="loginForm" class="space-y-4 md:space-y-6 px-4 md:px-0 md:max-w-lg md:mx-auto">
+      <!-- Email input -->
+      <div class="space-y-1 md:space-y-2">
+        <label for="email" class="block text-zwz-red text-sm md:text-base">Email Address</label>
+        <input type="email" id="email" name="email" required class="w-full px-3 py-2 md:px-4 md:py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-zwz-orange" />
+      </div>
+
+      <!-- Password input -->
+      <div class="space-y-1 md:space-y-2">
+        <label for="password" class="block text-zwz-red text-sm md:text-base">Password</label>
+        <input type="password" id="password" name="password" required class="w-full px-3 py-2 md:px-4 md:py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-zwz-orange" />
+      </div>
+
+      <!-- Sign in button -->
+      <button type="submit" class="w-full bg-zwz-red text-white font-cinzel font-bold py-2 md:py-3 rounded hover:bg-[#6a0000] transition-colors">SIGN IN</button>
+    </form>
+
+    <!-- Divider -->
+    <div class="flex items-center my-6 md:my-8">
+      <div class="flex-grow border-t border-gray-300"></div>
+      <span class="px-4 text-gray-500 text-sm">OR</span>
+      <div class="flex-grow border-t border-gray-300"></div>
+    </div>
+
+    <!-- Sign up section -->
+    <div class="px-4 md:px-0 md:max-w-lg md:mx-auto">
+      <!-- Sign up button -->
+      <a href="signup.html" class="block w-full bg-zwz-red text-white font-bold py-2 md:py-3 rounded hover:bg-[#6a0000] transition-colors text-center mb-4 md:mb-6">SIGN UP</a>
+
+      <!-- Sign up promo text -->
+      <p class="text-center font-merriweather text-zwz-red font-bold text-xs md:text-sm mb-4 md:mb-6">Sign Up today to get exclusive deals, faster ordering, and more!</p>
+
+      <!-- Terms text -->
+      <p class="text-center text-xs text-zwz-red mb-4 md:mb-0">
+        By signing in or signing up. I agree to Zhi Wei Zai's <span class="font-bold">Privacy Notice</span> and <span class="font-bold">Terms & Conditions</span>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if already logged in
+      if (ZWZAuth.isLoggedIn()) {
+        window.location.href = 'welcome.html';
+        return;
+      }
+
+      // Check for success message from signup
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('registered') === 'true') {
+        showMessage('Registration successful! You can now log in.', 'success');
+      }
+
+      // Handle form submission
+      document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        
+        const result = ZWZAuth.login(email, password);
+        
+        if (result.success) {
+          // Check if there's a redirect URL
+          const from = urlParams.get('from');
+          if (from) {
+            window.location.href = decodeURIComponent(from);
+          } else {
+            window.location.href = 'welcome.html';
+          }
+        } else {
+          showMessage(result.error, 'error');
+        }
+      });
+    });
+
+    function showMessage(message, type) {
+      const messageArea = document.getElementById('messageArea');
+      messageArea.innerHTML = `<div class="message ${type}">${message}</div>`;
+      messageArea.classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>

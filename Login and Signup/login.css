@@ -1,0 +1,284 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display';
+    color: #870000;
+    background-color: #fff;
+}
+
+/* Main container with responsive scaling */
+.proper-scaling-of-loginsignup {
+    width: 100%;
+    max-width: 1920px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding-bottom: 60px;
+    position: relative;
+    text-align: center;
+    font-size: 30px;
+    overflow-x: hidden;
+}
+
+/* Header bar */
+.proper-scaling-of-loginsignup-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 95px;
+    background-color: #870000;
+    z-index: 10;
+}
+
+/* Back button styling */
+.exit-to-app-icon {
+    position: absolute;
+    top: 18px;
+    left: 16px;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    object-fit: contain;
+    cursor: pointer;
+    z-index: 11;
+}
+
+/* Header welcome text */
+.welcome-to-zhi {
+    position: absolute;
+    top: 26px;
+    left: 104px;
+    font-size: 35px;
+    font-family: Merriweather;
+    color: #fff;
+    z-index: 11;
+}
+
+/* Remove default link underline */
+a {
+    text-decoration: none;
+}
+
+/* Page title */
+.sign-in {
+    margin-top: 130px;
+    display: block;
+    font-size: 48px;
+    font-family: Cinzel;
+    margin-bottom: 30px;
+    color: #870000;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Form container */
+form {
+    width: 80%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Input field labels */
+.field-label {
+    font-family: Cinzel, serif;
+    color: #870000;
+    font-size: 24px;
+    font-weight: bold;
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+/* Form inputs */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    height: 60px;
+    border: 2px solid #870000;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Playfair Display';
+    padding: 0 20px;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Input focus state */
+input:focus {
+    outline: none;
+    border-color: #870000;
+    box-shadow: 0 0 8px rgba(135, 0, 0, 0.5);
+}
+
+/* Button styling for all types */
+.login-button, .signup-button, .rectangle-div.sign-in1 {
+    width: 60%;
+    max-width: 600px;
+    height: 70px;
+    margin: 30px auto;
+    display: block;
+    background-color: #870000;
+    color: #fff;
+    font-family: Cinzel;
+    font-size: 32px;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.2s;
+    text-align: center;
+    text-decoration: none;
+    line-height: 70px;
+}
+
+/* Specific styling for sign-in1 class */
+.sign-in1 {
+    width: 60%;
+    max-width: 600px;
+    height: 70px;
+    margin: 30px auto;
+    display: block;
+    background-color: #870000;
+    color: #fff;
+    font-family: Cinzel;
+    font-size: 32px;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    line-height: 70px;
+}
+
+/* Styling for buttons that are anchor tags */
+a.signup-button, a.sign-in1 {
+    line-height: 70px;
+    display: block;
+    width: 60%;
+    max-width: 600px;
+    margin: 30px auto;
+    text-decoration: none;
+}
+
+/* Button hover effects */
+.login-button:hover, .signup-button:hover, .sign-in1:hover, .rectangle-div:hover {
+    background-color: #6b0000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+
+/* Button active/click effects */
+.login-button:active, .signup-button:active, .sign-in1:active, .rectangle-div:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Full-width divider with OR text */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 40px 0;
+    width: 100%;
+    padding: 0;
+}
+
+/* Horizontal line elements */
+.line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #1e1e1e;
+    margin: 0;
+}
+
+/* Center OR text */
+.or {
+    font-family: Cinzel;
+    font-size: 24px;
+    color: #870000;
+    font-weight: bold;
+    padding: 0 20px;
+    white-space: nowrap;
+}
+
+/* Sign up promotional text */
+.sign-up-today {
+    font-size: 24px;
+    color: #870000;
+    font-family: 'Playfair Display';
+    margin: 30px 0;
+    text-align: center;
+}
+
+/* Footer text */
+.by-signing-in-container {
+    width: 80%;
+    max-width: 1000px;
+    margin: 40px auto 0;
+    font-size: 16px;
+    color: #333;
+    font-family: 'Playfair Display';
+    text-align: center;
+}
+
+/* Tablet adjustments */
+@media (max-width: 768px) {
+    input[type="email"],
+    input[type="password"] {
+        height: 55px;
+    }
+    
+    .sign-in {
+        font-size: 42px;
+    }
+    
+    .login-button, .signup-button, .sign-in1, .rectangle-div.sign-in1, 
+    a.signup-button, a.sign-in1 {
+        width: 70%;
+        font-size: 28px;
+        line-height: 60px;
+        height: 60px;
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+    .welcome-to-zhi {
+        font-size: 26px;
+    }
+    
+    form {
+        width: 90%;
+    }
+    
+    .sign-in {
+        font-size: 36px;
+    }
+    
+    .login-button, .signup-button, .sign-in1, .rectangle-div.sign-in1,
+    a.signup-button, a.sign-in1 {
+        width: 80%;
+        font-size: 26px;
+        height: 60px;
+        line-height: 60px;
+    }
+    
+    .sign-up-today {
+        font-size: 20px;
+        margin: 20px 0;
+    }
+    
+    .or {
+        font-size: 20px;
+        padding: 0 15px;
+    }
+}

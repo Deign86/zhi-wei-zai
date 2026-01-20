@@ -1,0 +1,1000 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <title>Menu - Zhi Wei Zai</title>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="Menu 1.css" />
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../ASSETS/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../ASSETS/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../ASSETS/favicon-16x16.png">
+  <link rel="manifest" href="../ASSETS/site.webmanifest">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Auth System -->
+  <script src="../js/auth.js"></script>
+</head>
+<body>
+<!-- Top Navigation -->
+<nav class="fixed top-0 left-0 w-full bg-[#fcb734] shadow-md z-50 px-3 py-2 md:px-[3vw] md:py-[1vh]">
+  <div class="container mx-auto flex items-center justify-between">
+    <!-- Logo for mobile (centered) and desktop (left aligned) -->
+    <div class="md:hidden w-full flex justify-center relative">
+      <img src="../ASSETS/logo.jpg" class="absolute top-[-1.5vh] left-1/2 transform -translate-x-1/2 w-[15vw] h-[15vh]" alt="Logo">
+    </div>
+
+    <!-- Desktop Navigation -->
+    <div class="hidden md:flex items-center w-full">
+      <div class="flex gap-5 ml-auto relative">
+        <img src="../ASSETS/logo.jpg" class="absolute top-[-1.5vh] left-[-50vw] w-[12vw] h-[20vh]">
+        <a href="../index.html" class="font-merriweather text-[#870000] no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110">Home</a>
+        <a href="../index.html#about" class="font-merriweather text-[#870000] no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="aboutText">About</a>
+        <a href="menu.html" class="font-merriweather text-[#870000] no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="menuText">Menu</a>
+        <a href="../Catering and Gallery/catering.html" class="font-merriweather text-[#870000] no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="cateringText">Catering</a>
+        <a href="../Contact and Reservations/contact.html" class="font-merriweather text-[#870000] no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="contactText">Contact</a>
+        <a href="../Login and Signup/login.html" class="ml-[5px]" id="accountText"><img src="../ASSETS/account_circle.svg" alt="account-circle-icon" class="w-[30px] h-[30px]"/></a>
+        <a href="cart.html" class="ml-[5px]" id="cartText"><img src="../ASSETS/shopping_cart.svg" alt="cart-icon" class="w-[30px] h-[30px]"/></a>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation (hamburger menu) -->
+    <div class="md:hidden flex items-center justify-end w-full">
+      <div class="flex items-center">
+        <a href="../Login and Signup/login.html" class="ml-2" id="mobileAccountText"><img src="../ASSETS/account_circle.svg" alt="account-circle-icon" class="w-[30px] h-[30px]"/></a>
+        <a href="cart.html" class="ml-2" id="mobileCartText"><img src="../ASSETS/shopping_cart.svg" alt="cart-icon" class="w-[30px] h-[30px]"/></a>
+        <button id="menu-toggle" class="text-[#870000] focus:outline-none ml-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu (hidden by default) -->
+  <div id="mobile-menu" class="hidden md:hidden bg-[#fcb734] w-full">
+    <div class="flex flex-col items-center py-4">
+      <a href="../index.html" class="font-merriweather text-[#870000] no-underline text-xl py-2 transition-all hover:text-white">Home</a>
+      <a href="../index.html#about" class="font-merriweather text-[#870000] no-underline text-xl py-2 transition-all hover:text-white" id="mobileAboutText">About</a>
+      <a href="menu.html" class="font-merriweather text-[#870000] no-underline text-xl py-2 transition-all hover:text-white" id="mobileMenuText">Menu</a>
+      <a href="../Catering and Gallery/catering.html" class="font-merriweather text-[#870000] no-underline text-xl py-2 transition-all hover:text-white" id="mobileCateringText">Catering</a>
+      <a href="../Contact and Reservations/contact.html" class="font-merriweather text-[#870000] no-underline text-xl py-2 transition-all hover:text-white" id="mobileContactText">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer for fixed navbar -->
+<!-- <div class="h-[41.9px]"></div> -->
+ <div class="">
+    <div class="flex flex-col md:flex-row gap-6 p-6 justify-center p-5 pt-40">
+      <!-- Soups Box -->
+      <div class="bg-[#870000] p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
+        <h1 class="font-['Playfair_Display'] text-white text-2xl md:text-3xl mb-4">Soups</h1>
+        <h2 class="font-['Playfair_Display'] text-white text-base md:text-lg mb-4">
+          Warm your soul with our slow-simmered broths, crafted from generations-old recipes. Our signature bone broth cooks for 12 hours with fresh ginger, star anise, and premium cuts of meat.
+        </h2>
+        <img src="ASSETS/msmc.png" alt="Soups" class="w-[200px] h-[200px] object-contain">
+      </div>
+
+      <!-- Dumplings Box -->
+      <div class="bg-[#870000] p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
+        <h1 class="font-['Playfair_Display'] text-white text-2xl md:text-3xl mb-4">Dumplings</h1>
+        <h2 class="font-['Playfair_Display'] text-white text-base md:text-lg mb-4">
+          Delicate pleats enclose juicy fillings in our hand-folded dumplings. Our classic pork and chive dumplings feature a 3:7 lean-to-fat ratio for optimal succulence.
+        </h2>
+        <img src="ASSETS/dfjnb 2.png" alt="Dumplings" class="w-[200px] h-[200px] object-contain">
+      </div>
+
+      <!-- Noodles Box -->
+      <div class="bg-[#870000] p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
+        <h1 class="font-['Playfair_Display'] text-white text-2xl md:text-3xl mb-4">Noodles</h1>
+        <h2 class="font-['Playfair_Display'] text-white text-base md:text-lg mb-4">
+          Hand-pulled daily by our master noodle artisans, these perfectly chewy strands are paired with your choice of savory toppings.
+        </h2>
+        <img src="ASSETS/418625e8-228c-40d3-ad9c-ce7f7be7b07c 2.png" alt="Noodles" class="w-[200px] h-[200px] object-contain">
+      </div>
+    </div>
+
+    <!-- See More Button -->
+    <div class="flex justify-center mt-8 mb-12">
+      <button id="seeMoreBtn" class="mb-20 bg-[#870000] text-white font-['Playfair_Display'] text-xl py-3 px-8 rounded-lg shadow-lg hover:bg-[#6b0000] transition-all duration-300 transform hover:scale-105">
+        SEE MORE
+      </button>
+    </div>
+
+</div>
+<div class="menu-area-wrapper">
+    <section class="menu-categories">
+        <div class="category-tabs">
+             <button class="category-tab">All</button>
+            <button class="category-tab">Best Selling</button>
+            <button class="category-tab">Soup</button>
+            <button class="category-tab">Fried Rice</button>
+            <button class="category-tab">Noodles</button>
+            <button class="category-tab">Pork & Intestine</button>
+            <button class="category-tab">Chicken</button>
+            <button class="category-tab">Duck</button>
+            <button class="category-tab">Lamb</button>
+            <button class="category-tab">Shrimp, Squid and Shells</button>
+            <button class="category-tab">Beef</button>
+	    <button class="category-tab">Vegetables & Mushrooms</button>
+	    <button class="category-tab">Tofu & Eggs</button>
+            <button class="category-tab">Chilled Brined</button>
+	    <button class="category-tab">Live Lapu-Lapu & Eel</button>
+            <button class="category-tab">Live Sauhe & Sea Mantis</button>
+	    <button class="category-tab">Spicy Boiled</button>
+	    <button class="category-tab">Fish</button>
+	    <button class="category-tab">Live Lobster</button>
+	    <button class="category-tab">Crab & Shells</button>
+        </div>
+    </section>
+    <section class="menu-items">
+        <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/SP1.png" alt="Seaweed Soup" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Seaweed Soup</h3>
+            <p class="item-weight">300 g</p>
+            <p class="item-description">Light and savory broth with delicate seaweed.</p>
+            <div class="item-price">₱ 280</div>
+            <button class="add-to-cart-btn" data-name="Seaweed Soup" data-price="₱ 280" data-image="ASSETS/SP1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/SP2.png" alt="Wonton Soup" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Wonton Soup</h3>
+            <p class="item-weight">350 g</p>
+            <p class="item-description">Delicious dumplings in a clear, flavorful broth.</p>
+            <div class="item-price">₱ 320</div>
+            <button class="add-to-cart-btn" data-name="Wonton Soup" data-price="₱ 320" data-image="ASSETS/SP2.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/SP3.png" alt="Hot & Sour Soup" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Hot & Sour Soup</h3>
+            <p class="item-weight">350 g</p>
+            <p class="item-description">Perfect balance of spicy and tangy flavors.</p>
+            <div class="item-price">₱ 300</div>
+            <button class="add-to-cart-btn" data-name="Hot & Sour Soup" data-price="₱ 300" data-image="ASSETS/SP3.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/SP5.png" alt="Minced Seafood Soup" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Minced Seafood Soup</h3>
+            <p class="item-weight">320 g</p>
+            <p class="item-description">Delicate soup with finely minced assorted seafood.</p>
+            <div class="item-price">₱ 380</div>
+            <button class="add-to-cart-btn" data-name="Minced Seafood Soup" data-price="₱ 380" data-image="ASSETS/SP5.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/SP6.png" alt="Beef Soup" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Beef Soup</h3>
+            <p class="item-weight">320 g</p>
+            <p class="item-description">Hearty broth with tender pieces of beef.</p>
+            <div class="item-price">₱ 380</div>
+            <button class="add-to-cart-btn" data-name="Beef Soup" data-price="₱ 380" data-image="ASSETS/SP6.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/SP8.png" alt="Spinach Seafood Soup" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Spinach Seafood Soup</h3>
+            <p class="item-weight">320 g</p>
+            <p class="item-description">Nutritious soup with spinach and mixed seafood.</p>
+            <div class="item-price">₱ 380</div>
+            <button class="add-to-cart-btn" data-name="Spinach Seafood Soup" data-price="₱ 380" data-image="ASSETS/SP8.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/FR1.png" alt="Yang Chow Fried Rice" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Yang Chow Fried Rice</h3>
+            <p class="item-weight">300 g</p>
+            <p class="item-description">Classic fried rice with shrimp, pork, and vegetables.</p>
+            <div class="item-price">₱ 280</div>
+            <button class="add-to-cart-btn" data-name="Yang Chow Fried Rice" data-price="₱ 280" data-image="ASSETS/FR1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/FR2.png" alt="Mustasa Fried Rice" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Mustasa Fried Rice</h3>
+            <p class="item-weight">320 g</p>
+            <p class="item-description">Unique fried rice with a hint of pickled mustard greens.</p>
+            <div class="item-price">₱ 380</div>
+            <button class="add-to-cart-btn" data-name="Mustasa Fried Rice" data-price="₱ 380" data-image="ASSETS/FR2.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/FN1.png" alt="Seafood Pancit Bihon" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Seafood Pancit Bihon</h3>
+            <p class="item-weight">320 g</p>
+            <p class="item-description">Thin rice noodles stir-fried with assorted seafood and vegetables.</p>
+            <div class="item-price">₱ 380</div>
+            <button class="add-to-cart-btn" data-name="Seafood Pancit Bihon" data-price="₱ 380" data-image="ASSETS/FN1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/FN5.png" alt="Pig Stomach w/ Pickled Veg" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Pig Stomach w/ Pickled Veg</h3>
+            <p class="item-weight">320 g</p>
+            <p class="item-description">Savory pig stomach with tangy pickled vegetables.</p>
+            <div class="item-price">₱ 380</div>
+            <button class="add-to-cart-btn" data-name="Pig Stomach w/ Pickled Veg" data-price="₱ 380" data-image="ASSETS/FN5.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/NS1.png" alt="Seafood Lomi" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Seafood Lomi</h3>
+            <p class="item-weight">280 g</p>
+            <p class="item-description">Thick egg noodles in a rich broth with seafood.</p>
+            <div class="item-price">₱ 250</div>
+            <button class="add-to-cart-btn" data-name="Seafood Lomi" data-price="₱ 250" data-image="ASSETS/NS1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/NS2.png" alt="Seafood Bihon Soup" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Seafood Bihon Soup</h3>
+            <p class="item-weight">280 g</p>
+            <p class="item-description">Thin rice noodles in a flavorful seafood broth.</p>
+            <div class="item-price">₱ 250</div>
+            <button class="add-to-cart-btn" data-name="Seafood Bihon Soup" data-price="₱ 250" data-image="ASSETS/NS2.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/PK1.png" alt="Sze Chuan Hui Guo Rou" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Sze Chuan Hui Guo Rou</h3>
+            <p class="item-weight">320 g</p>
+            <p class="item-description">Stir-fried sliced pork belly with vegetables in a spicy bean sauce.</p>
+            <div class="item-price">₱ 380</div>
+            <button class="add-to-cart-btn" data-name="Sze Chuan Hui Guo Rou" data-price="₱ 380" data-image="ASSETS/PK1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/PK2.png" alt="Liempo w/ Bamboo Shoot" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Liempo w/ Bamboo Shoot</h3>
+            <p class="item-weight">350 g</p>
+            <p class="item-description">Crispy pork belly served with tender bamboo shoots.</p>
+            <div class="item-price">₱ 480</div>
+            <button class="add-to-cart-btn" data-name="Liempo w/ Bamboo Shoot" data-price="₱ 480" data-image="ASSETS/PK2.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/PK5.png" alt="Spareribs Taro" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Spareribs Taro</h3>
+            <p class="item-weight">320 g</p>
+            <p class="item-description">Tender spareribs steamed with soft taro.</p>
+            <div class="item-price">₱ 380</div>
+            <button class="add-to-cart-btn" data-name="Spareribs Taro" data-price="₱ 380" data-image="ASSETS/PK5.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/PK7.png" alt="Sweet & Sour Pork" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Sweet & Sour Pork</h3>
+            <p class="item-weight">320 g</p>
+            <p class="item-description">Classic dish with crispy pork in a tangy sauce.</p>
+            <div class="item-price">₱ 380</div>
+            <button class="add-to-cart-btn" data-name="Sweet & Sour Pork" data-price="₱ 380" data-image="ASSETS/PK7.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/CK1.png" alt="Salted Egg Chicken" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Salted Egg Chicken</h3>
+            <p class="item-weight">350 g</p>
+            <p class="item-description">Chicken coated in a rich salted egg yolk sauce</p>
+            <div class="item-price">₱ 480</div>
+            <button class="add-to-cart-btn" data-name="Salted Egg Chicken" data-price="₱ 480" data-image="ASSETS/CK1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/CK3.png" alt="Kung Pao Chicken" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Kung Pao Chicken</h3>
+            <p class="item-weight">340 g</p>
+            <p class="item-description">Stir-fried diced chicken with peanuts, vegetables, and chili.</p>
+            <div class="item-price">₱ 480</div>
+            <button class="add-to-cart-btn" data-name="Kung Pao Chicken" data-price="₱ 480" data-image="ASSETS/CK3.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/DK1.png" alt="Grilled Duck" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Grilled Duck</h3>
+            <p class="item-weight">650 g</p>
+            <p class="item-description">Flavorful duck grilled to perfection.</p>
+            <div class="item-price">₱ 580/1080</div>
+            <button class="add-to-cart-btn" data-name="Grilled Duck" data-price="₱ 580/1080" data-image="ASSETS/DK1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/DK2.png" alt="Hand Pull Duck" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Hand Pull Duck</h3>
+            <p class="item-weight">650 g</p>
+            <p class="item-description">Shredded roasted duck, ready to enjoy.</p>
+            <div class="item-price">₱ 580/1080</div>
+            <button class="add-to-cart-btn" data-name="Hand Pull Duck" data-price="₱ 580/1080" data-image="ASSETS/DK2.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/LB2.png" alt="Lamb Hotpot" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Lamb Hotpot</h3>
+            <p class="item-weight">700 g</p>
+            <p class="item-description">Hearty hotpot with tender pieces of lamb and vegetables.</p>
+            <div class="item-price">₱ 980</div>
+            <button class="add-to-cart-btn" data-name="Lamb Hotpot" data-price="₱ 980" data-image="ASSETS/LB2.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/SH1.png" alt="Salted Egg Shrimp" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Salted Egg Shrimp</h3>
+            <p class="item-weight">540 g</p>
+            <p class="item-description">Succulent shrimp coated in a creamy salted egg yolk sauce.</p>
+            <div class="item-price">₱ 680</div>
+            <button class="add-to-cart-btn" data-name="Salted Egg Shrimp" data-price="₱ 680" data-image="ASSETS/SH1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/SH4.png" alt="Shrimp with Celery" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Shrimp with Celery</h3>
+            <p class="item-weight">480 g</p>
+            <p class="item-description">Fresh shrimp stir-fried with crisp celery.</p>
+            <div class="item-price">₱ 680</div>
+            <button class="add-to-cart-btn" data-name="Shrimp with Celery" data-price="₱ 680" data-image="ASSETS/SH4.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/SL1.png" alt="Halaan w/ Taosi" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Halaan w/ Taosi</h3>
+            <p class="item-weight">250 g</p>
+            <p class="item-description">Clams steamed with fermented black beans.</p>
+            <div class="item-price">₱ 380</div>
+            <button class="add-to-cart-btn" data-name="Halaan w/ Taosi" data-price="₱ 380" data-image="ASSETS/SL1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/BF1.png" alt="Beef Brisket Hot Pot" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Beef Brisket Hot Pot</h3>
+            <p class="item-weight">500 g</p>
+            <p class="item-description">Tender beef brisket simmered in a flavorful hot pot.</p>
+            <div class="item-price">₱ 780</div>
+            <button class="add-to-cart-btn" data-name="Beef Brisket Hot Pot" data-price="₱ 780" data-image="ASSETS/BF1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/BF2.png" alt="Green Pepper Beef" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Green Pepper Beef</h3>
+            <p class="item-weight">320 g</p>
+            <p class="item-description">Stir-fried beef with vibrant green bell peppers.</p>
+            <div class="item-price">₱ 480</div>
+            <button class="add-to-cart-btn" data-name="Green Pepper Beef" data-price="₱ 480" data-image="ASSETS/BF2.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/BF5.png" alt="Beef Ampalaya" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Beef Ampalaya</h3>
+            <p class="item-weight">320 g</p>
+            <p class="item-description">Stir-fried beef with bitter melon.</p>
+            <div class="item-price">₱ 480</div>
+            <button class="add-to-cart-btn" data-name="Beef Ampalaya" data-price="₱ 480" data-image="ASSETS/BF5.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/VG1.png" alt="Dried Work Cabbage" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Dried Work Cabbage</h3>
+            <p class="item-weight">300 g</p>
+            <p class="item-description">Savory stir-fried dried cabbage.</p>
+            <div class="item-price">₱ 380</div>
+            <button class="add-to-cart-btn" data-name="Dried Work Cabbage" data-price="₱ 380" data-image="ASSETS/VG1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/VG4.png" alt="Sour Spicy Shredded Potato" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Sour Spicy Shredded Potato</h3>
+            <p class="item-weight">280 g</p>
+            <p class="item-description">Tangy and spicy stir-fried shredded potatoes.</p>
+            <div class="item-price">₱ 320</div>
+            <button class="add-to-cart-btn" data-name="Sour Spicy Shredded Potato" data-price="₱ 320" data-image="ASSETS/VG4.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/MR2.png" alt="Salted Egg Mushroom" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Salted Egg Mushroom</h3>
+            <p class="item-weight">350 g</p>
+            <p class="item-description">Earthy mushrooms coated in salted egg yolk.</p>
+            <div class="item-price">₱ 480</div>
+            <button class="add-to-cart-btn" data-name="Salted Egg Mushroom" data-price="₱ 480" data-image="ASSETS/MR2.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/TF1.png" alt="Mapo Tofu" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Mapo Tofu</h3>
+            <p class="item-weight">200 g</p>
+            <p class="item-description">Silken tofu in a spicy and savory bean-based sauce</p>
+            <div class="item-price">₱ 280</div>
+            <button class="add-to-cart-btn" data-name="Mapo Tofu" data-price="₱ 280" data-image="ASSETS/TF1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/TF2.png" alt="Home Styled Tofu" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Home Styled Tofu</h3>
+            <p class="item-weight">300 g</p>
+            <p class="item-description">Tofu prepared in a comforting, traditional style.</p>
+            <div class="item-price">₱ 350</div>
+            <button class="add-to-cart-btn" data-name="Home Styled Tofu" data-price="₱ 350" data-image="ASSETS/TF2.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/EG1.png" alt="Steamed Egg" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Steamed Egg</h3>
+            <p class="item-weight">280 g</p>
+            <p class="item-description">Smooth and savory steamed egg custard.</p>
+            <div class="item-price">₱ 320</div>
+            <button class="add-to-cart-btn" data-name="Steamed Egg" data-price="₱ 320" data-image="ASSETS/EG1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/CH1.png" alt="Chilled Cuccumber" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Chilled Cuccumber</h3>
+            <p class="item-weight">200 g</p>
+            <p class="item-description">Refreshing chilled cucumber salad.</p>
+            <div class="item-price">₱ 320</div>
+            <button class="add-to-cart-btn" data-name="Chilled Cuccumber" data-price="₱ 320" data-image="ASSETS/CH1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/CH2.png" alt="Chilled Century Egg" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Chilled Century Egg</h3>
+            <p class="item-weight">280 g</p>
+            <p class="item-description">Delicately flavored chilled century egg.</p>
+            <div class="item-price">₱ 350</div>
+            <button class="add-to-cart-btn" data-name="Chilled Century Egg" data-price="₱ 350" data-image="ASSETS/CH2.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/BR3.png" alt="Brined Pig Ear" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Brined Pig Ear</h3>
+            <p class="item-weight">250 g</p>
+            <p class="item-description">Crunchy and flavorful brined pig ear.</p>
+            <div class="item-price">₱ 380</div>
+            <button class="add-to-cart-btn" data-name="Brined Pig Ear" data-price="₱ 380" data-image="ASSETS/BR3.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/LE1.png" alt="Eel Taosi" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Eel Taosi</h3>
+            <p class="item-weight">300 g</p>
+            <p class="item-description">Savory eel steamed with fermented black beans.</p>
+            <div class="item-price">₱ 450</div>
+            <button class="add-to-cart-btn" data-name="Eel Taosi" data-price="₱ 450" data-image="ASSETS/LE1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/LE2.png" alt="Steamed Lapu-Lapu" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Steamed Lapu-Lapu</h3>
+            <p class="item-weight">560 g</p>
+            <p class="item-description">Fresh lapu-lapu (grouper) steamed to perfection.</p>
+            <div class="item-price">₱ 880</div>
+            <button class="add-to-cart-btn" data-name="Steamed Lapu-Lapu" data-price="₱ 880" data-image="ASSETS/LE2.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/LE3.png" alt="Sweet & Sour Lapu-Lapu" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Sweet & Sour Lapu-Lapu</h3>
+            <p class="item-weight">300 g</p>
+            <p class="item-description">Crispy lapu-lapu in a classic sweet and sour sauce.</p>
+            <div class="item-price">₱ 480</div>
+            <button class="add-to-cart-btn" data-name="Sweet & Sour Lapu-Lapu" data-price="₱ 480" data-image="ASSETS/LE3.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/SM1.png" alt="Steamed Suahe" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Steamed Suahe</h3>
+            <p class="item-weight">300 g</p>
+            <p class="item-description">Fresh suahe (white shrimp) simply steamed.</p>
+            <div class="item-price">₱ 380</div>
+            <button class="add-to-cart-btn" data-name="Steamed Suahe" data-price="₱ 380" data-image="ASSETS/SM1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/SM2.png" alt="Steamed Garlic Suahe" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Steamed Garlic Suahe</h3>
+            <p class="item-weight">300 g</p>
+            <p class="item-description">Suahe steamed with fragrant garlic.</p>
+            <div class="item-price">₱ 480</div>
+            <button class="add-to-cart-btn" data-name="Steamed Garlic Suahe" data-price="₱ 480" data-image="ASSETS/SM2.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/SM4.png" alt="Salt & Pepper Sea Mantis" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Salt & Pepper Sea Mantis</h3>
+            <p class="item-weight">300 g</p>
+            <p class="item-description">Crispy sea mantis seasoned with salt and pepper.</p>
+            <div class="item-price">₱ 550</div>
+            <button class="add-to-cart-btn" data-name="Salt & Pepper Sea Mantis" data-price="₱ 550" data-image="ASSETS/SM4.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/SB1.png" alt="Spicy Boiled Live Fish" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Spicy Boiled Live Fish</h3>
+            <p class="item-weight">500 g</p>
+            <p class="item-description">Fresh fish boiled in a fiery and flavorful broth.</p>
+            <div class="item-price">₱ 780</div>
+            <button class="add-to-cart-btn" data-name="Spicy Boiled Live Fish" data-price="₱ 780" data-image="ASSETS/SB1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/SB2.png" alt="Pickled Live Fish" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Pickled Live Fish</h3>
+            <p class="item-weight">300 g</p>
+            <p class="item-description">Fresh fish prepared with a tangy pickled flavor.</p>
+            <div class="item-price">₱ 580</div>
+            <button class="add-to-cart-btn" data-name="Pickled Live Fish" data-price="₱ 580" data-image="ASSETS/SB2.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/SB3.png" alt="Grilled Fish" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Grilled Fish</h3>
+            <p class="item-weight">350 g</p>
+            <p class="item-description">Fish grilled to a smoky and delicious finish.</p>
+            <div class="item-price">₱ 680</div>
+            <button class="add-to-cart-btn" data-name="Grilled Fish" data-price="₱ 680" data-image="ASSETS/SB3.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/FS1.png" alt="Pan Fried Espada" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Pan Fried Espada</h3>
+            <p class="item-weight">200 g</p>
+            <p class="item-description">Espada (beltfish) pan-fried until golden.</p>
+            <div class="item-price">₱ 380</div>
+            <button class="add-to-cart-btn" data-name="Pan Fried Espada" data-price="₱ 380" data-image="ASSETS/FS1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/FS3.png" alt="Sweet & Sour Fish Fillet" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Sweet & Sour Fish Fillet</h3>
+            <p class="item-weight">350 g</p>
+            <p class="item-description">Tender fish fillets in a tangy sweet and sour sauce.</p>
+            <div class="item-price">₱ 580</div>
+            <button class="add-to-cart-btn" data-name="Sweet & Sour Fish Fillet" data-price="₱ 580" data-image="ASSETS/FS3.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/FS6.png" alt="Fish Taosi" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Fish Taosi</h3>
+            <p class="item-weight">280 g</p>
+            <p class="item-description">Fish steamed or braised with fermented black beans.</p>
+            <div class="item-price">₱ 480</div>
+            <button class="add-to-cart-btn" data-name="Fish Taosi" data-price="₱ 480" data-image="ASSETS/FS6.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/LB1.png" alt="Live Lobster" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Live Lobster</h3>
+            <p class="item-weight">300 g</p>
+            <p class="item-description">Fresh, live lobster prepared to your liking.</p>
+            <div class="item-price">₱ 580</div>
+            <button class="add-to-cart-btn" data-name="Live Lobster" data-price="₱ 580" data-image="ASSETS/LB1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/LB3.png" alt="Garlic Steamed Lobster" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Garlic Steamed Lobster</h3>
+            <p class="item-weight">280 g</p>
+            <p class="item-description">Tender lobster steamed with fragrant garlic.</p>
+            <div class="item-price">₱ 480</div>
+            <button class="add-to-cart-btn" data-name="Garlic Steamed Lobster" data-price="₱ 480" data-image="ASSETS/LB3.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/LB5.png" alt="Lobster Noodles" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Lobster Noodles</h3>
+            <p class="item-weight">230 g</p>
+            <p class="item-description">Savory noodles served with delicious lobster.</p>
+            <div class="item-price">₱ 350</div>
+            <button class="add-to-cart-btn" data-name="Lobster Noodles" data-price="₱ 350" data-image="ASSETS/LB5.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/CB1.png" alt="Salted Egg Crab" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Salted Egg Crab</h3>
+            <p class="item-weight">300 g</p>
+            <p class="item-description">Crab coated in a rich and creamy salted egg sauce.</p>
+            <div class="item-price">₱ 650</div>
+            <button class="add-to-cart-btn" data-name="Salted Egg Crab" data-price="₱ 650" data-image="ASSETS/CB1.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/CB5.png" alt="Steamed Crab w/ Sotanghon" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Steamed Crab w/ Sotanghon</h3>
+            <p class="item-weight">250 g</p>
+            <p class="item-description">Fresh crab steamed with delicate glass noodles.</p>
+            <div class="item-price">₱ 480</div>
+            <button class="add-to-cart-btn" data-name="Steamed Crab w/ Sotanghon" data-price="₱ 480" data-image="ASSETS/CB5.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="menu-item">
+        <div class="item-image-container">
+            <img src="ASSETS/CB6.png" alt="Chilled Red Shell" class="item-image">
+        </div>
+        <div class="item-details">
+            <h3 class="item-name">Chilled Red Shell</h3>
+            <p class="item-weight">300 g</p>
+            <p class="item-description">Refreshing chilled red shell seafood.</p>
+            <div class="item-price">₱ 580</div>
+            <button class="add-to-cart-btn" data-name="Chilled Red Shell" data-price="₱ 580" data-image="ASSETS/CB6.png">
+                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
+            </button>
+        </div>
+    </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer class="bg-[#fcb734] py-10 px-6 md:px-16">
+  <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+    <!-- Logo -->
+    <div class="flex flex-col items-center md:items-start">
+      <img src="../ASSETS/logo.jpg" class="w-36 h-36 md:w-40 md:h-40 object-cover">
+    </div>
+
+    <div class="w-[50px] h-1 md:w-1 md:h-[50px] bg-[#870000] mt-4 rounded-full"></div>
+
+    <!-- Footer Content Container -->
+    <div class="flex flex-col md:flex-row justify-center gap-10 md:gap-16 lg:gap-24">
+      <!-- Address -->
+      <div class="text-center md:text-left">
+        <h3 class="text-[#870000] font-bold text-xl mb-4 font-merriweather">ADDRESS</h3>
+        <p class="text-[#870000] font-medium">239 Maysan Road</p>
+        <p class="text-[#870000] font-medium">Valenzuela City</p>
+      </div>
+
+      <!-- Opening Hours -->
+      <div class="text-center md:text-left">
+        <h3 class="text-[#870000] font-bold text-xl mb-4 font-merriweather">OPENING HOURS</h3>
+        <p class="text-[#870000] font-medium">Mon - Fri: 10:00 AM - 11:30 PM</p>
+        <p class="text-[#870000] font-medium">Sat - Sun: 11:00 AM - 10:30 PM</p>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="text-center md:text-left">
+        <h3 class="text-[#870000] font-bold text-xl mb-4 font-merriweather">CONTACT</h3>
+        <div class="text-[#870000] flex items-center justify-center md:justify-start">
+          <img class="w-6 h-6 mr-2" alt="" src="../ASSETS/contact icon 1.png">
+          <span class="font-medium">09174761831</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="w-full text-center mt-8 border-t border-[#870000]/30 pt-4">
+    <p class="text-[#870000] text-sm font-medium">© 2025 ZHIWEIZAI ALL RIGHTS RESERVED</p>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const seeMoreBtn = document.getElementById('seeMoreBtn');
+    const menuAreaWrapper = document.querySelector('.menu-area-wrapper');
+
+    if (seeMoreBtn && menuAreaWrapper) {
+        seeMoreBtn.addEventListener('click', function() {
+            // Show the detailed menu
+            menuAreaWrapper.style.display = 'block';
+
+            // Scroll to the detailed menu section
+            menuAreaWrapper.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+
+    // Add to cart functionality
+    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const name = this.getAttribute('data-name');
+        const price = this.getAttribute('data-price');
+        const image = this.getAttribute('data-image');
+
+        // Get existing cart or initialize empty array
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+        // Add item to cart
+        cart.push({
+          name: name,
+          price: price,
+          image: image,
+          quantity: 1
+        });
+
+        // Save cart back to localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Show feedback
+        alert(`${name} added to cart!`);
+      });
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+});
+</script>
+</body>
+</html>

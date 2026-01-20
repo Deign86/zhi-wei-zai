@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <title>Sign Up - Zhi Wei Zai</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'zwz-red': '#870000',
+            'zwz-orange': '#fcb734',
+            'zwz-cream': '#fff1ce',
+          },
+          fontFamily: {
+            'merriweather': ['Merriweather', 'serif'],
+            'cinzel': ['Cinzel', 'serif'],
+            'playfair': ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" />
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./signup.css" />
+  
+  <!-- Auth System -->
+  <script src="../js/auth.js"></script>
+  
+  <style>
+    .message {
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .error {
+      background-color: #ffebee;
+      color: #c62828;
+      border: 1px solid #ef9a9a;
+    }
+    .success {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #a5d6a7;
+    }
+    .field-error {
+      color: #c62828;
+      font-size: 0.8rem;
+      margin-top: 0.25rem;
+    }
+    .password-requirements {
+      font-size: 14px;
+      color: #666;
+      margin-top: 5px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body class="bg-zwz-red min-h-screen flex flex-col items-center justify-center p-4">
+  <!-- Background Image -->
+  <div class="fixed inset-0 bg-cover bg-center z-0" style="background-image: url('../ASSETS/background.jpg'); opacity: 0.15;"></div>
+
+  <!-- Main content -->
+  <div class="bg-white w-full md:w-full md:max-w-none md:shadow-none md:rounded-none md:p-8 relative mt-0 md:mt-24 z-10 max-w-md rounded-lg shadow-lg p-6">
+    <!-- Mobile Header - Only visible on mobile -->
+    <div class="md:hidden bg-zwz-red p-4 flex justify-between items-center mb-6 rounded-t-lg -mt-6 -mx-6">
+      <a href="../index.html" class="flex items-center">
+        <img class="w-8 h-8" alt="Exit to app" src="exit_to_app.png">
+      </a>
+      <h1 class="font-cinzel text-white text-lg sm:text-xl">Welcome to Zhi Wei Zai!</h1>
+    </div>
+
+    <!-- Sign up heading -->
+    <h2 class="text-center font-cinzel text-zwz-red text-xl md:text-2xl mb-6 md:mb-8 px-4">Sign up</h2>
+
+    <!-- Message display area -->
+    <div id="messageArea" class="hidden px-4 md:px-0 md:max-w-lg md:mx-auto"></div>
+
+    <!-- Sign up form -->
+    <form id="signupForm" class="space-y-4 md:space-y-6 px-4 md:px-0 md:max-w-lg md:mx-auto">
+      <!-- Name input -->
+      <div class="space-y-1 md:space-y-2">
+        <label for="name" class="block text-zwz-red text-sm md:text-base">Name</label>
+        <input type="text" id="name" name="name" required 
+               class="w-full px-3 py-2 md:px-4 md:py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-zwz-orange" />
+      </div>
+
+      <!-- Email input -->
+      <div class="space-y-1 md:space-y-2">
+        <label for="email" class="block text-zwz-red text-sm md:text-base">Email Address</label>
+        <input type="email" id="email" name="email" required 
+               class="w-full px-3 py-2 md:px-4 md:py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-zwz-orange" />
+      </div>
+
+      <!-- Password input -->
+      <div class="space-y-1 md:space-y-2">
+        <label for="password" class="block text-zwz-red text-sm md:text-base">Password</label>
+        <input type="password" id="password" name="password" required 
+               class="w-full px-3 py-2 md:px-4 md:py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-zwz-orange" />
+        <div class="password-requirements">
+          Password must be at least 8 characters long
+        </div>
+      </div>
+
+      <!-- Confirm Password input -->
+      <div class="space-y-1 md:space-y-2">
+        <label for="confirmPassword" class="block text-zwz-red text-sm md:text-base">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required 
+               class="w-full px-3 py-2 md:px-4 md:py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-zwz-orange" />
+      </div>
+
+      <!-- Phone input -->
+      <div class="space-y-1 md:space-y-2">
+        <label for="phone" class="block text-zwz-red text-sm md:text-base">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required 
+               class="w-full px-3 py-2 md:px-4 md:py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-zwz-orange" />
+      </div>
+
+      <!-- Address input -->
+      <div class="space-y-1 md:space-y-2">
+        <label for="address" class="block text-zwz-red text-sm md:text-base">Delivery Address</label>
+        <input type="text" id="address" name="address" required 
+               class="w-full px-3 py-2 md:px-4 md:py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-zwz-orange" />
+      </div>
+
+      <!-- Sign up button -->
+      <button type="submit" class="w-full bg-zwz-red text-white font-cinzel font-bold py-2 md:py-3 rounded hover:bg-[#6a0000] transition-colors">SIGN UP</button>
+
+      <!-- Already have account link -->
+      <div class="text-center">
+        <span class="text-gray-600 text-sm">Already have an account? </span>
+        <a href="login.html" class="text-zwz-red hover:text-zwz-orange text-sm font-bold transition-colors">Sign In</a>
+      </div>
+
+      <!-- Terms text -->
+      <p class="text-center text-xs text-zwz-red">
+        By signing up, I agree to Zhi Wei Zai's <span class="font-bold">Privacy Notice</span> and <span class="font-bold">Terms & Conditions</span>
+      </p>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if already logged in
+      if (ZWZAuth.isLoggedIn()) {
+        window.location.href = 'welcome.html';
+        return;
+      }
+
+      // Handle form submission
+      document.getElementById('signupForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const phone = document.getElementById('phone').value;
+        const address = document.getElementById('address').value;
+        
+        // Check password match
+        if (password !== confirmPassword) {
+          showMessage('Passwords do not match', 'error');
+          return;
+        }
+        
+        const result = ZWZAuth.register({
+          name,
+          email,
+          password,
+          phone,
+          address
+        });
+        
+        if (result.success) {
+          // Redirect to login page with success message
+          window.location.href = 'login.html?registered=true';
+        } else {
+          showMessage(result.error, 'error');
+        }
+      });
+    });
+
+    function showMessage(message, type) {
+      const messageArea = document.getElementById('messageArea');
+      messageArea.innerHTML = `<div class="message ${type}">${message}</div>`;
+      messageArea.classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>

@@ -48,7 +48,7 @@ A modern, responsive restaurant website for **Zhi Wei Zai** - featuring an inter
 ## 🚀 Getting Started
 
 ### View Online
-Visit the live site: [Deployed on Vercel]
+Visit the live site: **[zhi-wei-zai.vercel.app](https://zhi-wei-zai.vercel.app)**
 
 ### Run Locally
 1. Clone the repository:

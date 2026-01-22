@@ -1,4 +1,90 @@
+/* Chinese Traditional Color System (中式传统配色) */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Karla:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+  /* Primary Colors */
+  --zwz-crimson: #902223;           /* 绛红 (Jiàng Hóng) - Deep Chinese Red */
+  --zwz-crimson-light: #A83234;     /* Hover state */
+  --zwz-crimson-dark: #6E1A1B;      /* Dark accent */
+  
+  /* Secondary Colors */
+  --zwz-brown: #8D5631;             /* 棕褐 (Zōng Hè) - Warm Brown */
+  --zwz-brown-light: #A86B42;       /* Hover state */
+  --zwz-brown-dark: #6B4025;        /* Dark accent */
+  
+  /* Background Colors */
+  --zwz-cream: #E2CD9C;             /* 米黄 (Mǐ Huáng) - Warm Cream */
+  --zwz-cream-light: #F5EDD8;       /* Light sections */
+  --zwz-cream-dark: #D4BE8A;        /* Darker cream */
+  
+  /* Accent Colors */
+  --zwz-gold: #C4A44A;              /* 金色 (Jīn Sè) - Imperial Gold */
+  --zwz-gold-light: #D4B85E;        /* Hover gold */
+  
+  /* Text Colors */
+  --zwz-text: #3D2317;              /* 深褐 (Shēn Hè) - Primary text */
+  --zwz-text-light: #5C3D2E;        /* Secondary text */
+  
+  /* Shadows with brand colors */
+  --shadow-sm: 0 1px 2px rgba(61, 35, 23, 0.05);
+  --shadow-md: 0 4px 6px rgba(61, 35, 23, 0.1);
+  --shadow-lg: 0 10px 15px rgba(61, 35, 23, 0.1);
+  --shadow-xl: 0 20px 25px rgba(144, 34, 35, 0.15);
+  
+  /* ===== UNIFIED TYPOGRAPHY SCALE ===== */
+  /* Font Families */
+  --font-display: 'Playfair Display', 'Noto Serif SC', serif;
+  --font-heading: 'Cinzel', 'Noto Serif SC', serif;
+  --font-body: 'Karla', 'Noto Sans SC', sans-serif;
+  
+  /* Font Sizes - Mobile First */
+  --text-hero: 2.5rem;        /* 40px */
+  --text-page-title: 2rem;    /* 32px */
+  --text-section-title: 1.5rem; /* 24px */
+  --text-card-title: 1.25rem; /* 20px */
+  --text-subtitle: 1.125rem;  /* 18px */
+  --text-body-lg: 1rem;       /* 16px */
+  --text-body: 0.875rem;      /* 14px */
+  --text-caption: 0.75rem;    /* 12px */
+  --text-nav: 0.875rem;       /* 14px */
+  --text-button: 0.875rem;    /* 14px */
+}
+
+/* Desktop font size overrides */
+@media (min-width: 768px) {
+  :root {
+    --text-hero: 4.5rem;        /* 72px */
+    --text-page-title: 3rem;    /* 48px */
+    --text-section-title: 2rem; /* 32px */
+    --text-card-title: 1.5rem;  /* 24px */
+    --text-subtitle: 1.25rem;   /* 20px */
+    --text-body-lg: 1.125rem;   /* 18px */
+    --text-body: 1rem;          /* 16px */
+    --text-caption: 0.875rem;   /* 14px */
+    --text-nav: 1rem;           /* 16px */
+    --text-button: 1rem;        /* 16px */
+  }
+}
+
 body {
 	margin: 0;
-	line-height: normal;
+	line-height: 1.6;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  background-color: var(--zwz-cream);
+  color: var(--zwz-text);
 }
+
+/* Typography utility classes for non-Tailwind pages */
+.font-display { font-family: var(--font-display); }
+.font-heading { font-family: var(--font-heading); }
+.font-body { font-family: var(--font-body); }
+
+.text-hero { font-size: var(--text-hero); }
+.text-page-title { font-size: var(--text-page-title); }
+.text-section-title { font-size: var(--text-section-title); }
+.text-card-title { font-size: var(--text-card-title); }
+.text-subtitle { font-size: var(--text-subtitle); }
+.text-body-lg { font-size: var(--text-body-lg); }
+.text-body { font-size: var(--text-body); }
+.text-caption { font-size: var(--text-caption); }

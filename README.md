@@ -82,7 +82,7 @@ Orders and reservations are sent via EmailJS to the restaurant's email.
 ## 🙏 Acknowledgments
 
 - **Tailwind CSS** for the beautiful utility classes
-- **Google Fonts** for Merriweather, Cinzel, and Playfair Display
+- **Google Fonts** for Karla, Cinzel, Playfair Display, and Noto fonts (Chinese support)
 - **EmailJS** for handling form submissions
 - **Flatpickr** for the date picker
 

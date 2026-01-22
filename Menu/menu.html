@@ -1,1000 +1,997 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, width=device-width">
-  <title>Menu - Zhi Wei Zai</title>
-
-  <!-- External CSS -->
+  <title>Menu - Zhi Wei Zai | Authentic Chinese Restaurant</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            // Chinese Traditional Color Palette (中式传统配色)
+            'zwz-crimson': '#902223',      // Primary - 绛红 (Jiàng Hóng)
+            'zwz-crimson-light': '#A83234',
+            'zwz-crimson-dark': '#6E1A1B',
+            'zwz-brown': '#8D5631',          // Secondary - 棕褐 (Zōng Hè)
+            'zwz-brown-light': '#A86B42',
+            'zwz-brown-dark': '#6B4025',
+            'zwz-cream': '#E2CD9C',          // Background - 米黄 (Mǐ Huáng)
+            'zwz-cream-light': '#F5EDD8',
+            'zwz-cream-dark': '#D4BE8A',
+            'zwz-gold': '#C4A44A',           // Accent - 金色 (Jīn Sè)
+            'zwz-gold-light': '#D4B85E',
+            'zwz-text': '#3D2317',           // Text - 深褐 (Shēn Hè)
+            'zwz-text-light': '#5C3D2E',
+            // Legacy aliases
+            'zwz-red': '#902223',
+            'zwz-red-dark': '#6E1A1B',
+          },
+          fontFamily: {
+            'display': ['Playfair Display', 'Noto Serif SC', 'serif'],
+            'body': ['Karla', 'Noto Sans SC', 'sans-serif'],
+            'heading': ['Cinzel', 'Noto Serif SC', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="Menu 1.css" />
-
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" />
-
-  <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="../ASSETS/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../ASSETS/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../ASSETS/favicon-16x16.png">
-  <link rel="manifest" href="../ASSETS/site.webmanifest">
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Auth System -->
-  <script src="../js/auth.js"></script>
 </head>
-<body>
-<!-- Top Navigation -->
-<nav class="fixed top-0 left-0 w-full bg-[#fcb734] shadow-md z-50 px-3 py-2 md:px-[3vw] md:py-[1vh]">
-  <div class="container mx-auto flex items-center justify-between">
-    <!-- Logo for mobile (centered) and desktop (left aligned) -->
-    <div class="md:hidden w-full flex justify-center relative">
-      <img src="../ASSETS/logo.jpg" class="absolute top-[-1.5vh] left-1/2 transform -translate-x-1/2 w-[15vw] h-[15vh]" alt="Logo">
-    </div>
+<body class="bg-zwz-cream font-body antialiased">
 
-    <!-- Desktop Navigation -->
-    <div class="hidden md:flex items-center w-full">
-      <div class="flex gap-5 ml-auto relative">
-        <img src="../ASSETS/logo.jpg" class="absolute top-[-1.5vh] left-[-50vw] w-[12vw] h-[20vh]">
-        <a href="../index.html" class="font-merriweather text-[#870000] no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110">Home</a>
-        <a href="../index.html#about" class="font-merriweather text-[#870000] no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="aboutText">About</a>
-        <a href="menu.html" class="font-merriweather text-[#870000] no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="menuText">Menu</a>
-        <a href="../Catering and Gallery/catering.html" class="font-merriweather text-[#870000] no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="cateringText">Catering</a>
-        <a href="../Contact and Reservations/contact.html" class="font-merriweather text-[#870000] no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="contactText">Contact</a>
-        <a href="../Login and Signup/login.html" class="ml-[5px]" id="accountText"><img src="../ASSETS/account_circle.svg" alt="account-circle-icon" class="w-[30px] h-[30px]"/></a>
-        <a href="cart.html" class="ml-[5px]" id="cartText"><img src="../ASSETS/shopping_cart.svg" alt="cart-icon" class="w-[30px] h-[30px]"/></a>
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50" id="main-nav">
+    <div class="mx-4 mt-4 md:mx-8 lg:mx-16">
+      <div class="bg-white/95 backdrop-blur-lg rounded-2xl shadow-lg border border-zwz-red/10 px-4 py-3 md:px-6 md:py-4">
+        <div class="flex items-center justify-between">
+          <a href="../index.html" class="flex items-center gap-3 group cursor-pointer">
+            <img src="../ASSETS/logo.jpg" class="w-12 h-12 md:w-14 md:h-14 rounded-xl object-cover shadow-md group-hover:scale-105 transition-transform duration-300" alt="Zhi Wei Zai Logo">
+            <div class="hidden sm:block">
+              <span class="font-heading text-zwz-red-dark text-lg md:text-xl font-bold tracking-wide">ZhiWeiZai</span>
+              <span class="block text-xs text-zwz-text/60 font-medium -mt-1">Chinese Restaurant</span>
+            </div>
+          </a>
+
+          <div class="hidden lg:flex items-center gap-1">
+            <a href="../index.html" class="px-4 py-2 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 hover:text-zwz-red-dark transition-colors duration-200 cursor-pointer">Home</a>
+            <a href="../index.html#about" class="px-4 py-2 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 hover:text-zwz-red-dark transition-colors duration-200 cursor-pointer">About</a>
+            <a href="menu.html" class="px-4 py-2 text-zwz-red-dark font-semibold rounded-xl bg-zwz-red/10 cursor-pointer">Menu</a>
+            <a href="../Catering and Gallery/catering.html" class="px-4 py-2 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 hover:text-zwz-red-dark transition-colors duration-200 cursor-pointer">Catering</a>
+            <a href="../Contact and Reservations/contact.html" class="px-4 py-2 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 hover:text-zwz-red-dark transition-colors duration-200 cursor-pointer">Contact</a>
+          </div>
+
+          <div class="flex items-center gap-2 md:gap-3">
+            <a href="cart.html" class="relative p-2.5 rounded-xl bg-zwz-cream hover:bg-zwz-gold/20 transition-colors duration-200 cursor-pointer group" aria-label="Shopping Cart">
+              <svg class="w-6 h-6 text-zwz-red-dark group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+              <span id="cart-count" class="hidden absolute -top-1 -right-1 w-5 h-5 bg-zwz-red text-white text-xs font-bold rounded-full items-center justify-center">0</span>
+            </a>
+
+            <a href="../Login and Signup/login.html" id="auth-link" class="hidden md:flex items-center gap-2 px-4 py-2.5 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 transition-colors duration-200 cursor-pointer">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+              </svg>
+              <span id="auth-text">Sign In</span>
+            </a>
+
+            <button id="menu-toggle" class="lg:hidden p-2.5 rounded-xl bg-zwz-cream hover:bg-zwz-gold/20 transition-colors duration-200 cursor-pointer" aria-label="Toggle Menu">
+              <svg class="w-6 h-6 text-zwz-red-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Mobile Navigation (hamburger menu) -->
-    <div class="md:hidden flex items-center justify-end w-full">
-      <div class="flex items-center">
-        <a href="../Login and Signup/login.html" class="ml-2" id="mobileAccountText"><img src="../ASSETS/account_circle.svg" alt="account-circle-icon" class="w-[30px] h-[30px]"/></a>
-        <a href="cart.html" class="ml-2" id="mobileCartText"><img src="../ASSETS/shopping_cart.svg" alt="cart-icon" class="w-[30px] h-[30px]"/></a>
-        <button id="menu-toggle" class="text-[#870000] focus:outline-none ml-2">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden mx-4 mt-2 md:mx-8">
+      <div class="bg-white/95 backdrop-blur-lg rounded-2xl shadow-lg border border-zwz-red/10 p-4 space-y-2">
+        <a href="../index.html" class="block px-4 py-3 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 hover:text-zwz-red-dark transition-colors cursor-pointer">Home</a>
+        <a href="../index.html#about" class="block px-4 py-3 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 hover:text-zwz-red-dark transition-colors cursor-pointer">About</a>
+        <a href="menu.html" class="block px-4 py-3 text-zwz-red-dark font-semibold rounded-xl bg-zwz-red/10 cursor-pointer">Menu</a>
+        <a href="../Catering and Gallery/catering.html" class="block px-4 py-3 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 hover:text-zwz-red-dark transition-colors cursor-pointer">Catering</a>
+        <a href="../Contact and Reservations/contact.html" class="block px-4 py-3 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 hover:text-zwz-red-dark transition-colors cursor-pointer">Contact</a>
+        <a href="../Login and Signup/login.html" class="block px-4 py-3 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 hover:text-zwz-red-dark transition-colors cursor-pointer">Sign In</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative pt-44 pb-48 md:pt-52 md:pb-60 lg:pt-60 lg:pb-72 bg-gradient-to-br from-zwz-red-dark via-zwz-red to-zwz-red-dark overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0 hero-pattern"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <span class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/90 text-sm font-medium mb-8">
+        <span class="w-2 h-2 rounded-full bg-zwz-gold animate-pulse"></span>
+        Authentic Flavors, Exceptional Service
+      </span>
+      <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white font-bold leading-tight mb-8">
+        Our <span class="text-zwz-gold-light italic">Menu</span>
+      </h1>
+      <p class="text-xl md:text-2xl lg:text-3xl text-white/90 max-w-3xl mx-auto leading-relaxed">Discover our carefully crafted dishes, from traditional soups to flavorful noodles — every dish tells a story.</p>
+    </div>
+  </section>
+
+  <!-- Featured Categories -->
+  <section class="py-16 md:py-24 bg-zwz-cream">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="group bg-gradient-to-br from-zwz-red-dark to-zwz-red p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer">
+          <div class="flex flex-col items-center text-center">
+            <div class="w-40 h-40 mb-6 rounded-full bg-white/10 flex items-center justify-center overflow-hidden">
+              <img src="ASSETS/food/soups-category.jpg" alt="Soups" class="w-40 h-40 object-cover rounded-full group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <h3 class="font-display text-2xl md:text-3xl text-white font-bold mb-3">Soups</h3>
+            <p class="text-white/80 leading-relaxed">Warm your soul with our slow-simmered broths, crafted from generations-old recipes.</p>
+          </div>
+        </div>
+        <div class="group bg-gradient-to-br from-zwz-red-dark to-zwz-red p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer">
+          <div class="flex flex-col items-center text-center">
+            <div class="w-40 h-40 mb-6 rounded-full bg-white/10 flex items-center justify-center overflow-hidden">
+              <img src="ASSETS/food/dumplings-category.jpg" alt="Dumplings" class="w-40 h-40 object-cover rounded-full group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <h3 class="font-display text-2xl md:text-3xl text-white font-bold mb-3">Dumplings</h3>
+            <p class="text-white/80 leading-relaxed">Delicate pleats enclose juicy fillings in our hand-folded dumplings.</p>
+          </div>
+        </div>
+        <div class="group bg-gradient-to-br from-zwz-red-dark to-zwz-red p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer">
+          <div class="flex flex-col items-center text-center">
+            <div class="w-40 h-40 mb-6 rounded-full bg-white/10 flex items-center justify-center overflow-hidden">
+              <img src="ASSETS/food/noodles-category.jpg" alt="Noodles" class="w-40 h-40 object-cover rounded-full group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <h3 class="font-display text-2xl md:text-3xl text-white font-bold mb-3">Noodles</h3>
+            <p class="text-white/80 leading-relaxed">Hand-pulled daily by our master noodle artisans.</p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-12">
+        <button id="seeMoreBtn" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-zwz-red to-zwz-red-dark text-white font-bold text-lg rounded-2xl shadow-xl shadow-zwz-red/30 hover:shadow-zwz-red/50 hover:scale-105 transition-all duration-300 cursor-pointer">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+          </svg>
+          Browse Full Menu
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
           </svg>
         </button>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Mobile Menu (hidden by default) -->
-  <div id="mobile-menu" class="hidden md:hidden bg-[#fcb734] w-full">
-    <div class="flex flex-col items-center py-4">
-      <a href="../index.html" class="font-merriweather text-[#870000] no-underline text-xl py-2 transition-all hover:text-white">Home</a>
-      <a href="../index.html#about" class="font-merriweather text-[#870000] no-underline text-xl py-2 transition-all hover:text-white" id="mobileAboutText">About</a>
-      <a href="menu.html" class="font-merriweather text-[#870000] no-underline text-xl py-2 transition-all hover:text-white" id="mobileMenuText">Menu</a>
-      <a href="../Catering and Gallery/catering.html" class="font-merriweather text-[#870000] no-underline text-xl py-2 transition-all hover:text-white" id="mobileCateringText">Catering</a>
-      <a href="../Contact and Reservations/contact.html" class="font-merriweather text-[#870000] no-underline text-xl py-2 transition-all hover:text-white" id="mobileContactText">Contact</a>
-    </div>
-  </div>
-</nav>
-
-<!-- Spacer for fixed navbar -->
-<!-- <div class="h-[41.9px]"></div> -->
- <div class="">
-    <div class="flex flex-col md:flex-row gap-6 p-6 justify-center p-5 pt-40">
-      <!-- Soups Box -->
-      <div class="bg-[#870000] p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
-        <h1 class="font-['Playfair_Display'] text-white text-2xl md:text-3xl mb-4">Soups</h1>
-        <h2 class="font-['Playfair_Display'] text-white text-base md:text-lg mb-4">
-          Warm your soul with our slow-simmered broths, crafted from generations-old recipes. Our signature bone broth cooks for 12 hours with fresh ginger, star anise, and premium cuts of meat.
+  <!-- Menu Section -->
+  <section id="menu-section" class="py-16 md:py-24 bg-zwz-cream-dark">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <div class="text-center mb-12">
+        <span class="inline-block px-4 py-1.5 bg-zwz-red/10 text-zwz-red-dark font-semibold text-sm rounded-full mb-4">Full Menu</span>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl text-zwz-red-dark font-bold">
+          Explore Our <span class="text-zwz-gold italic">Dishes</span>
         </h2>
-        <img src="ASSETS/msmc.png" alt="Soups" class="w-[200px] h-[200px] object-contain">
       </div>
 
-      <!-- Dumplings Box -->
-      <div class="bg-[#870000] p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
-        <h1 class="font-['Playfair_Display'] text-white text-2xl md:text-3xl mb-4">Dumplings</h1>
-        <h2 class="font-['Playfair_Display'] text-white text-base md:text-lg mb-4">
-          Delicate pleats enclose juicy fillings in our hand-folded dumplings. Our classic pork and chive dumplings feature a 3:7 lean-to-fat ratio for optimal succulence.
-        </h2>
-        <img src="ASSETS/dfjnb 2.png" alt="Dumplings" class="w-[200px] h-[200px] object-contain">
+      <!-- Category Tabs -->
+      <div class="flex flex-wrap justify-center gap-2 mb-12">
+        <button class="category-tab px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 bg-zwz-red text-white cursor-pointer" data-category="all">All</button>
+        <button class="category-tab px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 bg-white text-zwz-text/80 hover:bg-zwz-red/10 cursor-pointer" data-category="best-selling">Best Selling</button>
+        <button class="category-tab px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 bg-white text-zwz-text/80 hover:bg-zwz-red/10 cursor-pointer" data-category="soup">Soup</button>
+        <button class="category-tab px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 bg-white text-zwz-text/80 hover:bg-zwz-red/10 cursor-pointer" data-category="fried-rice">Fried Rice</button>
+        <button class="category-tab px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 bg-white text-zwz-text/80 hover:bg-zwz-red/10 cursor-pointer" data-category="noodles">Noodles</button>
+        <button class="category-tab px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 bg-white text-zwz-text/80 hover:bg-zwz-red/10 cursor-pointer" data-category="pork">Pork</button>
+        <button class="category-tab px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 bg-white text-zwz-text/80 hover:bg-zwz-red/10 cursor-pointer" data-category="chicken">Chicken</button>
+        <button class="category-tab px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 bg-white text-zwz-text/80 hover:bg-zwz-red/10 cursor-pointer" data-category="seafood">Seafood</button>
+        <button class="category-tab px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 bg-white text-zwz-text/80 hover:bg-zwz-red/10 cursor-pointer" data-category="vegetables">Vegetables</button>
       </div>
 
-      <!-- Noodles Box -->
-      <div class="bg-[#870000] p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
-        <h1 class="font-['Playfair_Display'] text-white text-2xl md:text-3xl mb-4">Noodles</h1>
-        <h2 class="font-['Playfair_Display'] text-white text-base md:text-lg mb-4">
-          Hand-pulled daily by our master noodle artisans, these perfectly chewy strands are paired with your choice of savory toppings.
-        </h2>
-        <img src="ASSETS/418625e8-228c-40d3-ad9c-ce7f7be7b07c 2.png" alt="Noodles" class="w-[200px] h-[200px] object-contain">
+      <!-- Menu Items Grid -->
+      <div id="menu-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        
+        <!-- SOUPS -->
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="soup">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="ASSETS/food/seaweed-soup.jpg" alt="Seaweed Soup" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Soup</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Seaweed Soup</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Light and savory broth with delicate seaweed.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱280</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Seaweed Soup" data-price="280" data-image="ASSETS/food/seaweed-soup.jpg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="soup best-selling">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1552611052-33e04de081de?w=400&h=300&fit=crop&auto=format" alt="Wonton Soup" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-gold text-white text-xs font-bold rounded-full">Best Seller</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Wonton Soup</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Delicious dumplings in a clear, flavorful broth.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱320</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Wonton Soup" data-price="320" data-image="https://images.unsplash.com/photo-1552611052-33e04de081de?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="soup">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&h=300&fit=crop&auto=format" alt="Hot & Sour Soup" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Soup</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Hot & Sour Soup</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Perfect balance of spicy and tangy flavors.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱300</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Hot & Sour Soup" data-price="300" data-image="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="soup">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=400&h=300&fit=crop&auto=format" alt="Egg Drop Soup" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Soup</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Egg Drop Soup</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Silky egg ribbons in savory chicken broth.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱250</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Egg Drop Soup" data-price="250" data-image="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="soup">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&h=300&fit=crop&auto=format" alt="Corn Soup" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Soup</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Corn Soup</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Creamy sweet corn soup with egg threads.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱260</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Corn Soup" data-price="260" data-image="https://images.unsplash.com/photo-1574484284002-952d92456975?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="soup">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&h=300&fit=crop&auto=format" alt="Mixed Vegetable Soup" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Soup</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Mixed Vegetable Soup</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Healthy mix of fresh vegetables in clear broth.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱270</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Mixed Vegetable Soup" data-price="270" data-image="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- FRIED RICE -->
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="fried-rice best-selling">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&h=300&fit=crop&auto=format" alt="Yang Chow Fried Rice" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-gold text-white text-xs font-bold rounded-full">Best Seller</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Yang Chow Fried Rice</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Classic fried rice with shrimp, char siu, and eggs.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱380</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Yang Chow Fried Rice" data-price="380" data-image="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="fried-rice">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400&h=300&fit=crop&auto=format" alt="Seafood Fried Rice" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Fried Rice</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Seafood Fried Rice</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Wok-fried rice with shrimp, squid, and fish.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱420</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Seafood Fried Rice" data-price="420" data-image="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- NOODLES -->
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="noodles best-selling">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&h=300&fit=crop&auto=format" alt="Beef Chow Mein" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-gold text-white text-xs font-bold rounded-full">Best Seller</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Beef Chow Mein</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Crispy noodles with tender beef and vegetables.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱350</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Beef Chow Mein" data-price="350" data-image="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="noodles">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=400&h=300&fit=crop&auto=format" alt="Shrimp Lo Mein" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Noodles</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Shrimp Lo Mein</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Soft egg noodles with succulent shrimp.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱380</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Shrimp Lo Mein" data-price="380" data-image="https://images.unsplash.com/photo-1555126634-323283e090fa?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="noodles">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400&h=300&fit=crop&auto=format" alt="Singapore Noodles" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Noodles</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Singapore Noodles</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Curry-flavored rice noodles with shrimp and pork.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱360</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Singapore Noodles" data-price="360" data-image="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="noodles">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400&h=300&fit=crop&auto=format" alt="Beef Hofan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Noodles</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Beef Hofan</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Wide rice noodles stir-fried with tender beef.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱390</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Beef Hofan" data-price="390" data-image="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PORK -->
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="pork best-selling">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=400&h=300&fit=crop&auto=format" alt="Sweet & Sour Pork" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-gold text-white text-xs font-bold rounded-full">Best Seller</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Sweet & Sour Pork</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Crispy pork in tangy sweet and sour sauce.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱420</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Sweet & Sour Pork" data-price="420" data-image="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="pork">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="ASSETS/food/twice-cooked-pork.jpg" alt="Twice Cooked Pork" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Pork</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Twice Cooked Pork</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Sliced pork belly with chili bean sauce.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱450</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Twice Cooked Pork" data-price="450" data-image="ASSETS/food/twice-cooked-pork.jpg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="pork">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="ASSETS/food/char-siu-pork.jpg" alt="Char Siu Pork" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Pork</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Char Siu Pork</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Cantonese BBQ pork with honey glaze.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱480</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Char Siu Pork" data-price="480" data-image="ASSETS/food/char-siu-pork.jpg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="pork">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1606728035253-49e8a23146de?w=400&h=300&fit=crop&auto=format" alt="Braised Pork Belly" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Pork</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Braised Pork Belly</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Melt-in-mouth pork in rich soy sauce.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱520</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Braised Pork Belly" data-price="520" data-image="https://images.unsplash.com/photo-1606728035253-49e8a23146de?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHICKEN -->
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="chicken best-selling">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1525755662778-989d0524087e?w=400&h=300&fit=crop&auto=format" alt="Kung Pao Chicken" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-gold text-white text-xs font-bold rounded-full">Best Seller</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Kung Pao Chicken</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Spicy diced chicken with peanuts and chilies.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱380</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Kung Pao Chicken" data-price="380" data-image="https://images.unsplash.com/photo-1525755662778-989d0524087e?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="chicken">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&h=300&fit=crop&auto=format" alt="Lemon Chicken" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Chicken</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Lemon Chicken</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Crispy chicken in zesty lemon sauce.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱360</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Lemon Chicken" data-price="360" data-image="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="chicken">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1604908177453-7462950a6a3b?w=400&h=300&fit=crop&auto=format" alt="Cashew Chicken" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Chicken</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Cashew Chicken</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Stir-fried chicken with cashews and vegetables.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱390</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Cashew Chicken" data-price="390" data-image="https://images.unsplash.com/photo-1604908177453-7462950a6a3b?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="chicken">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="ASSETS/food/orange-chicken.jpg" alt="Orange Chicken" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Chicken</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Orange Chicken</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Crispy chicken in sweet orange glaze.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱370</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Orange Chicken" data-price="370" data-image="ASSETS/food/orange-chicken.jpg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEAFOOD -->
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="seafood best-selling">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=400&h=300&fit=crop&auto=format" alt="Salt & Pepper Shrimp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-gold text-white text-xs font-bold rounded-full">Best Seller</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Salt & Pepper Shrimp</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Crispy shell-on shrimp with aromatic spices.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱480</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Salt & Pepper Shrimp" data-price="480" data-image="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="seafood">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&h=300&fit=crop&auto=format" alt="Steamed Fish" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Seafood</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Steamed Fish</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Fresh fish steamed with ginger and soy.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱550</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Steamed Fish" data-price="550" data-image="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="seafood">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1559737558-2f5a35f4523b?w=400&h=300&fit=crop&auto=format" alt="Garlic Butter Shrimp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Seafood</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Garlic Butter Shrimp</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Succulent shrimp in rich garlic butter sauce.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱460</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Garlic Butter Shrimp" data-price="460" data-image="https://images.unsplash.com/photo-1559737558-2f5a35f4523b?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="seafood">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?w=400&h=300&fit=crop&auto=format" alt="Sweet & Sour Fish" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Seafood</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Sweet & Sour Fish</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Crispy fish fillet in tangy sweet sauce.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱490</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Sweet & Sour Fish" data-price="490" data-image="https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="seafood">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=400&h=300&fit=crop&auto=format" alt="Szechuan Squid" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-red text-white text-xs font-bold rounded-full">Seafood</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Szechuan Squid</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Tender squid in fiery Szechuan pepper sauce.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱440</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Szechuan Squid" data-price="440" data-image="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- VEGETABLES -->
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="vegetables">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400&h=300&fit=crop&auto=format" alt="Buddha's Delight" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-green-600 text-white text-xs font-bold rounded-full">Vegetarian</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Buddha's Delight</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Mixed vegetables with tofu in savory sauce.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱320</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Buddha's Delight" data-price="320" data-image="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="vegetables">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop&auto=format" alt="Garlic Bok Choy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-green-600 text-white text-xs font-bold rounded-full">Vegetarian</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Garlic Bok Choy</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Fresh bok choy stir-fried with garlic.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱280</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Garlic Bok Choy" data-price="280" data-image="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="vegetables">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1582576163090-09d3b6f8a969?w=400&h=300&fit=crop&auto=format" alt="Mapo Tofu" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-green-600 text-white text-xs font-bold rounded-full">Vegetarian</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Mapo Tofu</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Silken tofu in spicy chili bean sauce.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱300</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Mapo Tofu" data-price="300" data-image="https://images.unsplash.com/photo-1582576163090-09d3b6f8a969?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- DUMPLINGS / DIM SUM -->
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="best-selling">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=400&h=300&fit=crop&auto=format" alt="Siomai" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-gold text-white text-xs font-bold rounded-full">Best Seller</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Pork Siomai</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Steamed pork dumplings with special sauce.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱220</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Pork Siomai" data-price="220" data-image="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="best-selling">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=400&h=300&fit=crop&auto=format" alt="Shrimp Hakaw" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-gold text-white text-xs font-bold rounded-full">Best Seller</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Shrimp Hakaw</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Crystal shrimp dumplings in translucent wrapper.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱280</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Shrimp Hakaw" data-price="280" data-image="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MORE DISHES -->
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="best-selling">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop&auto=format" alt="Beef with Broccoli" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-gold text-white text-xs font-bold rounded-full">Best Seller</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Beef with Broccoli</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Tender beef slices with fresh broccoli florets.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱420</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Beef with Broccoli" data-price="420" data-image="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="best-selling">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=400&h=300&fit=crop&auto=format" alt="Mongolian Beef" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-gold text-white text-xs font-bold rounded-full">Best Seller</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Mongolian Beef</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Crispy beef with scallions in sweet soy sauce.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱450</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Mongolian Beef" data-price="450" data-image="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="best-selling">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1606728035253-49e8a23146de?w=400&h=300&fit=crop&auto=format" alt="Peking Lechon" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-gold text-white text-xs font-bold rounded-full">Best Seller</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Peking Lechon</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Crispy roast pork with hoisin sauce wraps.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱580</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Peking Lechon" data-price="580" data-image="https://images.unsplash.com/photo-1606728035253-49e8a23146de?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer" data-category="best-selling">
+          <div class="relative h-48 bg-gradient-to-br from-zwz-cream to-white overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&h=300&fit=crop&auto=format" alt="Steamed Lapu-Lapu" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-3 py-1 bg-zwz-gold text-white text-xs font-bold rounded-full">Best Seller</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-xl text-zwz-red-dark font-bold mb-1">Steamed Lapu-Lapu</h3>
+            <p class="text-zwz-text/60 text-sm mb-3">Fresh grouper steamed Hong Kong style.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-zwz-gold text-xl">₱750</span>
+              <button class="add-to-cart-btn flex items-center gap-2 px-4 py-2 bg-zwz-red text-white text-sm font-semibold rounded-xl hover:bg-zwz-red-dark transition-colors duration-200 cursor-pointer" data-name="Steamed Lapu-Lapu" data-price="750" data-image="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=200&h=200&fit=crop">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
+  </section>
 
-    <!-- See More Button -->
-    <div class="flex justify-center mt-8 mb-12">
-      <button id="seeMoreBtn" class="mb-20 bg-[#870000] text-white font-['Playfair_Display'] text-xl py-3 px-8 rounded-lg shadow-lg hover:bg-[#6b0000] transition-all duration-300 transform hover:scale-105">
-        SEE MORE
-      </button>
+  <!-- CTA Section -->
+  <section class="py-16 md:py-24 bg-gradient-to-br from-zwz-red-dark via-zwz-red to-zwz-red-dark">
+    <div class="container mx-auto px-4 text-center max-w-4xl">
+      <h2 class="font-display text-3xl md:text-4xl lg:text-5xl text-white font-bold mb-6">
+        Ready to <span class="text-zwz-gold-light italic">Order?</span>
+      </h2>
+      <p class="text-white/80 text-lg mb-10 max-w-2xl mx-auto">Add your favorite dishes to the cart and enjoy authentic Chinese cuisine delivered to your doorstep.</p>
+      <a href="cart.html" class="inline-flex items-center gap-3 px-8 py-4 bg-zwz-gold hover:bg-zwz-gold-light text-zwz-red-dark font-bold text-lg rounded-2xl shadow-2xl shadow-black/30 hover:scale-105 transition-all duration-300 cursor-pointer">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+        </svg>
+        View Cart
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
     </div>
+  </section>
 
-</div>
-<div class="menu-area-wrapper">
-    <section class="menu-categories">
-        <div class="category-tabs">
-             <button class="category-tab">All</button>
-            <button class="category-tab">Best Selling</button>
-            <button class="category-tab">Soup</button>
-            <button class="category-tab">Fried Rice</button>
-            <button class="category-tab">Noodles</button>
-            <button class="category-tab">Pork & Intestine</button>
-            <button class="category-tab">Chicken</button>
-            <button class="category-tab">Duck</button>
-            <button class="category-tab">Lamb</button>
-            <button class="category-tab">Shrimp, Squid and Shells</button>
-            <button class="category-tab">Beef</button>
-	    <button class="category-tab">Vegetables & Mushrooms</button>
-	    <button class="category-tab">Tofu & Eggs</button>
-            <button class="category-tab">Chilled Brined</button>
-	    <button class="category-tab">Live Lapu-Lapu & Eel</button>
-            <button class="category-tab">Live Sauhe & Sea Mantis</button>
-	    <button class="category-tab">Spicy Boiled</button>
-	    <button class="category-tab">Fish</button>
-	    <button class="category-tab">Live Lobster</button>
-	    <button class="category-tab">Crab & Shells</button>
-        </div>
-    </section>
-    <section class="menu-items">
-        <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/SP1.png" alt="Seaweed Soup" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Seaweed Soup</h3>
-            <p class="item-weight">300 g</p>
-            <p class="item-description">Light and savory broth with delicate seaweed.</p>
-            <div class="item-price">₱ 280</div>
-            <button class="add-to-cart-btn" data-name="Seaweed Soup" data-price="₱ 280" data-image="ASSETS/SP1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/SP2.png" alt="Wonton Soup" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Wonton Soup</h3>
-            <p class="item-weight">350 g</p>
-            <p class="item-description">Delicious dumplings in a clear, flavorful broth.</p>
-            <div class="item-price">₱ 320</div>
-            <button class="add-to-cart-btn" data-name="Wonton Soup" data-price="₱ 320" data-image="ASSETS/SP2.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/SP3.png" alt="Hot & Sour Soup" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Hot & Sour Soup</h3>
-            <p class="item-weight">350 g</p>
-            <p class="item-description">Perfect balance of spicy and tangy flavors.</p>
-            <div class="item-price">₱ 300</div>
-            <button class="add-to-cart-btn" data-name="Hot & Sour Soup" data-price="₱ 300" data-image="ASSETS/SP3.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/SP5.png" alt="Minced Seafood Soup" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Minced Seafood Soup</h3>
-            <p class="item-weight">320 g</p>
-            <p class="item-description">Delicate soup with finely minced assorted seafood.</p>
-            <div class="item-price">₱ 380</div>
-            <button class="add-to-cart-btn" data-name="Minced Seafood Soup" data-price="₱ 380" data-image="ASSETS/SP5.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/SP6.png" alt="Beef Soup" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Beef Soup</h3>
-            <p class="item-weight">320 g</p>
-            <p class="item-description">Hearty broth with tender pieces of beef.</p>
-            <div class="item-price">₱ 380</div>
-            <button class="add-to-cart-btn" data-name="Beef Soup" data-price="₱ 380" data-image="ASSETS/SP6.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/SP8.png" alt="Spinach Seafood Soup" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Spinach Seafood Soup</h3>
-            <p class="item-weight">320 g</p>
-            <p class="item-description">Nutritious soup with spinach and mixed seafood.</p>
-            <div class="item-price">₱ 380</div>
-            <button class="add-to-cart-btn" data-name="Spinach Seafood Soup" data-price="₱ 380" data-image="ASSETS/SP8.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/FR1.png" alt="Yang Chow Fried Rice" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Yang Chow Fried Rice</h3>
-            <p class="item-weight">300 g</p>
-            <p class="item-description">Classic fried rice with shrimp, pork, and vegetables.</p>
-            <div class="item-price">₱ 280</div>
-            <button class="add-to-cart-btn" data-name="Yang Chow Fried Rice" data-price="₱ 280" data-image="ASSETS/FR1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/FR2.png" alt="Mustasa Fried Rice" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Mustasa Fried Rice</h3>
-            <p class="item-weight">320 g</p>
-            <p class="item-description">Unique fried rice with a hint of pickled mustard greens.</p>
-            <div class="item-price">₱ 380</div>
-            <button class="add-to-cart-btn" data-name="Mustasa Fried Rice" data-price="₱ 380" data-image="ASSETS/FR2.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/FN1.png" alt="Seafood Pancit Bihon" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Seafood Pancit Bihon</h3>
-            <p class="item-weight">320 g</p>
-            <p class="item-description">Thin rice noodles stir-fried with assorted seafood and vegetables.</p>
-            <div class="item-price">₱ 380</div>
-            <button class="add-to-cart-btn" data-name="Seafood Pancit Bihon" data-price="₱ 380" data-image="ASSETS/FN1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/FN5.png" alt="Pig Stomach w/ Pickled Veg" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Pig Stomach w/ Pickled Veg</h3>
-            <p class="item-weight">320 g</p>
-            <p class="item-description">Savory pig stomach with tangy pickled vegetables.</p>
-            <div class="item-price">₱ 380</div>
-            <button class="add-to-cart-btn" data-name="Pig Stomach w/ Pickled Veg" data-price="₱ 380" data-image="ASSETS/FN5.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/NS1.png" alt="Seafood Lomi" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Seafood Lomi</h3>
-            <p class="item-weight">280 g</p>
-            <p class="item-description">Thick egg noodles in a rich broth with seafood.</p>
-            <div class="item-price">₱ 250</div>
-            <button class="add-to-cart-btn" data-name="Seafood Lomi" data-price="₱ 250" data-image="ASSETS/NS1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/NS2.png" alt="Seafood Bihon Soup" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Seafood Bihon Soup</h3>
-            <p class="item-weight">280 g</p>
-            <p class="item-description">Thin rice noodles in a flavorful seafood broth.</p>
-            <div class="item-price">₱ 250</div>
-            <button class="add-to-cart-btn" data-name="Seafood Bihon Soup" data-price="₱ 250" data-image="ASSETS/NS2.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/PK1.png" alt="Sze Chuan Hui Guo Rou" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Sze Chuan Hui Guo Rou</h3>
-            <p class="item-weight">320 g</p>
-            <p class="item-description">Stir-fried sliced pork belly with vegetables in a spicy bean sauce.</p>
-            <div class="item-price">₱ 380</div>
-            <button class="add-to-cart-btn" data-name="Sze Chuan Hui Guo Rou" data-price="₱ 380" data-image="ASSETS/PK1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/PK2.png" alt="Liempo w/ Bamboo Shoot" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Liempo w/ Bamboo Shoot</h3>
-            <p class="item-weight">350 g</p>
-            <p class="item-description">Crispy pork belly served with tender bamboo shoots.</p>
-            <div class="item-price">₱ 480</div>
-            <button class="add-to-cart-btn" data-name="Liempo w/ Bamboo Shoot" data-price="₱ 480" data-image="ASSETS/PK2.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/PK5.png" alt="Spareribs Taro" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Spareribs Taro</h3>
-            <p class="item-weight">320 g</p>
-            <p class="item-description">Tender spareribs steamed with soft taro.</p>
-            <div class="item-price">₱ 380</div>
-            <button class="add-to-cart-btn" data-name="Spareribs Taro" data-price="₱ 380" data-image="ASSETS/PK5.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/PK7.png" alt="Sweet & Sour Pork" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Sweet & Sour Pork</h3>
-            <p class="item-weight">320 g</p>
-            <p class="item-description">Classic dish with crispy pork in a tangy sauce.</p>
-            <div class="item-price">₱ 380</div>
-            <button class="add-to-cart-btn" data-name="Sweet & Sour Pork" data-price="₱ 380" data-image="ASSETS/PK7.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/CK1.png" alt="Salted Egg Chicken" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Salted Egg Chicken</h3>
-            <p class="item-weight">350 g</p>
-            <p class="item-description">Chicken coated in a rich salted egg yolk sauce</p>
-            <div class="item-price">₱ 480</div>
-            <button class="add-to-cart-btn" data-name="Salted Egg Chicken" data-price="₱ 480" data-image="ASSETS/CK1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/CK3.png" alt="Kung Pao Chicken" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Kung Pao Chicken</h3>
-            <p class="item-weight">340 g</p>
-            <p class="item-description">Stir-fried diced chicken with peanuts, vegetables, and chili.</p>
-            <div class="item-price">₱ 480</div>
-            <button class="add-to-cart-btn" data-name="Kung Pao Chicken" data-price="₱ 480" data-image="ASSETS/CK3.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/DK1.png" alt="Grilled Duck" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Grilled Duck</h3>
-            <p class="item-weight">650 g</p>
-            <p class="item-description">Flavorful duck grilled to perfection.</p>
-            <div class="item-price">₱ 580/1080</div>
-            <button class="add-to-cart-btn" data-name="Grilled Duck" data-price="₱ 580/1080" data-image="ASSETS/DK1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/DK2.png" alt="Hand Pull Duck" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Hand Pull Duck</h3>
-            <p class="item-weight">650 g</p>
-            <p class="item-description">Shredded roasted duck, ready to enjoy.</p>
-            <div class="item-price">₱ 580/1080</div>
-            <button class="add-to-cart-btn" data-name="Hand Pull Duck" data-price="₱ 580/1080" data-image="ASSETS/DK2.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/LB2.png" alt="Lamb Hotpot" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Lamb Hotpot</h3>
-            <p class="item-weight">700 g</p>
-            <p class="item-description">Hearty hotpot with tender pieces of lamb and vegetables.</p>
-            <div class="item-price">₱ 980</div>
-            <button class="add-to-cart-btn" data-name="Lamb Hotpot" data-price="₱ 980" data-image="ASSETS/LB2.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/SH1.png" alt="Salted Egg Shrimp" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Salted Egg Shrimp</h3>
-            <p class="item-weight">540 g</p>
-            <p class="item-description">Succulent shrimp coated in a creamy salted egg yolk sauce.</p>
-            <div class="item-price">₱ 680</div>
-            <button class="add-to-cart-btn" data-name="Salted Egg Shrimp" data-price="₱ 680" data-image="ASSETS/SH1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/SH4.png" alt="Shrimp with Celery" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Shrimp with Celery</h3>
-            <p class="item-weight">480 g</p>
-            <p class="item-description">Fresh shrimp stir-fried with crisp celery.</p>
-            <div class="item-price">₱ 680</div>
-            <button class="add-to-cart-btn" data-name="Shrimp with Celery" data-price="₱ 680" data-image="ASSETS/SH4.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/SL1.png" alt="Halaan w/ Taosi" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Halaan w/ Taosi</h3>
-            <p class="item-weight">250 g</p>
-            <p class="item-description">Clams steamed with fermented black beans.</p>
-            <div class="item-price">₱ 380</div>
-            <button class="add-to-cart-btn" data-name="Halaan w/ Taosi" data-price="₱ 380" data-image="ASSETS/SL1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/BF1.png" alt="Beef Brisket Hot Pot" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Beef Brisket Hot Pot</h3>
-            <p class="item-weight">500 g</p>
-            <p class="item-description">Tender beef brisket simmered in a flavorful hot pot.</p>
-            <div class="item-price">₱ 780</div>
-            <button class="add-to-cart-btn" data-name="Beef Brisket Hot Pot" data-price="₱ 780" data-image="ASSETS/BF1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/BF2.png" alt="Green Pepper Beef" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Green Pepper Beef</h3>
-            <p class="item-weight">320 g</p>
-            <p class="item-description">Stir-fried beef with vibrant green bell peppers.</p>
-            <div class="item-price">₱ 480</div>
-            <button class="add-to-cart-btn" data-name="Green Pepper Beef" data-price="₱ 480" data-image="ASSETS/BF2.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/BF5.png" alt="Beef Ampalaya" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Beef Ampalaya</h3>
-            <p class="item-weight">320 g</p>
-            <p class="item-description">Stir-fried beef with bitter melon.</p>
-            <div class="item-price">₱ 480</div>
-            <button class="add-to-cart-btn" data-name="Beef Ampalaya" data-price="₱ 480" data-image="ASSETS/BF5.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/VG1.png" alt="Dried Work Cabbage" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Dried Work Cabbage</h3>
-            <p class="item-weight">300 g</p>
-            <p class="item-description">Savory stir-fried dried cabbage.</p>
-            <div class="item-price">₱ 380</div>
-            <button class="add-to-cart-btn" data-name="Dried Work Cabbage" data-price="₱ 380" data-image="ASSETS/VG1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/VG4.png" alt="Sour Spicy Shredded Potato" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Sour Spicy Shredded Potato</h3>
-            <p class="item-weight">280 g</p>
-            <p class="item-description">Tangy and spicy stir-fried shredded potatoes.</p>
-            <div class="item-price">₱ 320</div>
-            <button class="add-to-cart-btn" data-name="Sour Spicy Shredded Potato" data-price="₱ 320" data-image="ASSETS/VG4.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/MR2.png" alt="Salted Egg Mushroom" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Salted Egg Mushroom</h3>
-            <p class="item-weight">350 g</p>
-            <p class="item-description">Earthy mushrooms coated in salted egg yolk.</p>
-            <div class="item-price">₱ 480</div>
-            <button class="add-to-cart-btn" data-name="Salted Egg Mushroom" data-price="₱ 480" data-image="ASSETS/MR2.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/TF1.png" alt="Mapo Tofu" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Mapo Tofu</h3>
-            <p class="item-weight">200 g</p>
-            <p class="item-description">Silken tofu in a spicy and savory bean-based sauce</p>
-            <div class="item-price">₱ 280</div>
-            <button class="add-to-cart-btn" data-name="Mapo Tofu" data-price="₱ 280" data-image="ASSETS/TF1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/TF2.png" alt="Home Styled Tofu" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Home Styled Tofu</h3>
-            <p class="item-weight">300 g</p>
-            <p class="item-description">Tofu prepared in a comforting, traditional style.</p>
-            <div class="item-price">₱ 350</div>
-            <button class="add-to-cart-btn" data-name="Home Styled Tofu" data-price="₱ 350" data-image="ASSETS/TF2.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/EG1.png" alt="Steamed Egg" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Steamed Egg</h3>
-            <p class="item-weight">280 g</p>
-            <p class="item-description">Smooth and savory steamed egg custard.</p>
-            <div class="item-price">₱ 320</div>
-            <button class="add-to-cart-btn" data-name="Steamed Egg" data-price="₱ 320" data-image="ASSETS/EG1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/CH1.png" alt="Chilled Cuccumber" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Chilled Cuccumber</h3>
-            <p class="item-weight">200 g</p>
-            <p class="item-description">Refreshing chilled cucumber salad.</p>
-            <div class="item-price">₱ 320</div>
-            <button class="add-to-cart-btn" data-name="Chilled Cuccumber" data-price="₱ 320" data-image="ASSETS/CH1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/CH2.png" alt="Chilled Century Egg" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Chilled Century Egg</h3>
-            <p class="item-weight">280 g</p>
-            <p class="item-description">Delicately flavored chilled century egg.</p>
-            <div class="item-price">₱ 350</div>
-            <button class="add-to-cart-btn" data-name="Chilled Century Egg" data-price="₱ 350" data-image="ASSETS/CH2.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/BR3.png" alt="Brined Pig Ear" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Brined Pig Ear</h3>
-            <p class="item-weight">250 g</p>
-            <p class="item-description">Crunchy and flavorful brined pig ear.</p>
-            <div class="item-price">₱ 380</div>
-            <button class="add-to-cart-btn" data-name="Brined Pig Ear" data-price="₱ 380" data-image="ASSETS/BR3.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/LE1.png" alt="Eel Taosi" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Eel Taosi</h3>
-            <p class="item-weight">300 g</p>
-            <p class="item-description">Savory eel steamed with fermented black beans.</p>
-            <div class="item-price">₱ 450</div>
-            <button class="add-to-cart-btn" data-name="Eel Taosi" data-price="₱ 450" data-image="ASSETS/LE1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/LE2.png" alt="Steamed Lapu-Lapu" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Steamed Lapu-Lapu</h3>
-            <p class="item-weight">560 g</p>
-            <p class="item-description">Fresh lapu-lapu (grouper) steamed to perfection.</p>
-            <div class="item-price">₱ 880</div>
-            <button class="add-to-cart-btn" data-name="Steamed Lapu-Lapu" data-price="₱ 880" data-image="ASSETS/LE2.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/LE3.png" alt="Sweet & Sour Lapu-Lapu" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Sweet & Sour Lapu-Lapu</h3>
-            <p class="item-weight">300 g</p>
-            <p class="item-description">Crispy lapu-lapu in a classic sweet and sour sauce.</p>
-            <div class="item-price">₱ 480</div>
-            <button class="add-to-cart-btn" data-name="Sweet & Sour Lapu-Lapu" data-price="₱ 480" data-image="ASSETS/LE3.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/SM1.png" alt="Steamed Suahe" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Steamed Suahe</h3>
-            <p class="item-weight">300 g</p>
-            <p class="item-description">Fresh suahe (white shrimp) simply steamed.</p>
-            <div class="item-price">₱ 380</div>
-            <button class="add-to-cart-btn" data-name="Steamed Suahe" data-price="₱ 380" data-image="ASSETS/SM1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/SM2.png" alt="Steamed Garlic Suahe" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Steamed Garlic Suahe</h3>
-            <p class="item-weight">300 g</p>
-            <p class="item-description">Suahe steamed with fragrant garlic.</p>
-            <div class="item-price">₱ 480</div>
-            <button class="add-to-cart-btn" data-name="Steamed Garlic Suahe" data-price="₱ 480" data-image="ASSETS/SM2.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/SM4.png" alt="Salt & Pepper Sea Mantis" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Salt & Pepper Sea Mantis</h3>
-            <p class="item-weight">300 g</p>
-            <p class="item-description">Crispy sea mantis seasoned with salt and pepper.</p>
-            <div class="item-price">₱ 550</div>
-            <button class="add-to-cart-btn" data-name="Salt & Pepper Sea Mantis" data-price="₱ 550" data-image="ASSETS/SM4.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/SB1.png" alt="Spicy Boiled Live Fish" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Spicy Boiled Live Fish</h3>
-            <p class="item-weight">500 g</p>
-            <p class="item-description">Fresh fish boiled in a fiery and flavorful broth.</p>
-            <div class="item-price">₱ 780</div>
-            <button class="add-to-cart-btn" data-name="Spicy Boiled Live Fish" data-price="₱ 780" data-image="ASSETS/SB1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/SB2.png" alt="Pickled Live Fish" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Pickled Live Fish</h3>
-            <p class="item-weight">300 g</p>
-            <p class="item-description">Fresh fish prepared with a tangy pickled flavor.</p>
-            <div class="item-price">₱ 580</div>
-            <button class="add-to-cart-btn" data-name="Pickled Live Fish" data-price="₱ 580" data-image="ASSETS/SB2.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/SB3.png" alt="Grilled Fish" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Grilled Fish</h3>
-            <p class="item-weight">350 g</p>
-            <p class="item-description">Fish grilled to a smoky and delicious finish.</p>
-            <div class="item-price">₱ 680</div>
-            <button class="add-to-cart-btn" data-name="Grilled Fish" data-price="₱ 680" data-image="ASSETS/SB3.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/FS1.png" alt="Pan Fried Espada" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Pan Fried Espada</h3>
-            <p class="item-weight">200 g</p>
-            <p class="item-description">Espada (beltfish) pan-fried until golden.</p>
-            <div class="item-price">₱ 380</div>
-            <button class="add-to-cart-btn" data-name="Pan Fried Espada" data-price="₱ 380" data-image="ASSETS/FS1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/FS3.png" alt="Sweet & Sour Fish Fillet" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Sweet & Sour Fish Fillet</h3>
-            <p class="item-weight">350 g</p>
-            <p class="item-description">Tender fish fillets in a tangy sweet and sour sauce.</p>
-            <div class="item-price">₱ 580</div>
-            <button class="add-to-cart-btn" data-name="Sweet & Sour Fish Fillet" data-price="₱ 580" data-image="ASSETS/FS3.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/FS6.png" alt="Fish Taosi" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Fish Taosi</h3>
-            <p class="item-weight">280 g</p>
-            <p class="item-description">Fish steamed or braised with fermented black beans.</p>
-            <div class="item-price">₱ 480</div>
-            <button class="add-to-cart-btn" data-name="Fish Taosi" data-price="₱ 480" data-image="ASSETS/FS6.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/LB1.png" alt="Live Lobster" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Live Lobster</h3>
-            <p class="item-weight">300 g</p>
-            <p class="item-description">Fresh, live lobster prepared to your liking.</p>
-            <div class="item-price">₱ 580</div>
-            <button class="add-to-cart-btn" data-name="Live Lobster" data-price="₱ 580" data-image="ASSETS/LB1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/LB3.png" alt="Garlic Steamed Lobster" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Garlic Steamed Lobster</h3>
-            <p class="item-weight">280 g</p>
-            <p class="item-description">Tender lobster steamed with fragrant garlic.</p>
-            <div class="item-price">₱ 480</div>
-            <button class="add-to-cart-btn" data-name="Garlic Steamed Lobster" data-price="₱ 480" data-image="ASSETS/LB3.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/LB5.png" alt="Lobster Noodles" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Lobster Noodles</h3>
-            <p class="item-weight">230 g</p>
-            <p class="item-description">Savory noodles served with delicious lobster.</p>
-            <div class="item-price">₱ 350</div>
-            <button class="add-to-cart-btn" data-name="Lobster Noodles" data-price="₱ 350" data-image="ASSETS/LB5.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/CB1.png" alt="Salted Egg Crab" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Salted Egg Crab</h3>
-            <p class="item-weight">300 g</p>
-            <p class="item-description">Crab coated in a rich and creamy salted egg sauce.</p>
-            <div class="item-price">₱ 650</div>
-            <button class="add-to-cart-btn" data-name="Salted Egg Crab" data-price="₱ 650" data-image="ASSETS/CB1.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/CB5.png" alt="Steamed Crab w/ Sotanghon" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Steamed Crab w/ Sotanghon</h3>
-            <p class="item-weight">250 g</p>
-            <p class="item-description">Fresh crab steamed with delicate glass noodles.</p>
-            <div class="item-price">₱ 480</div>
-            <button class="add-to-cart-btn" data-name="Steamed Crab w/ Sotanghon" data-price="₱ 480" data-image="ASSETS/CB5.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    <div class="menu-item">
-        <div class="item-image-container">
-            <img src="ASSETS/CB6.png" alt="Chilled Red Shell" class="item-image">
-        </div>
-        <div class="item-details">
-            <h3 class="item-name">Chilled Red Shell</h3>
-            <p class="item-weight">300 g</p>
-            <p class="item-description">Refreshing chilled red shell seafood.</p>
-            <div class="item-price">₱ 580</div>
-            <button class="add-to-cart-btn" data-name="Chilled Red Shell" data-price="₱ 580" data-image="ASSETS/CB6.png">
-                <img src="ASSETS/Group.svg" alt="Add" class="add-to-cart-icon"> Add to cart
-            </button>
-        </div>
-    </div>
-    </section>
-</div>
-
-<!-- Footer -->
-<footer class="bg-[#fcb734] py-10 px-6 md:px-16">
-  <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
-    <!-- Logo -->
-    <div class="flex flex-col items-center md:items-start">
-      <img src="../ASSETS/logo.jpg" class="w-36 h-36 md:w-40 md:h-40 object-cover">
-    </div>
-
-    <div class="w-[50px] h-1 md:w-1 md:h-[50px] bg-[#870000] mt-4 rounded-full"></div>
-
-    <!-- Footer Content Container -->
-    <div class="flex flex-col md:flex-row justify-center gap-10 md:gap-16 lg:gap-24">
-      <!-- Address -->
-      <div class="text-center md:text-left">
-        <h3 class="text-[#870000] font-bold text-xl mb-4 font-merriweather">ADDRESS</h3>
-        <p class="text-[#870000] font-medium">239 Maysan Road</p>
-        <p class="text-[#870000] font-medium">Valenzuela City</p>
-      </div>
-
-      <!-- Opening Hours -->
-      <div class="text-center md:text-left">
-        <h3 class="text-[#870000] font-bold text-xl mb-4 font-merriweather">OPENING HOURS</h3>
-        <p class="text-[#870000] font-medium">Mon - Fri: 10:00 AM - 11:30 PM</p>
-        <p class="text-[#870000] font-medium">Sat - Sun: 11:00 AM - 10:30 PM</p>
-      </div>
-
-      <!-- Contact Info -->
-      <div class="text-center md:text-left">
-        <h3 class="text-[#870000] font-bold text-xl mb-4 font-merriweather">CONTACT</h3>
-        <div class="text-[#870000] flex items-center justify-center md:justify-start">
-          <img class="w-6 h-6 mr-2" alt="" src="../ASSETS/contact icon 1.png">
-          <span class="font-medium">09174761831</span>
+  <!-- Footer -->
+  <footer class="bg-zwz-red-dark pt-16 pb-8">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <!-- Brand -->
+        <div class="lg:col-span-1">
+          <div class="w-20 h-20 bg-zwz-gold rounded-xl flex items-center justify-center mb-6 shadow-lg">
+            <div class="text-center">
+              <div class="text-zwz-red-dark text-xs font-bold leading-tight">知</div>
+              <div class="text-zwz-red-dark text-xs font-bold leading-tight">之</div>
+              <div class="text-zwz-red-dark text-xs font-bold leading-tight">味</div>
+              <div class="text-zwz-red-dark text-[8px] font-bold mt-1">ZHIWEIZAI</div>
+              <div class="text-zwz-red-dark text-[6px]">RESTAURANT</div>
+            </div>
+          </div>
+          <p class="text-white/70 text-sm leading-relaxed">Experience the authentic taste of Chinese cuisine at Zhi Wei Zai.</p>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 class="font-heading text-zwz-gold font-bold text-lg mb-6 tracking-wider uppercase">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="../index.html" class="text-white/80 hover:text-zwz-gold transition-colors cursor-pointer">Home</a></li>
+            <li><a href="menu.html" class="text-white/80 hover:text-zwz-gold transition-colors cursor-pointer">Menu</a></li>
+            <li><a href="../Catering and Gallery/catering.html" class="text-white/80 hover:text-zwz-gold transition-colors cursor-pointer">Catering</a></li>
+            <li><a href="../Contact and Reservations/contact.html" class="text-white/80 hover:text-zwz-gold transition-colors cursor-pointer">Contact</a></li>
+          </ul>
+        </div>
+        
+        <!-- Hours -->
+        <div>
+          <h4 class="font-heading text-zwz-gold font-bold text-lg mb-6 tracking-wider uppercase">Hours</h4>
+          <div class="space-y-2 text-white/80 text-sm">
+            <p>Mon - Fri: 10:00 AM - 11:30 PM</p>
+            <p>Sat - Sun: 11:00 AM - 10:30 PM</p>
+          </div>
+        </div>
+        
+        <!-- Contact -->
+        <div>
+          <h4 class="font-heading text-zwz-gold font-bold text-lg mb-6 tracking-wider uppercase">Contact</h4>
+          <div class="space-y-3 text-white/80 text-sm">
+            <p>239 Maysan Road, Valenzuela City</p>
+            <p>09174761831</p>
+            <a href="mailto:zhiweizai@gmail.com" class="hover:text-zwz-gold transition-colors cursor-pointer">zhiweizai@gmail.com</a>
+          </div>
         </div>
       </div>
+      
+      <div class="border-t border-white/20 pt-8 text-center">
+        <p class="text-white/60 text-sm">© 2025 Zhi Wei Zai. All rights reserved.</p>
+      </div>
     </div>
-  </div>
+  </footer>
 
-  <!-- Copyright -->
-  <div class="w-full text-center mt-8 border-t border-[#870000]/30 pt-4">
-    <p class="text-[#870000] text-sm font-medium">© 2025 ZHIWEIZAI ALL RIGHTS RESERVED</p>
-  </div>
-</footer>
+  <script src="../js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof ZWZAuth !== 'undefined') ZWZAuth.init();
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const seeMoreBtn = document.getElementById('seeMoreBtn');
-    const menuAreaWrapper = document.querySelector('.menu-area-wrapper');
+      // Mobile menu toggle
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function() { mobileMenu.classList.toggle('hidden'); });
+      }
 
-    if (seeMoreBtn && menuAreaWrapper) {
+      // See More button scroll
+      const seeMoreBtn = document.getElementById('seeMoreBtn');
+      const menuSection = document.getElementById('menu-section');
+      if (seeMoreBtn && menuSection) {
         seeMoreBtn.addEventListener('click', function() {
-            // Show the detailed menu
-            menuAreaWrapper.style.display = 'block';
-
-            // Scroll to the detailed menu section
-            menuAreaWrapper.scrollIntoView({ behavior: 'smooth' });
+          menuSection.scrollIntoView({ behavior: 'smooth' });
         });
-    }
+      }
 
-    // Add to cart functionality
-    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-    addToCartButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const name = this.getAttribute('data-name');
-        const price = this.getAttribute('data-price');
-        const image = this.getAttribute('data-image');
-
-        // Get existing cart or initialize empty array
-        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-
-        // Add item to cart
-        cart.push({
-          name: name,
-          price: price,
-          image: image,
-          quantity: 1
-        });
-
-        // Save cart back to localStorage
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-        // Show feedback
-        alert(`${name} added to cart!`);
+      // Navbar scroll effect - add subtle shadow on scroll
+      const nav = document.getElementById('main-nav');
+      const navCard = nav.querySelector('div > div');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          navCard.classList.add('shadow-xl');
+        } else {
+          navCard.classList.remove('shadow-xl');
+        }
       });
+
+      // Category filter tabs
+      const categoryTabs = document.querySelectorAll('.category-tab');
+      const menuItems = document.querySelectorAll('#menu-grid > div');
+      categoryTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          categoryTabs.forEach(t => {
+            t.classList.remove('bg-zwz-red', 'text-white');
+            t.classList.add('bg-white', 'text-zwz-text/80');
+          });
+          this.classList.remove('bg-white', 'text-zwz-text/80');
+          this.classList.add('bg-zwz-red', 'text-white');
+          const category = this.dataset.category;
+          menuItems.forEach(item => {
+            if (category === 'all' || item.dataset.category.includes(category)) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Add to cart functionality
+      document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const name = this.dataset.name;
+          const price = parseInt(this.dataset.price);
+          const image = this.dataset.image;
+          let cart = JSON.parse(localStorage.getItem('zwz_cart') || '[]');
+          const existingItem = cart.find(item => item.name === name);
+          if (existingItem) {
+            existingItem.quantity = (existingItem.quantity || 1) + 1;
+          } else {
+            cart.push({ name, price, image, quantity: 1 });
+          }
+          localStorage.setItem('zwz_cart', JSON.stringify(cart));
+          updateCartCount();
+          // Visual feedback
+          this.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Added!';
+          this.classList.add('bg-green-600');
+          setTimeout(() => {
+            this.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg> Add';
+            this.classList.remove('bg-green-600');
+          }, 1500);
+        });
+      });
+
+      // Update cart count
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('zwz_cart') || '[]');
+        const cartCount = document.getElementById('cart-count');
+        if (cartCount) {
+          const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+          if (totalItems > 0) {
+            cartCount.textContent = totalItems;
+            cartCount.classList.remove('hidden');
+            cartCount.classList.add('flex');
+          } else {
+            cartCount.classList.add('hidden');
+            cartCount.classList.remove('flex');
+          }
+        }
+      }
+      updateCartCount();
     });
-
-    // Mobile menu toggle
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    if (menuToggle && mobileMenu) {
-      menuToggle.addEventListener('click', function() {
-        mobileMenu.classList.toggle('hidden');
-      });
-    }
-});
-</script>
+  </script>
 </body>
 </html>

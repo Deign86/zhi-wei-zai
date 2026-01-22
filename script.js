@@ -153,7 +153,7 @@ function updateCartCount() {
     let badge = cartLink.querySelector('.cart-count');
     if (!badge) {
       badge = document.createElement('span');
-      badge.className = 'cart-count absolute -top-2 -right-2 bg-[#870000] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center';
+      badge.className = 'cart-count absolute -top-2 -right-2 bg-[#902223] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center';
       cartLink.style.position = 'relative';
       cartLink.appendChild(badge);
     }
@@ -172,7 +172,7 @@ function updateCartCount() {
     let mobileBadge = mobileCartLink.querySelector('.cart-count');
     if (!mobileBadge) {
       mobileBadge = document.createElement('span');
-      mobileBadge.className = 'cart-count absolute -top-2 -right-2 bg-[#870000] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center';
+      mobileBadge.className = 'cart-count absolute -top-2 -right-2 bg-[#902223] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center';
       mobileCartLink.style.position = 'relative';
       mobileCartLink.appendChild(mobileBadge);
     }

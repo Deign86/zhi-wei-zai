@@ -12,16 +12,16 @@ body {
   /* Fonts */
   --font-playfair-display: 'Playfair Display';
   --font-cinzel: Cinzel;
-  --font-merriweather: Merriweather;
+  --font-karla: 'Karla', 'Noto Sans SC', sans-serif;
 
   /* font sizes */
   --font-size-11xl: 30px;
   --font-size-36xl: 55px;
 
   /* Colors */
-  --color-blanchedalmond: #fff1ce;
-  --color-darkred: #870000;
-  --color-orange: #ffb722;
+  --color-blanchedalmond: #F5EDD8;
+  --color-darkred: #902223;
+  --color-orange: #C4A44A;
   --color-white: #fff;
 }
 
@@ -45,9 +45,9 @@ body {
   position: absolute;
   top: 445px;
   left: 672px;
-  font-size: 70px;
+  font-size: 4rem; /* 64px - standardized hero size */
   display: inline-block;
-  font-family: var(--font-merriweather);
+  font-family: var(--font-cinzel);
   width: 573px;
   height: 95px;
 }
@@ -76,8 +76,8 @@ body {
   left: 830px;
   width: 260px;
   height: 67px;
-  font-size: 35px;
-  font-family: var(--font-merriweather);
+  font-size: 2rem; /* 32px - standardized */
+  font-family: var(--font-karla);
 }
 .gallery {
   position: absolute;
@@ -339,7 +339,7 @@ body {
 /* --- Navbar Styles (from index.css) --- */
 .navbar {
   width: 100%;
-  background-color: #fcb734;
+  background-color: #C4A44A;
   padding: 1vh 3vw;
   display: flex;
   justify-content: space-between;
@@ -373,10 +373,10 @@ body {
 }
   
 .nav-link {
-  font-family: 'Merriweather', serif;
-  color: #870000;
+  font-family: 'Karla', 'Noto Sans SC', sans-serif;
+  color: #902223;
   text-decoration: none;
-  font-size: 1.2vw;
+  font-size: 1rem; /* standardized */
   transition: color 0.3s ease, transform 0.3s ease;
 }
   
@@ -413,21 +413,21 @@ body {
 .footer-rectangle {
     width: 100%;
     min-height: 137px;
-    background-color: #fcb734;
+    background-color: #C4A44A;
     text-align: center;
     font-size: 18px;
     font-family: 'Playfair Display', serif;
     position: relative;
     padding: 20px 0 10px 0;
     box-sizing: border-box;
-    color: #870000; /* Set all text in footer to red */
+    color: #902223; /* Set all text in footer to red */
 }
 
 .footer-rectangle-child {
     position: absolute;
     top: 0px;
     left: 0px;
-    background-color: #fcb734;
+    background-color: #C4A44A;
     width: 100%; 
     height: 137px;
 }
@@ -436,7 +436,7 @@ body {
     position: absolute;
     top: 11px;
     left: 15vw;
-    border-right: 2px solid #870000;
+    border-right: 2px solid #902223;
     box-sizing: border-box;
     width: 2px;
     height: 110px;
@@ -458,7 +458,7 @@ body {
     position: absolute;
     top: 15px;
     font-size: 1.5vw; 
-    color: #870000;
+    color: #902223;
     font-weight: bold;
 }
 
@@ -469,7 +469,7 @@ body {
 .footer-content {
     position: absolute;
     font-size: 1vw; 
-    color: #870000;
+    color: #902223;
     margin-top: 40px;
 }
 
@@ -483,7 +483,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     font-size: 1vw;
-    color: #870000;
+    color: #902223;
     font-weight: bold;
 }
 
@@ -581,8 +581,8 @@ body {
     transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
     position: relative;
     z-index: 2;
-    font-size: 35px;
-    font-family: var(--font-merriweather);
+    font-size: 2rem; /* 32px - standardized */
+    font-family: var(--font-karla);
     top: 10px;
 }
 .learn-more-btn:hover {

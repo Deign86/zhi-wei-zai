@@ -1,9 +1,38 @@
 # Zhi Wei Zai Restaurant Website - AI Coding Instructions
 
-## Required Tools
-**Always invoke these tools when working on this codebase:**
-- **Context7**: Use `mcp_io_github_ups_resolve-library-id` and `mcp_io_github_ups_get-library-docs` to fetch up-to-date documentation for any library (Tailwind CSS, EmailJS, Flatpickr, PHP, etc.) before implementing features
-- **Serena**: Use `mcp_serena_*` tools for semantic code analysis, symbol search, and safe refactoring across the codebase
+## Required Tools - AUTO-INVOKE
+**Always automatically invoke these tools when working on this codebase:**
+
+### Context7 (Library Documentation)
+- **Auto-invoke for**: Any library/framework usage (Tailwind CSS, EmailJS, Flatpickr, PHP, MySQL, etc.)
+- **Tools**: `mcp_io_github_ups_resolve-library-id` → `mcp_io_github_ups_get-library-docs`
+- **When**: Before implementing any feature that uses external libraries
+
+### Serena (Semantic Code Analysis)
+- **Auto-invoke for**: Code analysis, symbol search, refactoring, understanding codebase structure
+- **Tools**: `mcp_serena_*` (find_symbol, get_symbols_overview, find_referencing_symbols, etc.)
+- **When**: Before modifying existing code, finding related code, safe refactoring
+
+### Dev-Agent (Semantic Code Search)
+- **Auto-invoke for**: Understanding codebase, finding related code, exploring git history
+- **Tools**: 
+  - `mcp_dev-agent-deb_dev_search` or `mcp_dev-agent-dei_dev_search` - Semantic code search by meaning
+  - `mcp_dev-agent-deb_dev_history` or `mcp_dev-agent-dei_dev_history` - Git commit history search
+  - `mcp_dev-agent-deb_dev_plan` or `mcp_dev-agent-dei_dev_plan` - Context assembly for issues
+  - `mcp_dev-agent-deb_dev_gh` or `mcp_dev-agent-dei_dev_gh` - GitHub issues/PRs semantic search
+- **When**: Starting any task, exploring how features work, finding similar implementations
+
+### UI/UX Pro Max (Design Intelligence)
+- **Auto-invoke for**: UI/UX tasks, landing pages, component design, styling decisions
+- **Tools**: `mcp__21st-dev_mag_21st_magic_component_*` tools
+- **When**: Building new UI components, improving design, creating pages
+
+## Auto-Invocation Rules
+1. **Before ANY code modification**: Use `dev_search` to understand existing patterns
+2. **Before implementing features**: Use Context7 to get library documentation  
+3. **Before refactoring**: Use Serena to find all symbol references
+4. **For UI work**: Use UI/UX Pro Max design intelligence
+5. **For debugging**: Use `dev_history` to understand code evolution
 
 ## Project Overview
 A PHP/MySQL restaurant website for **Zhi Wei Zai** featuring menu browsing, shopping cart, user authentication, reservations, and catering inquiries. The codebase uses server-side PHP with Tailwind CSS (CDN) for styling.
@@ -46,15 +75,26 @@ Navigation is duplicated in each PHP file with conditional auth display. When mo
 
 ### Tailwind + Custom CSS Hybrid
 - Tailwind CSS loaded via CDN (`<script src="https://cdn.tailwindcss.com">`)
-- Custom Tailwind config inline for brand colors:
+- Custom Tailwind config inline for brand colors (Chinese Traditional Palette):
 ```javascript
 tailwind.config = {
   theme: {
     extend: {
       colors: {
-        'zwz-red': '#870000',    // Primary dark red
-        'zwz-orange': '#fcb734', // Navbar/accent gold
-        'zwz-cream': '#fff1ce',  // Background cream
+        // Chinese Traditional Color Palette (中式传统配色)
+        'zwz-crimson': '#902223',      // Primary - 绛红 (Jiàng Hóng)
+        'zwz-crimson-light': '#A83234', // Hover state
+        'zwz-crimson-dark': '#6E1A1B',  // Dark accent
+        'zwz-brown': '#8D5631',          // Secondary - 棕褐 (Zōng Hè)
+        'zwz-brown-light': '#A86B42',    // Hover state
+        'zwz-brown-dark': '#6B4025',     // Dark accent
+        'zwz-cream': '#E2CD9C',          // Background - 米黄 (Mǐ Huáng)
+        'zwz-cream-light': '#F5EDD8',    // Light sections
+        'zwz-cream-dark': '#D4BE8A',     // Darker cream
+        'zwz-gold': '#C4A44A',           // Accent - 金色 (Jīn Sè)
+        'zwz-gold-light': '#D4B85E',     // Hover gold
+        'zwz-text': '#3D2317',           // Primary text - 深褐 (Shēn Hè)
+        'zwz-text-light': '#5C3D2E',     // Secondary text
       }
     }
   }
@@ -63,8 +103,8 @@ tailwind.config = {
 - Page-specific CSS files (e.g., `Menu 1.css`, `cart-checkout.css`)
 
 ### Brand Fonts (Google Fonts)
-- **Merriweather**: Body text, navigation
-- **Cinzel**: Headings, titles
+- **Cinzel**: Headings, titles (pairs with Noto Serif SC for Chinese)
+- **Karla**: Body text, navigation (pairs with Noto Sans SC for Chinese)
 - **Playfair Display**: Menu items, decorative text
 
 ## External Services

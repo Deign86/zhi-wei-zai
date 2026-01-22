@@ -1,435 +1,360 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, width=device-width">
-    <title>Account - Zhi Wei Zai</title>
-    
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" />
-    
-    <!-- Auth System -->
-    <script src="../js/auth.js"></script>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <title>My Account - Zhi Wei Zai | Authentic Chinese Restaurant</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            // Chinese Traditional Color Palette (中式传统配色)
+            'zwz-crimson': '#902223',      // Primary - 绛红 (Jiàng Hóng)
+            'zwz-crimson-light': '#A83234',
+            'zwz-crimson-dark': '#6E1A1B',
+            'zwz-brown': '#8D5631',          // Secondary - 棕褐 (Zōng Hè)
+            'zwz-brown-light': '#A86B42',
+            'zwz-brown-dark': '#6B4025',
+            'zwz-cream': '#E2CD9C',          // Background - 米黄 (Mǐ Huáng)
+            'zwz-cream-light': '#F5EDD8',
+            'zwz-cream-dark': '#D4BE8A',
+            'zwz-gold': '#C4A44A',           // Accent - 金色 (Jīn Sè)
+            'zwz-gold-light': '#D4B85E',
+            'zwz-text': '#3D2317',           // Text - 深褐 (Shēn Hè)
+            'zwz-text-light': '#5C3D2E',
+            // Legacy aliases
+            'zwz-red': '#902223',
+            'zwz-red-dark': '#6E1A1B',
+          },
+          fontFamily: {
+            'display': ['Playfair Display', 'Noto Serif SC', 'serif'],
+            'body': ['Karla', 'Noto Sans SC', 'sans-serif'],
+            'heading': ['Cinzel', 'Noto Serif SC', 'serif'],
+          },
         }
-        
-        body {
-            font-family: 'Playfair Display', serif;
-            color: #870000;
-            background-color: #fff;
-        }
-        
-        .header {
-            background-color: #870000;
-            color: #fff;
-            padding: 20px;
-            position: relative;
-            height: 95px;
-            display: flex;
-            align-items: center;
-        }
-
-        .back-btn {
-            position: absolute;
-            top: 18px;
-            left: 16px;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .back-btn img {
-            width: 60px;
-            height: 60px;
-        }
-        
-        .welcome-text {
-            margin-left: 104px;
-            font-family: 'Merriweather', serif;
-            font-size: 35px;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        
-        .page-title {
-            font-family: 'Cinzel', serif;
-            font-size: 40px;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .tab-btn {
-            background-color: #f1f1f1;
-            border: none;
-            padding: 15px 30px;
-            margin: 5px 10px;
-            font-family: 'Cinzel', serif;
-            font-size: 18px;
-            color: #870000;
-            cursor: pointer;
-            border-radius: 10px 10px 0 0;
-            transition: background-color 0.3s;
-        }
-        
-        .tab-btn.active {
-            background-color: #870000;
-            color: #fff;
-        }
-        
-        .tab-content {
-            display: none;
-            background-color: #f9f9f9;
-            padding: 30px;
-            border-radius: 0 10px 10px 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        form {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        label {
-            display: block;
-            font-size: 20px;
-            margin-bottom: 8px;
-            color: #870000;
-        }
-        
-        input[type="text"],
-        input[type="email"],
-        input[type="password"],
-        input[type="tel"] {
-            width: 100%;
-            padding: 15px;
-            font-size: 18px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        button[type="submit"] {
-            background-color: #870000;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 20px;
-            font-family: 'Cinzel', serif;
-            font-size: 20px;
-            cursor: pointer;
-            display: block;
-            margin: 20px auto 0;
-            transition: background-color 0.3s;
-        }
-        
-        button[type="submit"]:hover {
-            background-color: #6d0000;
-        }
-        
-        .message {
-            margin: 20px auto;
-            padding: 15px;
-            border-radius: 5px;
-            width: 100%;
-            max-width: 800px;
-            text-align: center;
-            font-size: 18px;
-        }
-        
-        .error {
-            background-color: #ffcccc;
-            color: #cc0000;
-        }
-        
-        .success {
-            background-color: #ccffcc;
-            color: #006600;
-        }
-        
-        .info {
-            background-color: #e6f2ff;
-            color: #0066cc;
-        }
-        
-        .user-info {
-            background-color: #f9f9f9;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-        
-        .user-info p {
-            font-size: 20px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        
-        .user-info p span:first-child {
-            font-weight: bold;
-            color: #870000;
-            min-width: 150px;
-        }
-        
-        .nav-links {
-            text-align: center;
-            margin-top: 40px;
-        }
-        
-        .nav-links a, .nav-links button {
-            display: inline-block;
-            background-color: #870000;
-            color: white;
-            text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 20px;
-            font-family: 'Cinzel', serif;
-            font-size: 18px;
-            margin: 5px 10px;
-            transition: background-color 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .nav-links a:hover, .nav-links button:hover {
-            background-color: #6d0000;
-        }
-
-        .field-error {
-            color: #cc0000;
-            font-size: 16px;
-            margin-top: 5px;
-        }
-        
-        small {
-            color: #666;
-            font-size: 14px;
-        }
-        
-        #messageArea {
-            max-width: 800px;
-            margin: 0 auto 20px;
-        }
-    </style>
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="../ASSETS/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../ASSETS/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../ASSETS/favicon-16x16.png">
 </head>
-<body>
-    <div class="header">
-        <a href="../index.html" class="back-btn" id="backBtn">
-            <img src="exit_to_app.png" alt="Back">
-        </a>
-        <div class="welcome-text">Welcome to Zhi Wei Zai!</div>
-    </div>
-    
-    <div class="container">
-        <h1 class="page-title">Account Management</h1>
-        
-        <!-- Message display area -->
-        <div id="messageArea"></div>
-        
-        <!-- Tab Navigation -->
-        <div class="tabs">
-            <button class="tab-btn active" onclick="openTab(event, 'profile')">Profile Information</button>
-            <button class="tab-btn" onclick="openTab(event, 'password')">Change Password</button>
-        </div>
-        
-        <!-- Profile Tab -->
-        <div id="profile" class="tab-content active">
-            <div class="user-info">
-                <p><span>Name:</span> <span id="displayName">-</span></p>
-                <p><span>Email:</span> <span id="displayEmail">-</span></p>
-                <p><span>Phone:</span> <span id="displayPhone">-</span></p>
-                <p><span>Delivery Address:</span> <span id="displayAddress">-</span></p>
-                <p><span>Member Since:</span> <span id="displayMemberSince">-</span></p>
+<body class="bg-zwz-cream font-body antialiased min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50">
+    <div class="mx-4 mt-4 md:mx-8 lg:mx-16">
+      <div class="bg-white/95 backdrop-blur-lg rounded-2xl shadow-lg border border-zwz-red/10 px-4 py-3 md:px-6 md:py-4">
+        <div class="flex items-center justify-between">
+          <a href="../index.html" class="flex items-center gap-3 group cursor-pointer">
+            <img src="../ASSETS/logo.jpg" class="w-12 h-12 md:w-14 md:h-14 rounded-xl object-cover shadow-md group-hover:scale-105 transition-transform duration-300" alt="Zhi Wei Zai Logo">
+            <div class="hidden sm:block">
+              <span class="font-heading text-zwz-red-dark text-lg md:text-xl font-bold tracking-wide">ZhiWeiZai</span>
+              <span class="block text-xs text-zwz-text/60 font-medium -mt-1">Chinese Restaurant</span>
             </div>
-            
-            <form id="profileForm">
-                <div class="form-group">
-                    <label for="name">Update Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Update Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">Update Phone</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="address">Update Delivery Address</label>
-                    <input type="text" id="address" name="address" required>
-                </div>
-                
-                <button type="submit">Update Profile</button>
-            </form>
+          </a>
+          <div class="hidden lg:flex items-center gap-1">
+            <a href="../index.html" class="px-4 py-2 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 transition-colors cursor-pointer">Home</a>
+            <a href="../Menu/menu.html" class="px-4 py-2 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 transition-colors cursor-pointer">Menu</a>
+            <a href="../Catering and Gallery/catering.html" class="px-4 py-2 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 transition-colors cursor-pointer">Catering</a>
+            <a href="../Contact and Reservations/contact.html" class="px-4 py-2 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 transition-colors cursor-pointer">Contact</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <a href="../Menu/cart.html" class="p-2 rounded-xl hover:bg-zwz-red/10 transition-colors cursor-pointer relative">
+              <svg class="w-6 h-6 text-zwz-red-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+              <span id="cart-count" class="hidden absolute -top-1 -right-1 w-5 h-5 bg-zwz-red text-white text-xs font-bold rounded-full flex items-center justify-center">0</span>
+            </a>
+            <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-xl hover:bg-zwz-red/10 transition-colors cursor-pointer">
+              <svg class="w-6 h-6 text-zwz-red-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
         </div>
-        
-        <!-- Password Tab -->
-        <div id="password" class="tab-content">
-            <form id="passwordForm">
-                <div class="form-group">
-                    <label for="current_password">Current Password</label>
-                    <input type="password" id="current_password" name="current_password" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="new_password">New Password</label>
-                    <input type="password" id="new_password" name="new_password" required>
-                    <small>Password must be at least 8 characters long</small>
-                </div>
-                
-                <div class="form-group">
-                    <label for="confirm_password">Confirm New Password</label>
-                    <input type="password" id="confirm_password" name="confirm_password" required>
-                </div>
-                
-                <button type="submit">Change Password</button>
-            </form>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden mt-4 pt-4 border-t border-zwz-red/10">
+          <div class="flex flex-col gap-2">
+            <a href="../index.html" class="px-4 py-3 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 transition-colors">Home</a>
+            <a href="../Menu/menu.html" class="px-4 py-3 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 transition-colors">Menu</a>
+            <a href="../Catering and Gallery/catering.html" class="px-4 py-3 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 transition-colors">Catering</a>
+            <a href="../Contact and Reservations/contact.html" class="px-4 py-3 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 transition-colors">Contact</a>
+          </div>
         </div>
-        
-        <div class="nav-links">
-            <a href="welcome.html">Back to Dashboard</a>
-            <button id="logoutBtn">Logout</button>
-        </div>
+      </div>
     </div>
-    
-    <script>
-        function openTab(evt, tabName) {
-            var tabcontent = document.getElementsByClassName("tab-content");
-            for (var i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].classList.remove("active");
-            }
-            
-            var tablinks = document.getElementsByClassName("tab-btn");
-            for (var i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
-            }
-            
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
+  </nav>
 
-        function showMessage(message, type) {
-            const messageArea = document.getElementById('messageArea');
-            messageArea.innerHTML = `<div class="message ${type}">${message}</div>`;
-            messageArea.scrollIntoView({ behavior: 'smooth' });
-        }
+  <!-- Main Content -->
+  <main class="pt-32 pb-16 md:pt-40 min-h-screen">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <!-- Page Header -->
+      <div class="text-center mb-12">
+        <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-zwz-red to-zwz-red-dark flex items-center justify-center shadow-xl">
+          <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+          </svg>
+        </div>
+        <h1 class="font-display text-4xl md:text-5xl text-zwz-red-dark font-bold mb-2">
+          My <span class="text-zwz-gold italic">Account</span>
+        </h1>
+        <p class="text-zwz-text/60">Manage your profile and settings</p>
+      </div>
 
-        function loadUserData() {
-            const user = ZWZAuth.getCurrentUser();
-            if (!user) return;
-            
-            // Display info
-            document.getElementById('displayName').textContent = user.name;
-            document.getElementById('displayEmail').textContent = user.email;
-            document.getElementById('displayPhone').textContent = user.phone || 'Not provided';
-            document.getElementById('displayAddress').textContent = user.address || 'Not provided';
-            
-            if (user.createdAt) {
-                const date = new Date(user.createdAt);
-                document.getElementById('displayMemberSince').textContent = date.toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                });
-            }
-            
-            // Form fields
-            document.getElementById('name').value = user.name || '';
-            document.getElementById('email').value = user.email || '';
-            document.getElementById('phone').value = user.phone || '';
-            document.getElementById('address').value = user.address || '';
-        }
+      <div id="messageContainer"></div>
 
-        document.addEventListener("DOMContentLoaded", function() {
-            // Check if logged in
-            if (!ZWZAuth.isLoggedIn()) {
-                window.location.href = 'login.html';
-                return;
-            }
-            
-            loadUserData();
-            
-            // Profile form
-            document.getElementById('profileForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const result = ZWZAuth.updateProfile({
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    phone: document.getElementById('phone').value,
-                    address: document.getElementById('address').value
-                });
-                
-                if (result.success) {
-                    showMessage(result.message, 'success');
-                    loadUserData();
-                } else {
-                    showMessage(result.error, 'error');
-                }
-            });
-            
-            // Password form
-            document.getElementById('passwordForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const newPassword = document.getElementById('new_password').value;
-                const confirmPassword = document.getElementById('confirm_password').value;
-                
-                if (newPassword !== confirmPassword) {
-                    showMessage('Passwords do not match', 'error');
-                    return;
-                }
-                
-                const result = ZWZAuth.updatePassword(
-                    document.getElementById('current_password').value,
-                    newPassword
-                );
-                
-                if (result.success) {
-                    showMessage(result.message, 'success');
-                    document.getElementById('passwordForm').reset();
-                } else {
-                    showMessage(result.error, 'error');
-                }
-            });
-            
-            // Logout
-            document.getElementById('logoutBtn').addEventListener('click', function() {
-                ZWZAuth.logout();
-                window.location.href = 'login.html';
-            });
-        });
-    </script>
+      <!-- Tabs -->
+      <div class="flex justify-center gap-2 mb-8">
+        <button onclick="openTab('profile')" id="tab-profile" class="tab-btn px-6 py-3 font-semibold rounded-xl transition-all duration-300 cursor-pointer bg-zwz-red text-white">
+          Profile
+        </button>
+        <button onclick="openTab('password')" id="tab-password" class="tab-btn px-6 py-3 font-semibold rounded-xl transition-all duration-300 cursor-pointer bg-white text-zwz-text/70 hover:bg-zwz-red/10">
+          Password
+        </button>
+      </div>
+
+      <!-- Profile Tab -->
+      <div id="profile" class="tab-content">
+        <!-- User Info Card -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 mb-8">
+          <h2 class="font-heading text-xl text-zwz-red-dark font-bold mb-6 flex items-center gap-3">
+            <svg class="w-6 h-6 text-zwz-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            Account Details
+          </h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <span class="text-zwz-text/50 text-sm">Name</span>
+              <p id="displayName" class="text-zwz-red-dark font-semibold text-lg">-</p>
+            </div>
+            <div>
+              <span class="text-zwz-text/50 text-sm">Email</span>
+              <p id="displayEmail" class="text-zwz-red-dark font-semibold text-lg">-</p>
+            </div>
+            <div>
+              <span class="text-zwz-text/50 text-sm">Phone</span>
+              <p id="displayPhone" class="text-zwz-red-dark font-semibold text-lg">-</p>
+            </div>
+            <div>
+              <span class="text-zwz-text/50 text-sm">Member Since</span>
+              <p id="displayCreatedAt" class="text-zwz-red-dark font-semibold text-lg">-</p>
+            </div>
+            <div class="md:col-span-2">
+              <span class="text-zwz-text/50 text-sm">Delivery Address</span>
+              <p id="displayAddress" class="text-zwz-red-dark font-semibold text-lg">-</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Update Form -->
+        <div class="bg-white rounded-3xl shadow-xl p-8">
+          <h2 class="font-heading text-xl text-zwz-red-dark font-bold mb-6 flex items-center gap-3">
+            <svg class="w-6 h-6 text-zwz-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+            </svg>
+            Update Profile
+          </h2>
+          <form id="profileForm" class="space-y-5">
+            <div class="grid md:grid-cols-2 gap-5">
+              <div>
+                <label for="name" class="block text-zwz-text/80 font-medium mb-2">Name</label>
+                <input type="text" id="name" name="name" required class="w-full px-5 py-3 rounded-xl border-2 border-zwz-red/20 focus:border-zwz-red focus:ring-2 focus:ring-zwz-red/20 outline-none transition-all">
+              </div>
+              <div>
+                <label for="email" class="block text-zwz-text/80 font-medium mb-2">Email</label>
+                <input type="email" id="email" name="email" required class="w-full px-5 py-3 rounded-xl border-2 border-zwz-red/20 focus:border-zwz-red focus:ring-2 focus:ring-zwz-red/20 outline-none transition-all">
+              </div>
+            </div>
+            <div>
+              <label for="phone" class="block text-zwz-text/80 font-medium mb-2">Phone</label>
+              <input type="tel" id="phone" name="phone" required class="w-full px-5 py-3 rounded-xl border-2 border-zwz-red/20 focus:border-zwz-red focus:ring-2 focus:ring-zwz-red/20 outline-none transition-all">
+            </div>
+            <div>
+              <label for="address" class="block text-zwz-text/80 font-medium mb-2">Delivery Address</label>
+              <textarea id="address" name="address" rows="2" required class="w-full px-5 py-3 rounded-xl border-2 border-zwz-red/20 focus:border-zwz-red focus:ring-2 focus:ring-zwz-red/20 outline-none transition-all resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-zwz-red to-zwz-red-dark text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Save Changes
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Password Tab -->
+      <div id="password" class="tab-content hidden">
+        <div class="bg-white rounded-3xl shadow-xl p-8">
+          <h2 class="font-heading text-xl text-zwz-red-dark font-bold mb-6 flex items-center gap-3">
+            <svg class="w-6 h-6 text-zwz-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+            Change Password
+          </h2>
+          <form id="passwordForm" class="space-y-5">
+            <div>
+              <label for="current_password" class="block text-zwz-text/80 font-medium mb-2">Current Password</label>
+              <input type="password" id="current_password" name="current_password" required class="w-full px-5 py-3 rounded-xl border-2 border-zwz-red/20 focus:border-zwz-red focus:ring-2 focus:ring-zwz-red/20 outline-none transition-all">
+            </div>
+            <div>
+              <label for="new_password" class="block text-zwz-text/80 font-medium mb-2">New Password</label>
+              <input type="password" id="new_password" name="new_password" required class="w-full px-5 py-3 rounded-xl border-2 border-zwz-red/20 focus:border-zwz-red focus:ring-2 focus:ring-zwz-red/20 outline-none transition-all">
+              <p class="text-zwz-text/50 text-xs mt-1">Password must be at least 8 characters long</p>
+            </div>
+            <div>
+              <label for="confirm_password" class="block text-zwz-text/80 font-medium mb-2">Confirm New Password</label>
+              <input type="password" id="confirm_password" name="confirm_password" required class="w-full px-5 py-3 rounded-xl border-2 border-zwz-red/20 focus:border-zwz-red focus:ring-2 focus:ring-zwz-red/20 outline-none transition-all">
+            </div>
+            <button type="submit" class="w-full flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-zwz-red to-zwz-red-dark text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+              </svg>
+              Update Password
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
+        <a href="../index.html" class="inline-flex items-center gap-2 px-8 py-3 border-2 border-zwz-red/20 text-zwz-red-dark font-bold rounded-xl hover:bg-zwz-red/5 transition-all cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+          </svg>
+          Back to Home
+        </a>
+        <button onclick="handleLogout()" class="inline-flex items-center gap-2 px-8 py-3 bg-zwz-red/10 text-zwz-red font-bold rounded-xl hover:bg-zwz-red hover:text-white transition-all cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+          </svg>
+          Logout
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/auth.js"></script>
+  <script>
+    function showMessage(message, isError = true) {
+      document.getElementById('messageContainer').innerHTML = `
+        <div class="mb-6 p-4 rounded-xl ${isError ? 'bg-red-50 border border-red-200 text-red-700' : 'bg-green-50 border border-green-200 text-green-700'} text-center font-medium">
+          ${message}
+        </div>
+      `;
+      setTimeout(() => { document.getElementById('messageContainer').innerHTML = ''; }, 5000);
+    }
+
+    function openTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('bg-zwz-red', 'text-white');
+        b.classList.add('bg-white', 'text-zwz-text/70', 'hover:bg-zwz-red/10');
+      });
+      document.getElementById(tabName).classList.remove('hidden');
+      document.getElementById('tab-' + tabName).classList.remove('bg-white', 'text-zwz-text/70', 'hover:bg-zwz-red/10');
+      document.getElementById('tab-' + tabName).classList.add('bg-zwz-red', 'text-white');
+    }
+
+    function loadUserData() {
+      const user = ZWZAuth.getCurrentUser();
+      if (!user) {
+        window.location.href = 'login.html';
+        return;
+      }
+      document.getElementById('displayName').textContent = user.name || '-';
+      document.getElementById('displayEmail').textContent = user.email || '-';
+      document.getElementById('displayPhone').textContent = user.phone || '-';
+      document.getElementById('displayAddress').textContent = user.address || '-';
+      document.getElementById('displayCreatedAt').textContent = user.createdAt ? new Date(user.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '-';
+      document.getElementById('name').value = user.name || '';
+      document.getElementById('email').value = user.email || '';
+      document.getElementById('phone').value = user.phone || '';
+      document.getElementById('address').value = user.address || '';
+    }
+
+    function handleLogout() {
+      ZWZAuth.logout();
+      window.location.href = '../index.html';
+    }
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('zwz_cart') || '[]');
+      const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+      const cartCountEl = document.getElementById('cart-count');
+      if (count > 0) {
+        cartCountEl.textContent = count;
+        cartCountEl.classList.remove('hidden');
+        cartCountEl.classList.add('flex');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      ZWZAuth.init();
+      if (!ZWZAuth.isLoggedIn()) {
+        window.location.href = 'login.html';
+        return;
+      }
+      loadUserData();
+      updateCartCount();
+
+      // Mobile menu
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+      }
+
+      // Profile form
+      document.getElementById('profileForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const updates = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          address: document.getElementById('address').value
+        };
+        const result = ZWZAuth.updateProfile(updates);
+        if (result.success) {
+          showMessage('Profile updated successfully!', false);
+          loadUserData();
+        } else {
+          showMessage(result.error);
+        }
+      });
+
+      // Password form
+      document.getElementById('passwordForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const currentPassword = document.getElementById('current_password').value;
+        const newPassword = document.getElementById('new_password').value;
+        const confirmPassword = document.getElementById('confirm_password').value;
+        
+        if (newPassword.length < 8) { 
+          showMessage('Password must be at least 8 characters long'); 
+          return; 
+        }
+        if (newPassword !== confirmPassword) { 
+          showMessage('Passwords do not match'); 
+          return; 
+        }
+        
+        const result = ZWZAuth.updatePassword(currentPassword, newPassword);
+        if (result.success) {
+          showMessage('Password updated successfully!', false);
+          document.getElementById('passwordForm').reset();
+        } else {
+          showMessage(result.error);
+        }
+      });
+    });
+  </script>
 </body>
 </html>

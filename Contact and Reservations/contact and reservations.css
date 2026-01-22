@@ -17,7 +17,7 @@ body {
 
 :root {
   	/* Fonts */
-  	--font-merriweather: Merriweather;
+  	--font-karla: 'Karla', 'Noto Sans SC', sans-serif;
   	--font-cinzel: Cinzel;
   	--font-playfair-display: 'Playfair Display';
   	--font-cinzel-decorative: 'Cinzel Decorative';
@@ -27,9 +27,9 @@ body {
   	--font-size-11xl: 30px;
 
   	/* Colors */
-  	--color-darkred: #870000;
+  	--color-darkred: #902223;
   	--color-goldenrod: #ebaa00;
-  	--color-orange: #ffb722;
+  	--color-orange: #C4A44A;
   	--color-white: #fff;
 
   	/* Border radiuses */
@@ -39,7 +39,7 @@ body {
 /* Navbar */
 .navbar {
 	width: 100%;
-	background-color: #fcb734;
+	background-color: #C4A44A;
 	padding: 1vh 3vw;
 	display: flex;
 	justify-content: space-between;
@@ -74,10 +74,10 @@ body {
   
   
   .nav-link {
-	font-family: 'Merriweather', serif;
-	color: #870000;
+	font-family: 'Karla', 'Noto Sans SC', sans-serif;
+	color: #902223;
 	text-decoration: none;
-	font-size: 1.2vw;
+	font-size: 1rem; /* standardized */
 	transition: color 0.3s ease, transform 0.3s ease;
   }
   
@@ -104,7 +104,7 @@ body {
 .proper-scaling-of-contact-and {
   	width: 100%;
   	position: relative;
-  	background-color: #fff1ce;
+  	background-color: #F5EDD8;
   	height: 1581px;
   	overflow: hidden;
   	text-align: center;
@@ -168,7 +168,7 @@ body {
 .visit-us, .call-us, .write-us, .div {
   	font-size: var(--font-size-11xl);
   	display: inline-block;
-  	font-family: var(--font-merriweather);
+  	font-family: var(--font-karla);
   	color: var(--color-white);
 }
 
@@ -267,9 +267,9 @@ body {
   	position: absolute;
   	top: 794px;
   	left: 589px;
-  	font-size: 34px;
+  	font-size: 2rem; /* 32px - standardized */
   	display: inline-block;
-  	font-family: var(--font-merriweather);
+  	font-family: var(--font-karla);
   	width: 806px;
   	height: 48px;
 }
@@ -315,8 +315,8 @@ body {
   	background-color: var(--color-white);
   	border: none;
   	padding: 15px;
-  	font-size: 16px;
-  	font-family: var(--font-merriweather);
+  	font-size: 1rem; /* 16px - standardized */
+  	font-family: var(--font-karla);
   	color: #000;
   	box-sizing: border-box;
 }
@@ -373,8 +373,8 @@ input:focus, textarea:focus {
   position: relative;
   width: 100%;
   height: 100%;
-  font-size: 25px;
-  font-family: var(--font-merriweather);
+  font-size: 1.5rem; /* 24px - standardized */
+  font-family: var(--font-karla);
   color: var(--color-white);
   background: none;
   border: none;
@@ -428,7 +428,7 @@ input:focus, textarea:focus {
 
 .modal-content {
   position: relative;
-  background-color: #fff1ce;
+  background-color: #F5EDD8;
   margin: 15% auto;
   padding: 30px;
   border: 2px solid var(--color-darkred);
@@ -446,15 +446,15 @@ input:focus, textarea:focus {
 
 .modal-content h2 {
   color: var(--color-darkred);
-  font-family: var(--font-merriweather);
+  font-family: var(--font-cinzel);
   margin-bottom: 15px;
   text-align: center;
 }
 
 .modal-content p {
   color: #333;
-  font-family: var(--font-merriweather);
-  font-size: 16px;
+  font-family: var(--font-karla);
+  font-size: 1rem;
   line-height: 1.5;
   text-align: center;
 }
@@ -493,7 +493,7 @@ input:focus, textarea:focus {
 }
 
 .confirmation-modal-content {
-  background: #fff1ce;
+  background: #F5EDD8;
   border: 2px solid var(--color-darkred);
   border-radius: 18px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
@@ -506,15 +506,15 @@ input:focus, textarea:focus {
 
 .confirmation-modal-content h2 {
   color: var(--color-darkred);
-  font-family: var(--font-merriweather);
+  font-family: var(--font-cinzel);
   margin-bottom: 18px;
-  font-size: 28px;
+  font-size: 1.75rem; /* 28px - standardized */
 }
 
 .confirmation-modal-content p {
   color: #333;
-  font-family: var(--font-merriweather);
-  font-size: 17px;
+  font-family: var(--font-karla);
+  font-size: 1.0625rem; /* 17px - standardized */
   margin-bottom: 25px;
 }
 

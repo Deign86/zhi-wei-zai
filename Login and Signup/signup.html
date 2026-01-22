@@ -3,200 +3,228 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, width=device-width">
-  <title>Sign Up - Zhi Wei Zai</title>
-  
-  <!-- Tailwind CSS CDN -->
+  <title>Create Account - Zhi Wei Zai | Authentic Chinese Restaurant</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            'zwz-red': '#870000',
-            'zwz-orange': '#fcb734',
-            'zwz-cream': '#fff1ce',
+            // Chinese Traditional Color Palette (中式传统配色)
+            'zwz-crimson': '#902223',      // Primary - 绛红 (Jiàng Hóng)
+            'zwz-crimson-light': '#A83234',
+            'zwz-crimson-dark': '#6E1A1B',
+            'zwz-brown': '#8D5631',          // Secondary - 棕褐 (Zōng Hè)
+            'zwz-brown-light': '#A86B42',
+            'zwz-brown-dark': '#6B4025',
+            'zwz-cream': '#E2CD9C',          // Background - 米黄 (Mǐ Huáng)
+            'zwz-cream-light': '#F5EDD8',
+            'zwz-cream-dark': '#D4BE8A',
+            'zwz-gold': '#C4A44A',           // Accent - 金色 (Jīn Sè)
+            'zwz-gold-light': '#D4B85E',
+            'zwz-text': '#3D2317',           // Text - 深褐 (Shēn Hè)
+            'zwz-text-light': '#5C3D2E',
+            // Legacy aliases
+            'zwz-red': '#902223',
+            'zwz-red-dark': '#6E1A1B',
           },
           fontFamily: {
-            'merriweather': ['Merriweather', 'serif'],
-            'cinzel': ['Cinzel', 'serif'],
-            'playfair': ['Playfair Display', 'serif'],
-          }
+            'display': ['Playfair Display', 'Noto Serif SC', 'serif'],
+            'body': ['Karla', 'Noto Sans SC', 'sans-serif'],
+            'heading': ['Cinzel', 'Noto Serif SC', 'serif'],
+          },
         }
       }
     }
   </script>
-  
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" />
-  
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="./signup.css" />
-  
-  <!-- Auth System -->
-  <script src="../js/auth.js"></script>
-  
-  <style>
-    .message {
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      text-align: center;
-    }
-    .error {
-      background-color: #ffebee;
-      color: #c62828;
-      border: 1px solid #ef9a9a;
-    }
-    .success {
-      background-color: #e8f5e9;
-      color: #2e7d32;
-      border: 1px solid #a5d6a7;
-    }
-    .field-error {
-      color: #c62828;
-      font-size: 0.8rem;
-      margin-top: 0.25rem;
-    }
-    .password-requirements {
-      font-size: 14px;
-      color: #666;
-      margin-top: 5px;
-      text-align: left;
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="../ASSETS/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../ASSETS/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../ASSETS/favicon-16x16.png">
 </head>
-<body class="bg-zwz-red min-h-screen flex flex-col items-center justify-center p-4">
-  <!-- Background Image -->
-  <div class="fixed inset-0 bg-cover bg-center z-0" style="background-image: url('../ASSETS/background.jpg'); opacity: 0.15;"></div>
+<body class="bg-gradient-to-br from-zwz-red-dark via-zwz-red to-zwz-red-dark min-h-screen font-body antialiased">
 
-  <!-- Main content -->
-  <div class="bg-white w-full md:w-full md:max-w-none md:shadow-none md:rounded-none md:p-8 relative mt-0 md:mt-24 z-10 max-w-md rounded-lg shadow-lg p-6">
-    <!-- Mobile Header - Only visible on mobile -->
-    <div class="md:hidden bg-zwz-red p-4 flex justify-between items-center mb-6 rounded-t-lg -mt-6 -mx-6">
-      <a href="../index.html" class="flex items-center">
-        <img class="w-8 h-8" alt="Exit to app" src="exit_to_app.png">
-      </a>
-      <h1 class="font-cinzel text-white text-lg sm:text-xl">Welcome to Zhi Wei Zai!</h1>
-    </div>
-
-    <!-- Sign up heading -->
-    <h2 class="text-center font-cinzel text-zwz-red text-xl md:text-2xl mb-6 md:mb-8 px-4">Sign up</h2>
-
-    <!-- Message display area -->
-    <div id="messageArea" class="hidden px-4 md:px-0 md:max-w-lg md:mx-auto"></div>
-
-    <!-- Sign up form -->
-    <form id="signupForm" class="space-y-4 md:space-y-6 px-4 md:px-0 md:max-w-lg md:mx-auto">
-      <!-- Name input -->
-      <div class="space-y-1 md:space-y-2">
-        <label for="name" class="block text-zwz-red text-sm md:text-base">Name</label>
-        <input type="text" id="name" name="name" required 
-               class="w-full px-3 py-2 md:px-4 md:py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-zwz-orange" />
-      </div>
-
-      <!-- Email input -->
-      <div class="space-y-1 md:space-y-2">
-        <label for="email" class="block text-zwz-red text-sm md:text-base">Email Address</label>
-        <input type="email" id="email" name="email" required 
-               class="w-full px-3 py-2 md:px-4 md:py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-zwz-orange" />
-      </div>
-
-      <!-- Password input -->
-      <div class="space-y-1 md:space-y-2">
-        <label for="password" class="block text-zwz-red text-sm md:text-base">Password</label>
-        <input type="password" id="password" name="password" required 
-               class="w-full px-3 py-2 md:px-4 md:py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-zwz-orange" />
-        <div class="password-requirements">
-          Password must be at least 8 characters long
-        </div>
-      </div>
-
-      <!-- Confirm Password input -->
-      <div class="space-y-1 md:space-y-2">
-        <label for="confirmPassword" class="block text-zwz-red text-sm md:text-base">Confirm Password</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required 
-               class="w-full px-3 py-2 md:px-4 md:py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-zwz-orange" />
-      </div>
-
-      <!-- Phone input -->
-      <div class="space-y-1 md:space-y-2">
-        <label for="phone" class="block text-zwz-red text-sm md:text-base">Phone Number</label>
-        <input type="tel" id="phone" name="phone" required 
-               class="w-full px-3 py-2 md:px-4 md:py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-zwz-orange" />
-      </div>
-
-      <!-- Address input -->
-      <div class="space-y-1 md:space-y-2">
-        <label for="address" class="block text-zwz-red text-sm md:text-base">Delivery Address</label>
-        <input type="text" id="address" name="address" required 
-               class="w-full px-3 py-2 md:px-4 md:py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-zwz-orange" />
-      </div>
-
-      <!-- Sign up button -->
-      <button type="submit" class="w-full bg-zwz-red text-white font-cinzel font-bold py-2 md:py-3 rounded hover:bg-[#6a0000] transition-colors">SIGN UP</button>
-
-      <!-- Already have account link -->
-      <div class="text-center">
-        <span class="text-gray-600 text-sm">Already have an account? </span>
-        <a href="login.html" class="text-zwz-red hover:text-zwz-orange text-sm font-bold transition-colors">Sign In</a>
-      </div>
-
-      <!-- Terms text -->
-      <p class="text-center text-xs text-zwz-red">
-        By signing up, I agree to Zhi Wei Zai's <span class="font-bold">Privacy Notice</span> and <span class="font-bold">Terms & Conditions</span>
-      </p>
-    </form>
+  <!-- Background Pattern -->
+  <div class="fixed inset-0 opacity-5 pointer-events-none">
+    <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+        <circle cx="5" cy="5" r="1" fill="currentColor"/>
+      </pattern>
+      <rect width="100%" height="100%" fill="url(#grid)" class="text-white"/>
+    </svg>
   </div>
 
+  <div class="min-h-screen flex flex-col lg:flex-row relative z-10">
+    <!-- Left Panel - Branding -->
+    <div class="hidden lg:flex lg:w-1/2 flex-col items-center justify-center p-12 relative">
+      <a href="../index.html" class="absolute top-8 left-8 flex items-center gap-3 cursor-pointer group">
+        <img src="../ASSETS/logo.jpg" class="w-14 h-14 rounded-xl object-cover shadow-lg group-hover:scale-105 transition-transform" alt="Zhi Wei Zai Logo">
+        <div>
+          <span class="font-heading text-white text-xl font-bold">ZhiWeiZai</span>
+          <span class="block text-xs text-white/60">Chinese Restaurant</span>
+        </div>
+      </a>
+      <div class="text-center">
+        <h1 class="font-display text-5xl xl:text-6xl text-white font-bold mb-6">
+          Join Our <span class="text-zwz-gold italic">Family</span>
+        </h1>
+        <p class="text-white/70 text-xl max-w-md mx-auto mb-12">
+          Create an account to enjoy exclusive deals, faster checkout, and order tracking
+        </p>
+        <div class="grid grid-cols-3 gap-6 max-w-sm mx-auto">
+          <div class="text-center">
+            <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center mx-auto mb-3">
+              <svg class="w-7 h-7 text-zwz-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
+              </svg>
+            </div>
+            <span class="text-white/60 text-sm">Exclusive Deals</span>
+          </div>
+          <div class="text-center">
+            <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center mx-auto mb-3">
+              <svg class="w-7 h-7 text-zwz-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <span class="text-white/60 text-sm">Fast Checkout</span>
+          </div>
+          <div class="text-center">
+            <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center mx-auto mb-3">
+              <svg class="w-7 h-7 text-zwz-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+              </svg>
+            </div>
+            <span class="text-white/60 text-sm">Order Tracking</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel - Signup Form -->
+    <div class="flex-1 flex items-center justify-center p-6 lg:p-12">
+      <div class="w-full max-w-md">
+        <!-- Mobile Header -->
+        <div class="lg:hidden text-center mb-8">
+          <a href="../index.html" class="inline-flex items-center gap-3 mb-6 cursor-pointer">
+            <img src="../ASSETS/logo.jpg" class="w-14 h-14 rounded-xl object-cover shadow-lg" alt="Zhi Wei Zai Logo">
+          </a>
+          <h1 class="font-display text-3xl text-white font-bold">
+            Join Our <span class="text-zwz-gold italic">Family</span>
+          </h1>
+        </div>
+
+        <!-- Form Card -->
+        <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-10">
+          <h2 class="font-heading text-2xl text-zwz-red-dark font-bold text-center mb-2">Create Account</h2>
+          <p class="text-zwz-text/60 text-center mb-8">Fill in your details to get started</p>
+
+          <div id="messageContainer"></div>
+
+          <form id="signupForm" class="space-y-4">
+            <div>
+              <label for="name" class="block text-zwz-text/80 font-medium mb-2">Full Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your full name" class="w-full px-5 py-3 rounded-xl border-2 border-zwz-red/20 focus:border-zwz-red focus:ring-2 focus:ring-zwz-red/20 outline-none transition-all">
+            </div>
+
+            <div>
+              <label for="email" class="block text-zwz-text/80 font-medium mb-2">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="your@email.com" class="w-full px-5 py-3 rounded-xl border-2 border-zwz-red/20 focus:border-zwz-red focus:ring-2 focus:ring-zwz-red/20 outline-none transition-all">
+            </div>
+
+            <div>
+              <label for="password" class="block text-zwz-text/80 font-medium mb-2">Password</label>
+              <input type="password" id="password" name="password" required placeholder="Minimum 8 characters" class="w-full px-5 py-3 rounded-xl border-2 border-zwz-red/20 focus:border-zwz-red focus:ring-2 focus:ring-zwz-red/20 outline-none transition-all">
+              <p class="text-zwz-text/50 text-xs mt-1">Password must be at least 8 characters long</p>
+            </div>
+
+            <div>
+              <label for="phone" class="block text-zwz-text/80 font-medium mb-2">Phone Number</label>
+              <input type="tel" id="phone" name="phone" required placeholder="Your phone number" class="w-full px-5 py-3 rounded-xl border-2 border-zwz-red/20 focus:border-zwz-red focus:ring-2 focus:ring-zwz-red/20 outline-none transition-all">
+            </div>
+
+            <div>
+              <label for="address" class="block text-zwz-text/80 font-medium mb-2">Delivery Address</label>
+              <textarea id="address" name="address" required rows="2" placeholder="Your delivery address" class="w-full px-5 py-3 rounded-xl border-2 border-zwz-red/20 focus:border-zwz-red focus:ring-2 focus:ring-zwz-red/20 outline-none transition-all resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="w-full flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-zwz-red to-zwz-red-dark text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer mt-6">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+              </svg>
+              Create Account
+            </button>
+          </form>
+
+          <p class="mt-6 text-center text-zwz-text/70">
+            Already have an account? 
+            <a href="login.html" class="font-bold text-zwz-red hover:text-zwz-red-dark transition-colors cursor-pointer">Sign In</a>
+          </p>
+
+          <p class="mt-4 text-center text-zwz-text/40 text-xs">
+            By signing up, I agree to Zhi Wei Zai's <span class="font-semibold cursor-pointer hover:text-zwz-red">Privacy Notice</span> and <span class="font-semibold cursor-pointer hover:text-zwz-red">Terms & Conditions</span>
+          </p>
+        </div>
+
+        <!-- Back to Home -->
+        <div class="text-center mt-6">
+          <a href="../index.html" class="inline-flex items-center gap-2 text-white/70 hover:text-white font-medium transition-colors cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to Home
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/auth.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Check if already logged in
+      ZWZAuth.init();
+      
+      // If already logged in, redirect to account page
       if (ZWZAuth.isLoggedIn()) {
-        window.location.href = 'welcome.html';
+        window.location.href = 'account.html';
         return;
       }
 
-      // Handle form submission
-      document.getElementById('signupForm').addEventListener('submit', function(e) {
+      const form = document.getElementById('signupForm');
+      const messageContainer = document.getElementById('messageContainer');
+
+      function showMessage(message, isError = true) {
+        messageContainer.innerHTML = `
+          <div class="mb-6 p-4 rounded-xl ${isError ? 'bg-red-50 border border-red-200 text-red-700' : 'bg-green-50 border border-green-200 text-green-700'} text-center font-medium">
+            ${message}
+          </div>
+        `;
+      }
+
+      form.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
-        const phone = document.getElementById('phone').value;
-        const address = document.getElementById('address').value;
-        
-        // Check password match
-        if (password !== confirmPassword) {
-          showMessage('Passwords do not match', 'error');
-          return;
-        }
-        
-        const result = ZWZAuth.register({
-          name,
-          email,
-          password,
-          phone,
-          address
-        });
-        
+        const userData = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          password: document.getElementById('password').value,
+          phone: document.getElementById('phone').value,
+          address: document.getElementById('address').value
+        };
+
+        const result = ZWZAuth.register(userData);
+
         if (result.success) {
-          // Redirect to login page with success message
-          window.location.href = 'login.html?registered=true';
+          showMessage(result.message, false);
+          setTimeout(() => {
+            window.location.href = 'login.html';
+          }, 2000);
         } else {
-          showMessage(result.error, 'error');
+          showMessage(result.error);
         }
       });
     });
-
-    function showMessage(message, type) {
-      const messageArea = document.getElementById('messageArea');
-      messageArea.innerHTML = `<div class="message ${type}">${message}</div>`;
-      messageArea.classList.remove('hidden');
-    }
   </script>
 </body>
 </html>

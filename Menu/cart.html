@@ -1,358 +1,331 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, width=device-width">
-  <title>Shopping Cart - Zhi Wei Zai</title>
-
-  <!-- Tailwind CSS CDN -->
+  <title>Cart - Zhi Wei Zai | Authentic Chinese Restaurant</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            'zwz-red': '#870000',
-            'zwz-orange': '#fcb734',
-            'zwz-cream': '#fff1ce',
+            // Chinese Traditional Color Palette (中式传统配色)
+            'zwz-crimson': '#902223',      // Primary - 绛红 (Jiàng Hóng)
+            'zwz-crimson-light': '#A83234',
+            'zwz-crimson-dark': '#6E1A1B',
+            'zwz-brown': '#8D5631',          // Secondary - 棕褐 (Zōng Hè)
+            'zwz-brown-light': '#A86B42',
+            'zwz-brown-dark': '#6B4025',
+            'zwz-cream': '#E2CD9C',          // Background - 米黄 (Mǐ Huáng)
+            'zwz-cream-light': '#F5EDD8',
+            'zwz-cream-dark': '#D4BE8A',
+            'zwz-gold': '#C4A44A',           // Accent - 金色 (Jīn Sè)
+            'zwz-gold-light': '#D4B85E',
+            'zwz-text': '#3D2317',           // Text - 深褐 (Shēn Hè)
+            'zwz-text-light': '#5C3D2E',
+            // Legacy aliases
+            'zwz-red': '#902223',
+            'zwz-red-dark': '#6E1A1B',
           },
           fontFamily: {
-            'merriweather': ['Merriweather', 'serif'],
-            'cinzel': ['Cinzel', 'serif'],
-            'playfair': ['Playfair Display', 'serif'],
-          }
+            'display': ['Playfair Display', 'Noto Serif SC', 'serif'],
+            'body': ['Karla', 'Noto Sans SC', 'sans-serif'],
+            'heading': ['Cinzel', 'Noto Serif SC', 'serif'],
+          },
         }
       }
     }
   </script>
-
-  <!-- External CSS -->
-  <link rel="stylesheet" href="cart.css" />
-
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" />
-
-  <!-- Favicon -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="apple-touch-icon" sizes="180x180" href="../ASSETS/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../ASSETS/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../ASSETS/favicon-16x16.png">
-  <link rel="manifest" href="../ASSETS/site.webmanifest">
-  
-  <!-- Auth System -->
-  <script src="../js/auth.js"></script>
 </head>
-<body class="bg-zwz-cream min-h-screen">
+<body class="bg-zwz-cream font-body antialiased min-h-screen flex flex-col">
 
-  <!-- Top Navigation -->
-  <nav class="fixed top-0 left-0 w-full bg-zwz-orange shadow-md z-50 px-3 py-2 md:px-[3vw] md:py-[1vh]">
-    <div class="container mx-auto flex items-center justify-between">
-      <!-- Logo for mobile (centered) and desktop (left aligned) -->
-      <div class="md:hidden w-full flex justify-center relative">
-        <img src="../ASSETS/logo.jpg" class="absolute top-[-1.5vh] left-1/2 transform -translate-x-1/2 w-[15vw] h-[15vh]" alt="Logo">
-      </div>
-
-      <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center w-full">
-        <div class="flex gap-5 ml-auto relative">
-          <img src="../ASSETS/logo.jpg" class="absolute top-[-1.5vh] left-[-50vw] w-[12vw] h-[20vh]">
-          <a href="../index.html" class="font-merriweather text-zwz-red no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="homeText">Home</a>
-          <a href="../index.html#about" class="font-merriweather text-zwz-red no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="aboutText">About</a>
-          <a href="menu.html" class="font-merriweather text-zwz-red no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="menuText">Menu</a>
-          <a href="../Catering and Gallery/catering.html" class="font-merriweather text-zwz-red no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="cateringText">Catering</a>
-          <a href="../Contact and Reservations/contact.html" class="font-merriweather text-zwz-red no-underline text-lg md:text-[1.2vw] transition-all hover:text-white hover:scale-110" id="contactText">Contact</a>
-          <a href="../Login and Signup/login.html" class="ml-[5px]" id="accountText"><img src="../ASSETS/account_circle.svg" alt="account-circle-icon" class="w-[30px] h-[30px]"/></a>
-          <a href="cart.html" class="ml-[5px] cart-link" id="cartText" style="position: relative;">
-            <img src="../ASSETS/shopping_cart.svg" alt="cart-icon" class="w-[30px] h-[30px]"/>
-            <span id="cart-count" class="cart-count hidden absolute -top-2 -right-2 bg-zwz-red text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"></span>
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50">
+    <div class="mx-4 mt-4 md:mx-8 lg:mx-16">
+      <div class="bg-white/95 backdrop-blur-lg rounded-2xl shadow-lg border border-zwz-red/10 px-4 py-3 md:px-6 md:py-4">
+        <div class="flex items-center justify-between">
+          <a href="../index.html" class="flex items-center gap-3 group cursor-pointer">
+            <img src="../ASSETS/logo.jpg" class="w-12 h-12 md:w-14 md:h-14 rounded-xl object-cover shadow-md group-hover:scale-105 transition-transform duration-300" alt="Zhi Wei Zai Logo">
+            <div class="hidden sm:block">
+              <span class="font-heading text-zwz-red-dark text-lg md:text-xl font-bold tracking-wide">ZhiWeiZai</span>
+              <span class="block text-xs text-zwz-text/60 font-medium -mt-1">Chinese Restaurant</span>
+            </div>
           </a>
-        </div>
-      </div>
 
-      <!-- Mobile Navigation (hamburger menu) -->
-      <div class="md:hidden flex items-center justify-end w-full">
-        <div class="flex items-center">
-          <a href="../Login and Signup/login.html" class="ml-2" id="mobileAccountText"><img src="../ASSETS/account_circle.svg" alt="account-circle-icon" class="w-[30px] h-[30px]"/></a>
-          
-            <a href="../Login and Signup/login.html" class="ml-2" id="mobileAccountText"><img src="../ASSETS/account_circle.svg" alt="account-circle-icon" class="w-[30px] h-[30px]"/></a>
-          
-          <a href="cart.html" class="ml-2 cart-link" id="mobileCartText" style="position: relative;">
-            <img src="../ASSETS/shopping_cart.svg" alt="cart-icon" class="w-[30px] h-[30px]"/>
-            <span id="mobile-cart-count" class="cart-count hidden absolute -top-2 -right-2 bg-zwz-red text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"></span>
-          </a>
-          <button id="menu-toggle" class="text-zwz-red focus:outline-none ml-2">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button>
+          <div class="hidden lg:flex items-center gap-1">
+            <a href="../index.html" class="px-4 py-2 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 hover:text-zwz-red-dark transition-colors duration-200 cursor-pointer">Home</a>
+            <a href="menu.html" class="px-4 py-2 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 hover:text-zwz-red-dark transition-colors duration-200 cursor-pointer">Menu</a>
+            <a href="../Catering and Gallery/catering.html" class="px-4 py-2 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 hover:text-zwz-red-dark transition-colors duration-200 cursor-pointer">Catering</a>
+            <a href="../Contact and Reservations/contact.html" class="px-4 py-2 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 hover:text-zwz-red-dark transition-colors duration-200 cursor-pointer">Contact</a>
+          </div>
+
+          <div class="flex items-center gap-2 md:gap-3">
+            <a href="cart.html" class="relative p-2.5 rounded-xl bg-zwz-red/10 transition-colors duration-200 cursor-pointer" aria-label="Shopping Cart">
+              <svg class="w-6 h-6 text-zwz-red-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+              <span id="cart-count" class="hidden absolute -top-1 -right-1 w-5 h-5 bg-zwz-red text-white text-xs font-bold rounded-full items-center justify-center">0</span>
+            </a>
+            <a href="../Login and Signup/login.html" class="hidden md:flex items-center gap-2 px-4 py-2.5 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 transition-colors duration-200 cursor-pointer">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+              </svg>
+              <span>Sign In</span>
+            </a>
+            <button id="menu-toggle" class="lg:hidden p-2.5 rounded-xl bg-zwz-cream hover:bg-zwz-gold/20 transition-colors duration-200 cursor-pointer">
+              <svg class="w-6 h-6 text-zwz-red-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Mobile Menu (hidden by default) -->
-    <div id="mobile-menu" class="hidden md:hidden bg-zwz-orange w-full">
-      <div class="flex flex-col items-center py-4">
-        <a href="../index.html" class="font-merriweather text-zwz-red no-underline text-xl py-2 transition-all hover:text-white">Home</a>
-        <a href="../index.html#about" class="font-merriweather text-zwz-red no-underline text-xl py-2 transition-all hover:text-white" id="mobileAboutText">About</a>
-        <a href="menu.html" class="font-merriweather text-zwz-red no-underline text-xl py-2 transition-all hover:text-white" id="mobileMenuText">Menu</a>
-        <a href="../Catering and Gallery/catering.html" class="font-merriweather text-zwz-red no-underline text-xl py-2 transition-all hover:text-white" id="mobileCateringText">Catering</a>
-        <a href="../Contact and Reservations/contact.html" class="font-merriweather text-zwz-red no-underline text-xl py-2 transition-all hover:text-white" id="mobileContactText">Contact</a>
+    <div id="mobile-menu" class="hidden lg:hidden mx-4 mt-2 md:mx-8">
+      <div class="bg-white/95 backdrop-blur-lg rounded-2xl shadow-lg border border-zwz-red/10 p-4 space-y-2">
+        <a href="../index.html" class="block px-4 py-3 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 transition-colors cursor-pointer">Home</a>
+        <a href="menu.html" class="block px-4 py-3 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 transition-colors cursor-pointer">Menu</a>
+        <a href="../Catering and Gallery/catering.html" class="block px-4 py-3 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 transition-colors cursor-pointer">Catering</a>
+        <a href="../Contact and Reservations/contact.html" class="block px-4 py-3 text-zwz-text/80 font-medium rounded-xl hover:bg-zwz-red/10 transition-colors cursor-pointer">Contact</a>
       </div>
     </div>
   </nav>
 
   <!-- Main Content -->
-  <div class="pt-24 md:pt-32 px-4 md:px-8 max-w-7xl mx-auto">
-    <h1 class="text-3xl md:text-4xl font-bold text-zwz-red text-center mb-8 font-cinzel">Your Cart</h1>
-
-    <!-- Empty Cart Message (shown when cart is empty) -->
-    <div id="empty-cart-message" class="hidden text-center py-12">
-      <img src="ASSETS/empty-cart.svg" alt="Empty Cart" class="w-24 h-24 mx-auto mb-4 opacity-50">
-      <h2 class="text-xl font-bold text-zwz-red mb-2 font-merriweather">Your cart is empty</h2>
-      <p class="text-gray-600 mb-6">Looks like you haven't added any items to your cart yet.</p>
-      <a href="menu.html" class="inline-block bg-zwz-orange text-zwz-red px-6 py-3 rounded-full font-bold hover:bg-opacity-90 transition-colors">
-        Browse Menu
-      </a>
-    </div>
-
-    <!-- Cart Items Container -->
-    <div id="cart-container" class="mb-8">
-      <!-- Cart items will be dynamically inserted here -->
-    </div>
-
-    <!-- Order Summary -->
-    <div id="order-summary" class="bg-white rounded-xl shadow-md p-6 mb-8 max-w-md mx-auto">
-      <h2 class="text-xl font-bold text-zwz-red mb-4 font-merriweather">Order Summary</h2>
-
-      <div class="space-y-3 mb-4">
-        <div class="flex justify-between">
-          <span class="text-gray-600">Subtotal</span>
-          <span id="subtotal" class="font-medium">₱ 0</span>
-        </div>
-        <div class="flex justify-between">
-          <span class="text-gray-600">Delivery Fee</span>
-          <span id="delivery-fee" class="font-medium">₱ 50</span>
-        </div>
-        <div class="border-t border-gray-200 pt-3 flex justify-between">
-          <span class="font-bold text-zwz-red">Total</span>
-          <span id="total" class="font-bold text-zwz-red">₱ 50</span>
-        </div>
+  <main class="flex-1 pt-32 pb-16 md:pt-40">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="mb-8">
+        <a href="menu.html" class="inline-flex items-center gap-2 text-zwz-red-dark hover:text-zwz-red font-medium transition-colors cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+          </svg>
+          Continue Shopping
+        </a>
       </div>
 
-      <!-- Checkout Button -->
-      <button id="checkout-btn" class="w-full bg-zwz-red text-white font-bold py-3 rounded-lg hover:bg-opacity-90 transition-colors">
-        Proceed to Checkout
-      </button>
-    </div>
-
-
-  </div>
-
-  <!-- Footer -->
-  <footer class="bg-zwz-orange py-10 px-6 md:px-16 mt-16">
-    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
-      <!-- Logo -->
-      <div class="flex flex-col items-center md:items-start">
-        <img src="../ASSETS/logo.jpg" class="w-36 h-36 md:w-40 md:h-40 object-cover">
+      <div class="text-center mb-12">
+        <h1 class="font-display text-4xl md:text-5xl text-zwz-red-dark font-bold mb-4">Your <span class="text-zwz-gold italic">Cart</span></h1>
+        <p class="text-zwz-text/70 text-lg">Review your order before checkout</p>
       </div>
 
-      <div class="w-[50px] h-1 md:w-1 md:h-[50px] bg-zwz-red mt-4 rounded-full"></div>
-
-      <!-- Footer Content -->
-      <div class="flex flex-col md:flex-row gap-8 md:gap-16 lg:gap-24 mt-6 md:mt-0">
-        <!-- Address -->
-        <div class="text-center md:text-left">
-          <h3 class="text-zwz-red font-bold text-xl mb-4 font-merriweather">ADDRESS</h3>
-          <p class="text-zwz-red">239 Maysan Road</p>
-          <p class="text-zwz-red">Valenzuela City</p>
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Cart Items -->
+        <div class="lg:col-span-2 space-y-4" id="cart-items">
+          <!-- Items will be loaded here -->
         </div>
 
-        <!-- Opening Hours -->
-        <div class="text-center md:text-left">
-          <h3 class="text-zwz-red font-bold text-xl mb-4 font-merriweather">OPENING HOURS</h3>
-          <p class="text-zwz-red">Mon - Fri: 10:00 AM - 11:30 PM</p>
-          <p class="text-zwz-red">Sat - Sun: 11:00 AM - 10:30 PM</p>
-        </div>
-
-        <!-- Contact Info -->
-        <div class="text-center md:text-left">
-          <h3 class="text-zwz-red font-bold text-xl mb-4 font-merriweather">CONTACT</h3>
-          <div class="text-zwz-red flex items-center justify-center md:justify-start">
-            <img class="w-6 h-6 mr-2" alt="" src="../ASSETS/contact icon 1.png">
-            <span class="font-medium">09174761831</span>
+        <!-- Order Summary -->
+        <div class="lg:col-span-1">
+          <div class="bg-white rounded-3xl shadow-xl p-6 sticky top-32">
+            <h2 class="font-display text-2xl text-zwz-red-dark font-bold mb-6">Order Summary</h2>
+            <div class="space-y-4 mb-6">
+              <div class="flex justify-between text-zwz-text/70">
+                <span>Subtotal</span>
+                <span id="subtotal">₱0</span>
+              </div>
+              <div class="flex justify-between text-zwz-text/70">
+                <span>Delivery Fee</span>
+                <span id="delivery-fee">₱50</span>
+              </div>
+              <div class="border-t border-zwz-red/10 pt-4">
+                <div class="flex justify-between text-zwz-red-dark font-bold text-xl">
+                  <span>Total</span>
+                  <span id="total">₱50</span>
+                </div>
+              </div>
+            </div>
+            <a href="checkout.html" id="checkout-btn" class="flex items-center justify-center gap-3 w-full px-6 py-4 bg-gradient-to-r from-zwz-red to-zwz-red-dark text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+              Proceed to Checkout
+            </a>
+            <p class="text-center text-zwz-text/50 text-sm mt-4">Secure checkout powered by EmailJS</p>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Copyright -->
-    <div class="w-full text-center mt-8 border-t border-zwz-red/30 pt-4">
-      <p class="text-zwz-red text-sm font-medium">© 2025 ZHIWEIZAI ALL RIGHTS RESERVED</p>
+      <!-- Empty Cart State -->
+      <div id="empty-cart" class="hidden text-center py-20">
+        <div class="w-32 h-32 mx-auto mb-8 rounded-full bg-zwz-cream-dark flex items-center justify-center">
+          <svg class="w-16 h-16 text-zwz-red/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+          </svg>
+        </div>
+        <h2 class="font-display text-3xl text-zwz-red-dark font-bold mb-4">Your cart is empty</h2>
+        <p class="text-zwz-text/70 text-lg mb-8">Looks like you haven't added any dishes yet.</p>
+        <a href="menu.html" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-zwz-red to-zwz-red-dark text-white font-bold text-lg rounded-2xl shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+          </svg>
+          Browse Menu
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-zwz-red-dark pt-16 pb-8">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <!-- Brand -->
+        <div class="lg:col-span-1">
+          <div class="w-20 h-20 bg-zwz-gold rounded-xl flex items-center justify-center mb-6 shadow-lg">
+            <div class="text-center">
+              <div class="text-zwz-red-dark text-xs font-bold leading-tight">知</div>
+              <div class="text-zwz-red-dark text-xs font-bold leading-tight">之</div>
+              <div class="text-zwz-red-dark text-xs font-bold leading-tight">味</div>
+              <div class="text-zwz-red-dark text-[8px] font-bold mt-1">ZHIWEIZAI</div>
+              <div class="text-zwz-red-dark text-[6px]">RESTAURANT</div>
+            </div>
+          </div>
+          <p class="text-white/70 text-sm leading-relaxed">Experience the authentic taste of Chinese cuisine at Zhi Wei Zai.</p>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 class="font-heading text-zwz-gold font-bold text-lg mb-6 tracking-wider uppercase">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="../index.html" class="text-white/80 hover:text-zwz-gold transition-colors cursor-pointer">Home</a></li>
+            <li><a href="menu.html" class="text-white/80 hover:text-zwz-gold transition-colors cursor-pointer">Menu</a></li>
+            <li><a href="../Catering and Gallery/catering.html" class="text-white/80 hover:text-zwz-gold transition-colors cursor-pointer">Catering</a></li>
+            <li><a href="../Contact and Reservations/contact.html" class="text-white/80 hover:text-zwz-gold transition-colors cursor-pointer">Contact</a></li>
+          </ul>
+        </div>
+        
+        <!-- Hours -->
+        <div>
+          <h4 class="font-heading text-zwz-gold font-bold text-lg mb-6 tracking-wider uppercase">Hours</h4>
+          <div class="space-y-2 text-white/80 text-sm">
+            <p>Mon - Fri: 10:00 AM - 11:30 PM</p>
+            <p>Sat - Sun: 11:00 AM - 10:30 PM</p>
+          </div>
+        </div>
+        
+        <!-- Contact -->
+        <div>
+          <h4 class="font-heading text-zwz-gold font-bold text-lg mb-6 tracking-wider uppercase">Contact</h4>
+          <div class="space-y-3 text-white/80 text-sm">
+            <p>239 Maysan Road, Valenzuela City</p>
+            <p>09174761831</p>
+            <a href="mailto:zhiweizai@gmail.com" class="hover:text-zwz-gold transition-colors cursor-pointer">zhiweizai@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-white/20 pt-8 text-center">
+        <p class="text-white/60 text-sm">© 2025 Zhi Wei Zai. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
+  <script src="../js/auth.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Mobile menu toggle
+      if (typeof ZWZAuth !== 'undefined') ZWZAuth.init();
+
       const menuToggle = document.getElementById('menu-toggle');
       const mobileMenu = document.getElementById('mobile-menu');
-
       if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', function() {
-          mobileMenu.classList.toggle('hidden');
-        });
+        menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
       }
 
-
-
-      // Load cart items
-      loadCartItems();
-
-      // Checkout button
-      document.getElementById('checkout-btn').addEventListener('click', function() {
-        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-        if (cart.length === 0) {
-          alert('Your cart is empty. Please add items before checking out.');
-          return;
-        }
-
-        // Redirect to checkout page
-        window.location.href = "checkout.html";
-      });
+      loadCart();
     });
 
-    function loadCartItems() {
-      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-      const cartContainer = document.getElementById('cart-container');
-      const emptyCartMessage = document.getElementById('empty-cart-message');
-      const orderSummary = document.getElementById('order-summary');
-
-      // Update cart count
-      updateCartCount();
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem('zwz_cart') || '[]');
+      const cartItemsContainer = document.getElementById('cart-items');
+      const emptyCart = document.getElementById('empty-cart');
+      const checkoutBtn = document.getElementById('checkout-btn');
 
       if (cart.length === 0) {
-        // Show empty cart message
-        emptyCartMessage.classList.remove('hidden');
-        cartContainer.innerHTML = '';
-        orderSummary.classList.add('hidden');
+        cartItemsContainer.parentElement.classList.add('hidden');
+        emptyCart.classList.remove('hidden');
         return;
       }
 
-      // Hide empty cart message and show order summary
-      emptyCartMessage.classList.add('hidden');
-      orderSummary.classList.remove('hidden');
-
-      // Generate cart items HTML
-      let cartHTML = '';
-      let subtotal = 0;
+      cartItemsContainer.parentElement.classList.remove('hidden');
+      emptyCart.classList.add('hidden');
+      cartItemsContainer.innerHTML = '';
 
       cart.forEach((item, index) => {
-        // Extract numeric price value
-        const priceValue = parseFloat(item.price.replace('₱', '').trim());
-        const itemTotal = priceValue * item.quantity;
-        subtotal += itemTotal;
-
-        cartHTML += `
-          <div class="bg-white rounded-xl shadow-md p-4 mb-4 flex flex-col sm:flex-row items-center">
-            <div class="w-24 h-24 rounded-lg overflow-hidden mb-4 sm:mb-0 sm:mr-4">
-              <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+        const itemHtml = `
+          <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6 flex items-center gap-4 md:gap-6">
+            <div class="w-20 h-20 md:w-24 md:h-24 rounded-xl bg-zwz-cream flex-shrink-0 overflow-hidden">
+              <img src="${item.image}" alt="${item.name}" class="w-full h-full object-contain p-2">
             </div>
-            <div class="flex-grow">
-              <h3 class="font-bold text-zwz-red">${item.name}</h3>
-              <p class="text-gray-600">${item.price}</p>
+            <div class="flex-1 min-w-0">
+              <h3 class="font-display text-lg md:text-xl text-zwz-red-dark font-bold truncate">${item.name}</h3>
+              <p class="text-zwz-gold font-bold text-lg">₱${item.price}</p>
             </div>
-            <div class="flex items-center mt-4 sm:mt-0">
-              <button class="quantity-btn decrease-btn bg-gray-200 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center" data-index="${index}">-</button>
-              <span class="quantity mx-3">${item.quantity}</span>
-              <button class="quantity-btn increase-btn bg-gray-200 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center" data-index="${index}">+</button>
-              <button class="remove-btn ml-4 text-red-500 hover:text-red-700" data-index="${index}">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                </svg>
-              </button>
+            <div class="flex items-center gap-2">
+              <button onclick="updateQuantity(${index}, -1)" class="w-8 h-8 rounded-lg bg-zwz-cream hover:bg-zwz-red/10 flex items-center justify-center text-zwz-red-dark font-bold transition-colors cursor-pointer">-</button>
+              <span class="w-8 text-center font-bold text-zwz-text">${item.quantity || 1}</span>
+              <button onclick="updateQuantity(${index}, 1)" class="w-8 h-8 rounded-lg bg-zwz-cream hover:bg-zwz-red/10 flex items-center justify-center text-zwz-red-dark font-bold transition-colors cursor-pointer">+</button>
             </div>
+            <button onclick="removeItem(${index})" class="p-2 text-zwz-red/50 hover:text-zwz-red hover:bg-zwz-red/10 rounded-lg transition-colors cursor-pointer" aria-label="Remove item">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+              </svg>
+            </button>
           </div>
         `;
+        cartItemsContainer.innerHTML += itemHtml;
       });
 
-      cartContainer.innerHTML = cartHTML;
-
-      // Update subtotal and total
-      document.getElementById('subtotal').textContent = `₱ ${subtotal.toFixed(0)}`;
-      updateTotal();
-
-      // Add event listeners to quantity buttons and remove buttons
-      document.querySelectorAll('.quantity-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const index = parseInt(this.getAttribute('data-index'));
-          const isDecrease = this.classList.contains('decrease-btn');
-
-          updateItemQuantity(index, isDecrease);
-        });
-      });
-
-      document.querySelectorAll('.remove-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const index = parseInt(this.getAttribute('data-index'));
-          removeItem(index);
-        });
-      });
+      updateTotals();
+      updateCartCount();
     }
 
-    function updateItemQuantity(index, isDecrease) {
-      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-
-      if (isDecrease) {
-        if (cart[index].quantity > 1) {
-          cart[index].quantity--;
-        } else {
-          // If quantity would be 0, remove the item
+    function updateQuantity(index, delta) {
+      const cart = JSON.parse(localStorage.getItem('zwz_cart') || '[]');
+      if (cart[index]) {
+        cart[index].quantity = (cart[index].quantity || 1) + delta;
+        if (cart[index].quantity <= 0) {
           cart.splice(index, 1);
         }
-      } else {
-        cart[index].quantity++;
+        localStorage.setItem('zwz_cart', JSON.stringify(cart));
+        loadCart();
       }
-
-      localStorage.setItem('cart', JSON.stringify(cart));
-      loadCartItems();
     }
 
     function removeItem(index) {
-      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const cart = JSON.parse(localStorage.getItem('zwz_cart') || '[]');
       cart.splice(index, 1);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      loadCartItems();
+      localStorage.setItem('zwz_cart', JSON.stringify(cart));
+      loadCart();
     }
 
-    function updateTotal() {
-      const subtotalText = document.getElementById('subtotal').textContent;
-      const subtotal = parseFloat(subtotalText.replace('₱', '').trim());
-
-      // Fixed delivery fee of ₱50
-      const deliveryFee = 50;
-
+    function updateTotals() {
+      const cart = JSON.parse(localStorage.getItem('zwz_cart') || '[]');
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
+      const deliveryFee = cart.length > 0 ? 50 : 0;
       const total = subtotal + deliveryFee;
-      document.getElementById('total').textContent = `₱ ${total.toFixed(0)}`;
+
+      document.getElementById('subtotal').textContent = `₱${subtotal}`;
+      document.getElementById('delivery-fee').textContent = `₱${deliveryFee}`;
+      document.getElementById('total').textContent = `₱${total}`;
     }
 
     function updateCartCount() {
-      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-      const count = cart.length;
-
+      const cart = JSON.parse(localStorage.getItem('zwz_cart') || '[]');
       const cartCount = document.getElementById('cart-count');
-      const mobileCartCount = document.getElementById('mobile-cart-count');
-
-      if (count > 0) {
-        cartCount.textContent = count;
+      const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+      if (totalItems > 0) {
+        cartCount.textContent = totalItems;
         cartCount.classList.remove('hidden');
-
-        mobileCartCount.textContent = count;
-        mobileCartCount.classList.remove('hidden');
+        cartCount.classList.add('flex');
       } else {
         cartCount.classList.add('hidden');
-        mobileCartCount.classList.add('hidden');
       }
     }
   </script>

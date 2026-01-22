@@ -16,3 +16,9 @@ Thumbs.db
 .env
 .env.local
 .vercel
+
+# AI/Tool configurations (local only)
+.dev-agent/
+.shared/
+__pycache__/
+*.pyc
